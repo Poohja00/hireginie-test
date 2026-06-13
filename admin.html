@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Hireginie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <a class="brand" href="index.html">Hire<span>ginie</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blogs.html">View Blog</a></li>
+      <li><a class="active" href="admin.html">Admin</a></li>
+    </ul>
+    <div class="nav-right">
+      <span id="who" style="font-size:13px;color:#cfcdd6;"></span>
+      <button class="btn btn-ghost" style="padding:8px 18px;font-size:13px;" onclick="signOut()">Sign out</button>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-shell">
+  <div class="admin-head">
+    <h1>Blog Dashboard</h1>
+    <button class="btn btn-dark" onclick="newPost()">+ New Post</button>
+  </div>
+
+  <div class="admin-grid">
+    <!-- Posts list -->
+    <div class="panel">
+      <h2>All Posts</h2>
+      <div id="postList"><p style="color:var(--muted);font-size:14px;">Loading…</p></div>
+    </div>
+
+    <!-- Editor -->
+    <div class="panel">
+      <h2 id="editorTitle">New Post</h2>
+      <form id="postForm">
+        <input type="hidden" id="postId">
+        <div class="field"><label>Title</label><input type="text" id="title" required placeholder="Post title"></div>
+        <div class="field"><label>Tag</label><input type="text" id="tag" placeholder="Hiring, Diversity, Trends…"></div>
+        <div class="field"><label>Excerpt</label><textarea id="excerpt" rows="2" placeholder="Short summary shown on the blog grid"></textarea></div>
+        <div class="field"><label>Content</label><textarea id="content" rows="9" placeholder="Write the full article…"></textarea></div>
+        <div class="check-row"><input type="checkbox" id="published"><label for="published" style="margin:0;">Published (visible on public blog)</label></div>
+        <div style="display:flex;gap:10px;">
+          <button type="submit" class="btn btn-accent">Save Post</button>
+          <button type="button" class="btn btn-ghost" style="border-color:var(--line);color:var(--text);" onclick="resetEditor()">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+<script>
+  let me = null;
+
+  (async function init() {
+    if (!SUPABASE_READY) {
+      document.querySelector('.admin-shell').innerHTML =
+        '<div class="config-banner" style="display:block">Supabase isn\'t configured. Add keys in <b>supabase-config.js</b> and run <b>supabase-setup.sql</b>, then create an admin user.</div>';
+      return;
+    }
+    me = await requireAuth({ adminOnly: true });
+    if (!me) return;
+    document.getElementById('who').textContent = me.email + ' · admin';
+    loadPosts();
+  })();
+
+  async function loadPosts() {
+    const posts = await fetchPosts({ publishedOnly: false });
+    const list = document.getElementById('postList');
+    if (!posts || posts.length === 0) {
+      list.innerHTML = '<p style="color:var(--muted);font-size:14px;">No posts yet. Create your first one →</p>';
+      return;
+    }
+    list.innerHTML = posts.map(p => `
+      <div class="post-row">
+        <div class="meta">
+          <b>${escapeHtml(p.title)}</b>
+          <small>${p.tag || '—'} · ${new Date(p.created_at).toLocaleDateString()}</small>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="badge ${p.published ? 'live' : 'draft'}">${p.published ? 'Live' : 'Draft'}</span>
+          <button class="icon-btn" onclick='editPost(${JSON.stringify(JSON.stringify(p))})'>Edit</button>
+          <button class="icon-btn danger" onclick="removePost('${p.id}')">Delete</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function newPost() { resetEditor(); document.getElementById('title').focus(); }
+
+  function resetEditor() {
+    document.getElementById('postForm').reset();
+    document.getElementById('postId').value = '';
+    document.getElementById('editorTitle').textContent = 'New Post';
+  }
+
+  function editPost(json) {
+    const p = JSON.parse(json);
+    document.getElementById('postId').value = p.id;
+    document.getElementById('title').value = p.title || '';
+    document.getElementById('tag').value = p.tag || '';
+    document.getElementById('excerpt').value = p.excerpt || '';
+    document.getElementById('content').value = p.content || '';
+    document.getElementById('published').checked = !!p.published;
+    document.getElementById('editorTitle').textContent = 'Edit Post';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function removePost(id) {
+    if (!confirm('Delete this post permanently?')) return;
+    try { await deletePost(id); loadPosts(); }
+    catch (e) { alert(e.message); }
+  }
+
+  document.getElementById('postForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('postId').value;
+    const title = document.getElementById('title').value.trim();
+    const post = {
+      title,
+      slug: slugify(title) + (id ? '' : '-' + Date.now().toString(36).slice(-4)),
+      tag: document.getElementById('tag').value.trim(),
+      excerpt: document.getElementById('excerpt').value.trim(),
+      content: document.getElementById('content').value.trim(),
+      author: me?.full_name || me?.email || 'Hireginie Team',
+      published: document.getElementById('published').checked
+    };
+    if (id) { post.id = id; delete post.slug; } // keep existing slug on edit
+    try {
+      await savePost(post);
+      resetEditor();
+      loadPosts();
+    } catch (ex) { alert(ex.message); }
+  });
+
+  function escapeHtml(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
+</body>
+</html>
