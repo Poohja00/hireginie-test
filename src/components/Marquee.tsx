@@ -9,18 +9,16 @@ const CLIENTS = [
   { name: "BigBadBikes", file: "logo_Black.png" },
 ];
 
-// Repeat enough times to overfill any screen, then duplicate the whole set
-// so the -50% loop is seamless and full from the first frame.
 const HALF = Array.from({ length: 3 }, () => CLIENTS).flat();
 const TRACK = [...HALF, ...HALF];
 
 export default function Marquee() {
   return (
-    <section className="bg-soft py-12">
-      <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10">
-        <h3 className="text-center text-[22px] font-semibold text-[#2a2933] mb-7">
+    <section className="bg-soft py-14">
+      <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 mb-8">
+        <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-warm-grey">
           Trusted by growing businesses across India
-        </h3>
+        </p>
       </div>
       <div className="marquee overflow-hidden marquee-mask">
         <div className="animate-marquee flex w-max">
@@ -34,7 +32,7 @@ export default function Marquee() {
                 alt={c.name}
                 width={130}
                 height={46}
-                className="max-h-[46px] w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
+                className="max-h-[46px] w-auto object-contain opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               />
             </div>
           ))}
