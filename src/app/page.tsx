@@ -2,13 +2,8 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
+import ServicesStack from "@/components/ServicesStack";
 
-const SERVICES = [
-  { icon: "🎯", title: "Executive Search", desc: "Leadership and CXO hiring across all domains and levels." },
-  { icon: "🧲", title: "Talent Acquisition", desc: "Permanent hiring across technology and non-tech roles." },
-  { icon: "⚙️", title: "RPO / Recruiter on Demand", desc: "Dedicated recruiters embedded with your hiring team." },
-  { icon: "📄", title: "Employer of Record", desc: "Compliant onboarding and payroll across India." },
-];
 
 const INDUSTRIES = [
   { i: "🏦", n: "BFSI" }, { i: "💻", n: "IT & Software" }, { i: "🏥", n: "Healthcare" },
@@ -34,28 +29,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ServicesStack />
       <Marquee />
-
-      {/* Services */}
-      <section className="py-24">
-        <div className={wrap}>
-          <Reveal className="text-center max-w-[640px] mx-auto mb-12">
-            <h2 className="text-[clamp(28px,4vw,40px)] font-semibold tracking-tight">End-to-End Recruitment Solutions</h2>
-            <p className="text-muted mt-3">Comprehensive hiring solutions tailored to your business needs.</p>
-          </Reveal>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map((s, idx) => (
-              <Reveal key={s.title} delay={idx * 0.08}>
-                <div className="group h-full bg-white border border-black/10 rounded-2xl p-7 transition-all hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(74,50,204,0.18)] hover:border-transparent">
-                  <div className="w-12 h-12 grid place-items-center rounded-[14px] bg-gradient-to-br from-accent-soft to-white border border-black/10 text-accent text-xl mb-5 transition-transform group-hover:scale-110 group-hover:-rotate-3">{s.icon}</div>
-                  <h3 className="text-lg font-semibold mb-2">{s.title}</h3>
-                  <p className="text-muted text-sm">{s.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Programs */}
       <section className="pb-24">
