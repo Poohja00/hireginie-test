@@ -103,7 +103,7 @@ export default function ServicesStack() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white pt-10 pb-6">
       <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -121,7 +121,7 @@ export default function ServicesStack() {
         {/* Stack container — height drives how long the animation plays */}
         <div
           ref={containerRef}
-          style={{ height: `${SERVICES.length * 480 + 300}px` }}
+          style={{ height: `${SERVICES.length * 200 + 500}px` }}
           className="relative"
         >
           {SERVICES.map((service, index) => (
