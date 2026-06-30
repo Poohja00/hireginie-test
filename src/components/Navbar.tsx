@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -18,14 +19,23 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 h-[76px] flex items-center bg-white border-b border-black/8 shadow-sm">
-      <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 flex items-center justify-between">
+      <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 flex items-center">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold tracking-tight font-serif text-dark">
-          Hire<span className="text-accent">ginie</span>
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            src="/logo/hireginiemasterlogos/logo-b.png"
+            alt="Hireginie — Talent Cloud"
+            width={180}
+            height={44}
+            priority
+            className="h-[40px] w-auto object-contain"
+          />
         </Link>
 
+        <div className="flex-1" />
+
         {/* Desktop links */}
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex items-center gap-8 mr-10">
           {NAV_LINKS.map((l) => {
             const active = pathname === l.href;
             return (
@@ -46,10 +56,10 @@ export default function Navbar() {
         </ul>
 
         {/* CTA + mobile toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 shrink-0">
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-accent text-white font-semibold text-[14px] px-5 py-2.5 rounded-full hover:bg-accent-hover transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 bg-dark text-white font-semibold text-[14px] px-6 py-2 rounded-lg hover:bg-black transition-colors"
           >
             Contact Us
           </Link>
@@ -79,7 +89,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 text-center bg-accent text-white font-semibold text-[14px] px-5 py-3 rounded-full"
+            className="mt-4 text-center bg-dark text-white font-semibold text-[14px] px-5 py-3 rounded-full"
           >
             Contact Us
           </Link>

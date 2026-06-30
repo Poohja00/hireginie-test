@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Sora, Mallanna } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CtaBanner from "@/components/CtaBanner";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["700", "900"],
+  weight: ["400", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const mallanna = Mallanna({
+  variable: "--font-mallanna",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -28,10 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${sora.variable} ${mallanna.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <CtaBanner />
         <Footer />
       </body>
     </html>

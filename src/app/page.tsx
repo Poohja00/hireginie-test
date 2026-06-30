@@ -122,20 +122,6 @@ export default function Home() {
       </section>
 
       <Marquee />
-
-      {/* CTA */}
-      <section className="py-14">
-        <div className={wrap}>
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl text-center text-white px-6 py-14 max-w-[920px] mx-auto bg-[#363636]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(254,98,42,0.3),transparent_60%)]" />
-              <h2 className="relative font-serif text-[clamp(24px,3.4vw,36px)] font-black">Let&apos;s Build Your Next High-Performing Team</h2>
-              <p className="relative text-white/70 mt-3 mb-7 text-[15px]">Partner with us for smart, scalable and inclusive hiring solutions.</p>
-              <Link href="/contact" className="relative inline-flex items-center gap-2 bg-accent text-white font-semibold px-7 py-3.5 rounded-full hover:bg-accent-hover hover:-translate-y-0.5 transition-all">Get Started <span>→</span></Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

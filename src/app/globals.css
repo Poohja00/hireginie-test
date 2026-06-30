@@ -4,14 +4,15 @@
   /* Brand colors — new design system */
   --color-accent: #FE622A;
   --color-accent-hover: #e5521f;
+  --color-accent-gold: #FFA63D;
   --color-dark: #363636;
   --color-warm-grey: #62605F;
   --color-slate: #5D6585;
   --color-soft: #f7f6f4;
 
   /* Fonts */
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-mallanna), ui-sans-serif, system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
