@@ -42,7 +42,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className={`relative text-[15px] font-medium py-1 transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-accent after:transition-all ${
+                  className={`relative text-[16px] font-medium py-1 transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-accent after:transition-all ${
                     active
                       ? "text-dark after:w-full"
                       : "text-warm-grey after:w-0 hover:text-dark hover:after:w-full"
@@ -59,7 +59,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4 shrink-0">
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-dark text-white font-semibold text-[14px] px-6 py-2 rounded-lg hover:bg-black transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 bg-dark text-white font-semibold text-[16px] px-6 py-2 rounded-lg hover:bg-black transition-colors"
           >
             Contact Us
           </Link>
@@ -89,7 +89,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 text-center bg-dark text-white font-semibold text-[14px] px-5 py-3 rounded-full"
+            className="mt-4 text-center bg-dark text-white font-semibold text-[16px] px-5 py-3 rounded-full"
           >
             Contact Us
           </Link>

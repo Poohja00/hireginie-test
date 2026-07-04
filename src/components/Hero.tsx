@@ -35,27 +35,27 @@ const item = {
 
 export default function Hero() {
   return (
-    <header className="min-h-[calc(100vh-76px)] flex flex-col justify-center py-8 bg-white overflow-hidden">
+    <header className="flex flex-col pt-2 pb-6 bg-white overflow-hidden">
       <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
         {/* Left — content */}
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.span
             variants={item}
-            className="inline-block text-[14px] font-semibold text-slate mb-3"
+            className="inline-block text-[16px] font-semibold text-slate mb-3"
           >
             Tech-Enabled Recruitment &amp; Staffing Partner
           </motion.span>
 
           <motion.h1
             variants={item}
-            className="font-serif text-[clamp(32px,3.8vw,52px)] font-black leading-[1.1] tracking-tight text-dark"
+            className="font-serif text-[clamp(32px,3.4vw,44px)] font-bold leading-[1.15] tracking-tight text-dark"
           >
             Building High Performance Team{" "}
-            <span className="bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent">Across India</span>
+            <span className="bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent">Across India</span>
           </motion.h1>
 
-          <motion.p variants={item} className="text-warm-grey text-[15px] leading-relaxed mt-4 mb-6 max-w-[440px]">
+          <motion.p variants={item} className="text-warm-grey text-[20px] leading-relaxed mt-4 mb-6 max-w-[520px]">
             Helping startups and enterprises hire top talent across technology,
             non-tech, leadership, and volume hiring domains.
           </motion.p>
@@ -63,7 +63,7 @@ export default function Hero() {
           <motion.div variants={item} className="flex flex-wrap gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center w-full max-w-[340px] bg-gradient-to-r from-accent to-accent-gold text-white font-semibold text-[14px] px-10 py-2 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
+              className="inline-flex items-center justify-center w-full max-w-[340px] bg-gradient-to-r from-accent via-accent-mid to-accent-gold text-white font-semibold text-[16px] px-10 py-2 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
             >
               Talk to our Experts
             </Link>
@@ -93,52 +93,52 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 mt-12 flex flex-row flex-nowrap justify-between gap-6"
+        className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 mt-4 flex flex-row flex-nowrap justify-center gap-16 lg:gap-32"
       >
         <div className="min-w-0 flex items-start gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-1.5 shrink-0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="mt-3 shrink-0">
             <circle cx="12" cy="12" r="9" stroke="#5D6585" strokeWidth="2" />
             <circle cx="12" cy="12" r="2.5" fill="#5D6585" />
           </svg>
           <div>
-            <b className="block font-serif text-lg font-black bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
+            <b className="block font-serif text-[38px] font-bold bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
               <CountUp target={5000} suffix="+" />
             </b>
-            <small className="text-dark text-[12px] font-medium whitespace-nowrap">Successful Hires</small>
+            <small className="text-dark text-[20px] font-medium whitespace-nowrap">Successful Hires</small>
           </div>
         </div>
         <div className="min-w-0 flex items-start gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-1.5 shrink-0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="mt-3 shrink-0">
             <circle cx="12" cy="12" r="9" stroke="#5D6585" strokeWidth="2" />
             <circle cx="12" cy="12" r="2.5" fill="#5D6585" />
           </svg>
           <div>
-            <b className="block font-serif text-lg font-black bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
+            <b className="block font-serif text-[38px] font-bold bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
               <CountUp target={40} suffix="+" />
             </b>
-            <small className="text-dark text-[12px] font-medium whitespace-nowrap">Industries Served</small>
+            <small className="text-dark text-[20px] font-medium whitespace-nowrap">Industries Served</small>
           </div>
         </div>
         <div className="min-w-0 flex items-start gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-1.5 shrink-0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="mt-3 shrink-0">
             <circle cx="12" cy="12" r="9" stroke="#5D6585" strokeWidth="2" />
             <circle cx="12" cy="12" r="2.5" fill="#5D6585" />
           </svg>
           <div>
-            <b className="block font-serif text-lg font-black bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent whitespace-nowrap">Pan India</b>
-            <small className="text-dark text-[12px] font-medium whitespace-nowrap">Talent Network</small>
+            <b className="block font-serif text-[38px] font-bold bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent whitespace-nowrap">Pan India</b>
+            <small className="text-dark text-[20px] font-medium whitespace-nowrap">Talent Network</small>
           </div>
         </div>
         <div className="min-w-0 flex items-start gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-1.5 shrink-0">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="mt-3 shrink-0">
             <circle cx="12" cy="12" r="9" stroke="#5D6585" strokeWidth="2" />
             <circle cx="12" cy="12" r="2.5" fill="#5D6585" />
           </svg>
           <div>
-            <b className="block font-serif text-lg font-black bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
+            <b className="block font-serif text-[38px] font-bold bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent whitespace-nowrap">
               <CountUp target={48} suffix=" hours" />
             </b>
-            <small className="text-dark text-[12px] font-medium whitespace-nowrap">Avg. Turnaround</small>
+            <small className="text-dark text-[20px] font-medium whitespace-nowrap">Avg. Turnaround</small>
           </div>
         </div>
       </motion.div>

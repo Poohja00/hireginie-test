@@ -10,7 +10,7 @@ const FEATURES = [
         <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-3.06-.48L3 21l1.6-4.2A7.93 7.93 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    bg: "bg-gradient-to-br from-accent to-accent-gold",
+    bg: "bg-gradient-to-br from-accent via-accent-mid to-accent-gold",
     t: "Quick Responses",
     d: "We typically respond within 24 hours",
   },
@@ -64,12 +64,12 @@ export default function Contact() {
             <span className="font-serif text-[19px] font-semibold tracking-[0.16em] uppercase text-accent">
               Get in touch
             </span>
-            <h1 className="font-serif text-[40px] font-black leading-[1.2] tracking-tight text-dark mt-4">
+            <h1 className="font-serif text-[44px] font-bold leading-[1.2] tracking-tight text-dark mt-4">
               Let&apos;s Build
               <br />
-              What&apos;s Next, <span className="bg-gradient-to-r from-accent to-accent-gold bg-clip-text text-transparent">Together.</span>
+              What&apos;s Next, <span className="bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent">Together.</span>
             </h1>
-            <p className="font-sans text-warm-grey text-[16px] leading-relaxed mt-6 max-w-[460px]">
+            <p className="font-sans text-warm-grey text-[20px] leading-relaxed mt-6 max-w-[460px]">
               Have a hiring challenge or a question about our services? We&apos;d love to
               hear from you. Connect with our team and discover how Hireginie can
               support your talent goals.
@@ -82,8 +82,8 @@ export default function Contact() {
                     {f.icon}
                   </div>
                   <div className="min-w-0">
-                    <b className="block text-dark text-[14.5px] mb-1 whitespace-nowrap">{f.t}</b>
-                    <p className="text-warm-grey text-[13px] leading-snug">{f.d}</p>
+                    <b className="block text-dark text-[16px] mb-1 whitespace-nowrap">{f.t}</b>
+                    <p className="text-warm-grey text-[14px] leading-snug">{f.d}</p>
                   </div>
                 </div>
               ))}
@@ -96,7 +96,7 @@ export default function Contact() {
               onSubmit={submit}
               className="bg-white rounded-3xl p-6 lg:p-7 shadow-[0_20px_60px_rgba(20,19,26,0.08)]"
             >
-              <h2 className="font-serif text-lg font-black text-dark mb-4">Send Us a Message</h2>
+              <h2 className="font-serif text-[28px] font-bold text-dark mb-4">Send Us a Message</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 <input required placeholder="full name" className={field} />
                 <input type="email" required placeholder="email address" className={field} />
@@ -119,7 +119,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-accent-gold text-white font-semibold text-[14px] px-7 py-2.5 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
+                className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent via-accent-mid to-accent-gold text-white font-semibold text-[14px] px-7 py-2.5 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
               >
                 {sent ? "Sent ✓" : "Talk to our Experts"}
               </button>
@@ -143,7 +143,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h3 className="font-serif text-2xl font-black text-dark mb-6">Other Ways to Reach Us</h3>
+            <h3 className="font-serif text-[28px] font-bold text-dark mb-6">Other Ways to Reach Us</h3>
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
                 <span className="w-[46px] h-[46px] rounded-full bg-slate grid place-items-center shrink-0">
@@ -152,7 +152,7 @@ export default function Contact() {
                   </svg>
                 </span>
                 <div>
-                  <b className="block text-dark text-[15px]">Call Us</b>
+                  <b className="block text-dark text-[16px]">Call Us</b>
                   <a href="tel:+919415088702" className="text-warm-grey text-sm hover:text-accent transition-colors">+91 9415088702</a>
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function Contact() {
                   </svg>
                 </span>
                 <div>
-                  <b className="block text-dark text-[15px]">Email Us</b>
+                  <b className="block text-dark text-[16px]">Email Us</b>
                   <a href="mailto:contactus@hireginie.com" className="text-warm-grey text-sm hover:text-accent transition-colors">contactus@hireginie.com</a>
                 </div>
               </div>
