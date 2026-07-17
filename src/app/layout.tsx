@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Sora, Mallanna } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CtaBanner from "@/components/CtaBanner";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
+import SiteChrome from "@/components/SiteChrome";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -31,10 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${mallanna.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar />
+        <ConditionalNavbar />
         <main className="flex-1">{children}</main>
-        <CtaBanner />
-        <Footer />
+        <SiteChrome />
       </body>
     </html>
   );

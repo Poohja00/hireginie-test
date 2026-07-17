@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { supabase, type Post } from "@/lib/supabase";
@@ -36,7 +37,13 @@ export default function Blogs() {
                   href={`/blogs/${p.slug}`}
                   className="group block h-full bg-white border border-black/10 rounded-2xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(74,50,204,0.18)]"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-accent-soft to-accent-2" />
+                  {p.image_url ? (
+                    <div className="relative aspect-video">
+                      <Image src={p.image_url} alt={p.title} fill className="object-cover" unoptimized />
+                    </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-accent-soft to-accent-2" />
+                  )}
                   <div className="p-6">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wide">{p.tag ?? "Insights"}</span>
                     <h3 className="text-lg font-semibold mt-2 mb-2">{p.title}</h3>
