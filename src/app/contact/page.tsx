@@ -56,9 +56,9 @@ export default function Contact() {
   return (
     <>
       {/* Hero + form */}
-      <section className="relative overflow-hidden bg-soft pt-16 pb-10">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[55%] h-[120%] bg-white rounded-l-[200px] pointer-events-none" />
-        <div className={`${wrap} relative grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start`}>
+      <section className="relative overflow-hidden bg-soft pt-8 pb-0">
+        <div className="absolute left-[50%] top-[45%] [transform:translate(-50%,-50%)_rotate(25deg)] w-[1600px] h-[1150px] rounded-[50%] bg-[#EAEAEE] pointer-events-none" />
+        <div className={`${wrap} relative grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start`}>
           {/* Left */}
           <Reveal>
             <span className="font-serif text-[19px] font-semibold tracking-[0.16em] uppercase text-accent">
@@ -88,9 +88,40 @@ export default function Contact() {
                 </div>
               ))}
             </div>
+
+            <div className="group relative rounded-3xl overflow-hidden h-[260px] border border-black/8 mt-8">
+              <iframe
+                title="Hireginie location"
+                src="https://www.google.com/maps?q=12.8872251,77.5971658&z=19&output=embed"
+                className="w-full h-full border-0 grayscale-[45%] contrast-[1.05] brightness-[1.1] saturate-[0.6] pointer-events-none"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+                <div className="flex flex-col items-center -translate-y-6">
+                  <span className="w-9 h-9 rounded-full bg-accent grid place-items-center shadow-[0_4px_14px_rgba(254,98,42,0.5)] ring-4 ring-white">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" fill="white" />
+                      <circle cx="12" cy="10" r="2.5" fill="var(--color-accent)" />
+                    </svg>
+                  </span>
+                  <div className="pointer-events-auto mt-2 bg-white rounded-xl px-4 py-2.5 shadow-[0_10px_30px_rgba(20,19,26,0.14)] max-w-[220px] text-center">
+                    <b className="block text-dark text-[13px]">Hireginie Pvt. Ltd.</b>
+                    <span className="text-warm-grey text-[11px] leading-snug">Wework, Opp: BPL Technologies, Arekere, Bangalore</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              href="https://www.google.com/maps/place/WeWork/@12.8872455,77.5968355,19.56z/data=!3m1!5s0x3bae152f1be5855d:0x7ff72c10d66be50!4m6!3m5!1s0x3bae15480ec31b5b:0x2ee906dd2ca3768!8m2!3d12.8872251!4d77.5971658!16s%2Fg%2F11g4g131c7!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-4 bg-white border border-black/8 text-[13px] font-medium text-dark px-4 py-2 rounded-lg shadow-[0_4px_12px_rgba(20,19,26,0.08)] hover:text-accent hover:border-accent/30 transition-colors"
+            >
+              Open in Maps ↗
+            </a>
           </Reveal>
 
-          {/* Right — form card */}
+          {/* Right - form card */}
           <Reveal delay={0.1}>
             <form
               onSubmit={submit}
@@ -124,26 +155,9 @@ export default function Contact() {
                 {sent ? "Sent ✓" : "Talk to our Experts"}
               </button>
             </form>
-          </Reveal>
-        </div>
-      </section>
 
-      {/* Map + other ways to reach */}
-      <section className="pt-6 pb-16 bg-white">
-        <div className={`${wrap} grid lg:grid-cols-[1.3fr_1fr] gap-10 items-start`}>
-          <Reveal>
-            <div className="relative rounded-3xl overflow-hidden h-[380px] border border-black/8">
-              <iframe
-                title="Hireginie location"
-                src="https://www.google.com/maps?q=Wework+Opp+BPL+Technologies+Arekere+Bangalore&output=embed"
-                className="w-full h-full border-0"
-                loading="lazy"
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h3 className="font-serif text-[28px] font-bold text-dark mb-6">Other Ways to Reach Us</h3>
+            <div className="mt-8">
+              <h3 className="font-serif text-[28px] font-bold text-dark mb-6">Other Ways to Reach Us</h3>
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
                 <span className="w-[46px] h-[46px] rounded-full bg-slate grid place-items-center shrink-0">
@@ -171,6 +185,7 @@ export default function Contact() {
                   <a href="mailto:contactus@hireginie.com" className="text-warm-grey text-sm hover:text-accent transition-colors">contactus@hireginie.com</a>
                 </div>
               </div>
+            </div>
             </div>
           </Reveal>
         </div>

@@ -38,7 +38,7 @@ export default function Hero() {
     <header className="flex flex-col pt-2 pb-6 bg-white overflow-hidden">
       <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        {/* Left — content */}
+        {/* Left - content */}
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.span
             variants={item}
@@ -70,7 +70,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right — illustration */}
+        {/* Right - illustration */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -79,7 +79,7 @@ export default function Hero() {
         >
           <Image
             src="/hero-illustration.png"
-            alt="Hireginie — talent network across India"
+            alt="Hireginie talent network across India"
             width={660}
             height={600}
             priority
@@ -88,7 +88,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Stats row — full width, spans both columns */}
+      {/* Stats row - full width, spans both columns */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -33,7 +33,7 @@ export default function PreviewPost() {
   return (
     <>
       <div className="sticky top-0 z-50 bg-dark text-white text-center py-2.5 text-[13px] font-medium">
-        Preview mode — this post is not published. Close this tab to return to the dashboard.
+        Preview mode: this post is not published. Close this tab to return to the dashboard.
       </div>
       <PostBody post={post} backHref="/admin" />
     </>

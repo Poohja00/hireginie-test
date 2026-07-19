@@ -2,7 +2,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 
-export const metadata = { title: "Programs — Hireginie" };
+export const metadata = { title: "Programs | Hireginie" };
 
 const DETAILS = [
   { i: "🌸", t: "Inclusive Hiring", d: "Diversity-first sourcing and structured, bias-aware evaluation." },
@@ -21,7 +21,7 @@ export default function Programs() {
         <div className={wrap}>
           <Reveal className="text-center max-w-[640px] mx-auto mb-12">
             <h2 className="text-[clamp(28px,4vw,40px)] font-semibold tracking-tight">Programs At Hireginie</h2>
-            <p className="text-muted mt-3">Purpose-built programs that go beyond hiring — driving inclusion, speed, and scale.</p>
+            <p className="text-muted mt-3">Purpose-built programs that go beyond hiring, driving inclusion, speed, and scale.</p>
           </Reveal>
           <div className="grid gap-6 md:grid-cols-2">
             {[

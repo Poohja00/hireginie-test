@@ -17,7 +17,7 @@ const mallanna = Mallanna({
 });
 
 export const metadata: Metadata = {
-  title: "Hireginie — Tech-Enabled Recruitment & Staffing Partner",
+  title: "Hireginie | Tech-Enabled Recruitment & Staffing Partner",
   description:
     "Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.",
 };

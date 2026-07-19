@@ -68,7 +68,7 @@ export default function Admin() {
       return;
     }
     if (file.size > 5 * 1024 * 1024) {
-      setUploadErr("Image is too large — 5MB max.");
+      setUploadErr("Image is too large (5MB max).");
       return;
     }
     setUploading(true);
@@ -157,7 +157,7 @@ export default function Admin() {
                 )}
                 <div className="min-w-0">
                   <b className="text-[15px] block truncate">{p.title}</b>
-                  <small className="block text-muted text-[12.5px]">{p.tag || "—"} · {p.created_at ? new Date(p.created_at).toLocaleDateString() : ""}</small>
+                  <small className="block text-muted text-[12.5px]">{p.tag || "-"} · {p.created_at ? new Date(p.created_at).toLocaleDateString() : ""}</small>
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0">

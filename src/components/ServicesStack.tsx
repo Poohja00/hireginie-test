@@ -7,17 +7,17 @@ const SERVICES = [
     number: "01",
     title: "Executive Search",
     subtitle: "Leadership & CXO Hiring",
-    desc: "We identify and place senior leaders who shape the trajectory of your business. Our process combines deep market mapping, rigorous assessment, and confidential outreach to find leaders who don't just fit the role — they elevate it.",
+    desc: "We identify and place senior leaders who shape the trajectory of your business. Our process combines deep market mapping, rigorous assessment, and confidential outreach to find leaders who don't just fit the role, they elevate it.",
   },
   {
     number: "02",
     title: "Talent Acquisition",
     subtitle: "Permanent Hiring",
-    desc: "End-to-end permanent hiring across technology, non-tech, and leadership roles. We go beyond CVs to assess for culture fit, growth potential, and long-term contribution — delivering talent that drives your business forward.",
+    desc: "End-to-end permanent hiring across technology, non-tech, and leadership roles. We go beyond CVs to assess for culture fit, growth potential, and long-term contribution, delivering talent that drives your business forward.",
   },
   {
     number: "03",
-    title: "Recruiter on Demand — RPO",
+    title: "Recruiter on Demand (RPO)",
     subtitle: "Embedded Recruitment",
     desc: "Dedicated recruiters embedded within your team, working as a true extension of your HR function. Ideal for high-volume hiring, hypergrowth phases, or when you need specialist bandwidth without permanent overhead.",
   },
@@ -25,13 +25,13 @@ const SERVICES = [
     number: "04",
     title: "Employer of Record",
     subtitle: "Compliant Workforce Management",
-    desc: "Hire anywhere in India without setting up an entity. We handle contracts, payroll, compliance, and benefits — so you can focus on your people, not the paperwork.",
+    desc: "Hire anywhere in India without setting up an entity. We handle contracts, payroll, compliance, and benefits, so you can focus on your people, not the paperwork.",
   },
   {
     number: "05",
     title: "POSH Compliance",
     subtitle: "Workplace Safety & Inclusion",
-    desc: "Comprehensive Prevention of Sexual Harassment support — from policy drafting and IC committee formation to training and annual reports. Build a safe, inclusive workplace that meets every legal requirement.",
+    desc: "Comprehensive Prevention of Sexual Harassment support, from policy drafting and IC committee formation to training and annual reports. Build a safe, inclusive workplace that meets every legal requirement.",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function ServicesStack() {
           </p>
         </div>
 
-        {/* Desktop — compact chips + side reveal */}
+        {/* Desktop - compact chips + side reveal */}
         <div
           className="hidden lg:flex gap-4 h-[300px]"
           onMouseLeave={() => setActive(-1)}
@@ -81,8 +81,7 @@ export default function ServicesStack() {
                   }}
                   className="relative rounded-2xl overflow-hidden cursor-pointer min-w-0"
                 >
-                  <div className="absolute inset-0 flex flex-col justify-between p-6">
-                    <span className="text-white/40 text-[13px] font-mono tracking-widest">{s.number}</span>
+                  <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <h3 className="font-serif text-white text-[18px] font-bold leading-snug">
                       {s.title}
                     </h3>
@@ -94,7 +93,7 @@ export default function ServicesStack() {
                   />
                 </div>
 
-                {/* Description panel — unfolds beside the hovered chip */}
+                {/* Description panel - unfolds beside the hovered chip */}
                 <div
                   style={{
                     flexGrow: isActive ? 4 : 0.0001,
@@ -120,7 +119,7 @@ export default function ServicesStack() {
           })}
         </div>
 
-        {/* Mobile — stacked cards, tap to expand */}
+        {/* Mobile - stacked cards, tap to expand */}
         <div className="lg:hidden flex flex-col gap-4">
           {SERVICES.map((s, i) => {
             const isActive = active === i;
@@ -132,10 +131,7 @@ export default function ServicesStack() {
                 className="rounded-2xl px-6 py-5 cursor-pointer"
               >
                 <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-white/40 text-xs font-mono tracking-widest block mb-1">{s.number}</span>
-                    <h3 className="font-serif text-white text-[20px] font-bold">{s.title}</h3>
-                  </div>
+                  <h3 className="font-serif text-white text-[20px] font-bold">{s.title}</h3>
                   <span className="w-8 h-8 rounded-full border border-white/30 grid place-items-center text-white/60 shrink-0">
                     {isActive ? "−" : "+"}
                   </span>

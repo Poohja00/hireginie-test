@@ -10,7 +10,7 @@ export default function Unauthorized() {
             <path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="#363636" strokeWidth="1.8" />
           </svg>
         </div>
-        <h1 className="font-serif text-[28px] font-bold text-dark mb-2">401 — Not Authorized</h1>
+        <h1 className="font-serif text-[28px] font-bold text-dark mb-2">401 Not Authorized</h1>
         <p className="text-muted text-[15px] leading-relaxed mb-7">
           You don&apos;t have permission to access this page.
         </p>

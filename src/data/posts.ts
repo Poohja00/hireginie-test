@@ -1,12 +1,12 @@
 import type { Post } from "@/lib/supabase";
 
-// Static fallback posts — shown when Supabase isn't configured yet.
+// Static fallback posts, shown when Supabase isn't configured yet.
 export const SAMPLE_POSTS: Post[] = [
   {
     slug: "ai-reshaping-recruitment", tag: "Hiring", author: "Hireginie Team", created_at: "2026-05-28",
     title: "5 Ways AI Is Reshaping Modern Recruitment",
     excerpt: "How intelligent matching cuts time-to-hire without losing the human touch.",
-    content: `Recruitment has always been part art, part science. Today, AI is tilting the balance — not by replacing recruiters, but by handing them sharper tools.
+    content: `Recruitment has always been part art, part science. Today, AI is tilting the balance, not by replacing recruiters, but by handing them sharper tools.
 
 1. Smarter sourcing. Models surface candidates who match on skills and trajectory, not just keywords.
 2. Faster screening. Structured signals rank applicants so recruiters spend time on the strongest fits.
@@ -14,13 +14,13 @@ export const SAMPLE_POSTS: Post[] = [
 4. Predictive fit. Historical outcomes hint at who will thrive and stay.
 5. The human close. Technology accelerates the funnel; people still build trust and close offers.
 
-At Hireginie we pair AI-driven matching with specialist recruiters — speed without losing the human touch.`,
+At Hireginie we pair AI-driven matching with specialist recruiters for speed without losing the human touch.`,
   },
   {
     slug: "building-teams-beyond-bias", tag: "Diversity", author: "Hireginie Team", created_at: "2026-05-20",
     title: "Building Teams Beyond Bias",
     excerpt: "Practical steps to make your hiring funnel genuinely inclusive.",
-    content: `Inclusive hiring is not a checkbox — it is a system. Here is how high-performing teams design for it.
+    content: `Inclusive hiring is not a checkbox. It is a system. Here is how high-performing teams design for it.
 
 Start with the job description. Neutral language widens your top of funnel.
 
@@ -48,7 +48,7 @@ Use a partner for surge capacity. Dedicated recruiter pods scale you without per
     slug: "great-executive-search", tag: "Leadership", author: "Hireginie Team", created_at: "2026-05-04",
     title: "What Great Executive Search Looks Like",
     excerpt: "The signals that separate a good CXO hire from a great one.",
-    content: `Executive hiring is high-stakes and low-volume — every decision matters.
+    content: `Executive hiring is high-stakes and low-volume. Every decision matters.
 
 Mandate clarity. The best searches begin with honesty about what the business needs next.
 
@@ -62,7 +62,7 @@ Discretion. Senior candidates are often passive and employed; confidentiality is
     slug: "candidate-experience", tag: "Process", author: "Hireginie Team", created_at: "2026-04-26",
     title: "Designing a Candidate Experience People Love",
     excerpt: "Why your hiring process is your strongest employer brand.",
-    content: `Every candidate who touches your process becomes an ambassador — or a critic.
+    content: `Every candidate who touches your process becomes an ambassador, or a critic.
 
 Respect their time. Clear timelines, prompt updates, no black holes.
 

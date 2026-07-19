@@ -16,7 +16,7 @@ export default function Marquee() {
   return (
     <section className="bg-soft py-14">
       <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 mb-8">
-        <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-warm-grey">
+        <p className="text-center text-[18px] font-bold uppercase tracking-[0.14em] text-dark">
           Trusted by growing businesses across India
         </p>
       </div>

@@ -3,25 +3,25 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#363636] pt-14 pb-4 text-white">
+    <footer className="relative bg-[#2B2B2B] pt-12 text-white">
       <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr]">
           {/* Brand + legal */}
           <div>
             <Image
               src="/logo/hireginiemasterlogos/logo-b.png"
-              alt="Hireginie — Talent Cloud"
+              alt="Hireginie Talent Cloud"
               width={180}
               height={44}
-              className="h-[40px] w-auto object-contain mb-3 brightness-0 invert"
+              className="h-[52px] w-auto object-contain mb-6 brightness-0 invert"
             />
-            <p className="text-white/60 text-[16px] leading-relaxed mb-2">
-              <b className="text-white/90">Security Advice:</b> Hireginie does not charge any fee
+            <p className="text-white text-[16px] leading-relaxed mb-2">
+              <b className="text-white">Security Advice:</b> Hireginie does not charge any fee
               at any stage of its recruitment process from the candidate nor allows their
               employees to collect any fees from any candidates.
             </p>
-            <p className="text-white/60 text-[16px] leading-relaxed">
-              <b className="text-white/90">EEO Statement:</b> Hireginie India is an Equal
+            <p className="text-white text-[16px] leading-relaxed">
+              <b className="text-white">EEO Statement:</b> Hireginie India is an Equal
               Employment Opportunity Employer. All qualified applicants receive consideration
               for employment without regard to race, color, religion, sex, sexual orientation,
               gender identity or expression, appearance, national origin, age, marital status,
@@ -31,8 +31,8 @@ export default function Footer() {
           </div>
 
           {/* Contact + Socials, stacked, left-aligned */}
-          <div className="text-left">
-            <h4 className="font-serif text-[20px] font-bold text-white mb-2">
+          <div className="text-left mt-6">
+            <h4 className="font-serif text-[17px] font-bold text-white mb-2">
               Contact
             </h4>
             <div className="flex items-center gap-6 flex-wrap mb-4">
@@ -43,8 +43,8 @@ export default function Footer() {
                   </svg>
                 </span>
                 <div>
-                  <b className="block font-serif text-[16px] font-bold">Call Us</b>
-                  <a href="tel:+919415088702" className="text-white/60 text-[13px] hover:text-accent transition-colors">
+                  <b className="block font-serif text-[14px] font-bold">Call Us</b>
+                  <a href="tel:+919415088702" className="text-white text-[13px] hover:text-accent transition-colors">
                     +91 9415088702
                   </a>
                 </div>
@@ -58,18 +58,18 @@ export default function Footer() {
                   </svg>
                 </span>
                 <div>
-                  <b className="block font-serif text-[16px] font-bold">Email Us</b>
-                  <a href="mailto:contactus@hireginie.com" className="text-white/60 text-[13px] hover:text-accent transition-colors">
+                  <b className="block font-serif text-[14px] font-bold">Email Us</b>
+                  <a href="mailto:contactus@hireginie.com" className="text-white text-[13px] hover:text-accent transition-colors">
                     contactus@hireginie.com
                   </a>
                 </div>
               </div>
             </div>
 
-            <h4 className="font-serif text-[20px] font-bold text-white mb-2">
+            <h4 className="font-serif text-[17px] font-bold text-white mb-2">
               Socials
             </h4>
-            <div className="flex gap-3">
+            <div className="flex gap-5">
               <a
                 href="#"
                 aria-label="Facebook"
@@ -91,13 +91,15 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-white/40 text-[13px] mt-4 pt-3 border-t border-white/10">
+      <div className="mt-10 bg-[#6B6B6B] py-3.5">
+        <div className="mx-auto w-full max-w-[88rem] px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-white text-[13px]">
           <span>© Copyright 2026 Hireginie Talent Cloud. All Rights Reserved</span>
           <div className="flex gap-5">
-            <Link href="#" className="hover:text-white/70 transition-colors">terms &amp; conditions</Link>
-            <Link href="#" className="hover:text-white/70 transition-colors">cookie policy</Link>
-            <Link href="#" className="hover:text-white/70 transition-colors">privacy policy</Link>
+            <Link href="#" className="hover:text-accent transition-colors">terms &amp; conditions</Link>
+            <Link href="#" className="hover:text-accent transition-colors">cookie policy</Link>
+            <Link href="#" className="hover:text-accent transition-colors">privacy policy</Link>
           </div>
         </div>
       </div>

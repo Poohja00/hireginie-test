@@ -56,7 +56,7 @@ export default function Login() {
       return;
     }
 
-    // Credentials were valid — but only an approved admin profile may enter the dashboard.
+    // Credentials were valid - but only an approved admin profile may enter the dashboard.
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
@@ -94,7 +94,7 @@ export default function Login() {
             {busy ? "Signing in…" : locked ? "Locked" : "Sign In →"}
           </button>
         </form>
-        <p className="text-muted text-[12.5px] text-center mt-4.5">Access is invite-only. Only approved accounts can sign in — there is no public sign-up.</p>
+        <p className="text-muted text-[12.5px] text-center mt-4.5">Access is invite-only. Only approved accounts can sign in. There is no public sign-up.</p>
       </div>
     </div>
   );

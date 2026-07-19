@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 
-export const metadata = { title: "Services — Hireginie" };
+export const metadata = { title: "Services | Hireginie" };
 
 const SERVICES = [
   { i: "🧲", t: "Talent Acquisition", d: "Permanent hiring across technology and non-technology roles." },
@@ -24,7 +24,7 @@ export default function Services() {
         <div className={wrap}>
           <Reveal className="text-center max-w-[680px] mx-auto mb-12">
             <h2 className="text-[clamp(28px,4vw,40px)] font-semibold tracking-tight">End-to-End Recruitment Solutions</h2>
-            <p className="text-muted mt-3">From leadership search to volume hiring — overview, key services, hiring process, benefits and a clear path to get started.</p>
+            <p className="text-muted mt-3">From leadership search to volume hiring: overview, key services, hiring process, benefits and a clear path to get started.</p>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {SERVICES.map((s, idx) => (

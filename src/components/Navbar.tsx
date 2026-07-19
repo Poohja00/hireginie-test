@@ -24,7 +24,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/logo/hireginiemasterlogos/logo-b.png"
-            alt="Hireginie — Talent Cloud"
+            alt="Hireginie Talent Cloud"
             width={180}
             height={44}
             priority

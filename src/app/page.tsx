@@ -1,8 +1,9 @@
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
 import ServicesStack from "@/components/ServicesStack";
+import ProgramsSection from "@/components/ProgramsSection";
+import WhyHireginie from "@/components/WhyHireginie";
 
 const INDUSTRIES = [
   { i: "🏦", n: "BFSI" }, { i: "💻", n: "IT & Software" }, { i: "🏥", n: "Healthcare" },
@@ -10,16 +11,10 @@ const INDUSTRIES = [
   { i: "🏭", n: "Manufacturing" }, { i: "🚚", n: "Logistics" },
 ];
 
-const WHY = [
-  { i: "⚡", t: "Tech-Enabled Talent Marketplace", d: "AI-powered matching for the right talent, faster." },
-  { i: "🎓", t: "Domain Expertise for All", d: "Industry specialists who understand your hiring needs." },
-  { i: "🌍", t: "Diverse Talent Pool", d: "Strong inclusive hiring practices for a better tomorrow." },
-];
-
 const QUOTES = [
-  { q: "Hireginie feels more like true partners in the hiring journey than an external agency. They take ownership, hustle with intent, and genuinely care about the right outcomes.", n: "Dipesh Jain", r: "Vice President TA · Elevation Capital", a: "DJ" },
-  { q: "Recruitment drained my bandwidth until Hireginie stepped in. They felt like part of our team and helped us with our best hires, who are now our backbone.", n: "Pawan Kumar", r: "HR Manager · Deconstruct", a: "PK" },
-  { q: "Every hire matters in an early-stage startup. Hireginie respected our constraints, guided us with insights, and still delivered talent that exceeded expectations.", n: "Anurag Dixit", r: "Co-Founder & CEO · CompUp", a: "AD" },
+  { q: "Hireginie feels more like true partners in the hiring journey than an external agency. They take ownership, hustle with intent, and genuinely care about the right outcomes.", n: "Dipesh Jain", r: "Vice President TA- Elevation Capital", a: "DJ" },
+  { q: "Recruitment drained my bandwidth until Hireginie stepped in. They felt like part of our team and helped us with our best hires, who are now our backbone.", n: "Pawan Kumar", r: "HR Manager- Deconstruct", a: "PK" },
+  { q: "Every hire matters in an early-stage startup. Hireginie respected our constraints, guided us with insights, and still delivered talent that exceeded expectations.", n: "Anurag Dixit", r: "Co-Founder & CEO- CompUp", a: "AD" },
 ];
 
 const wrap = "mx-auto w-full max-w-[88rem] px-6 lg:px-10";
@@ -30,29 +25,7 @@ export default function Home() {
       <Hero />
       <ServicesStack />
 
-      {/* Programs */}
-      <section className="py-14">
-        <div className={wrap}>
-          <Reveal className="text-center mb-10">
-            <h2 className="font-serif text-[clamp(28px,2.8vw,36px)] font-bold text-dark">Programs At Hireginie</h2>
-          </Reveal>
-          <div className="grid gap-6 md:grid-cols-2">
-            {[
-              { t: "Business Beyond Bias", d: "Creating inclusive workplaces by connecting women talent with meaningful opportunities.", alt: false },
-              { t: "Accelerator Program", d: "Fast-track hiring support designed for high-growth startups scaling teams.", alt: true },
-            ].map((p, idx) => (
-              <Reveal key={p.t} delay={idx * 0.1}>
-                <div className={`relative overflow-hidden rounded-3xl p-9 min-h-[220px] flex flex-col justify-end text-white transition-transform hover:-translate-y-1.5 ${p.alt ? "bg-gradient-to-br from-[#3a2a55] to-accent" : "bg-gradient-to-br from-[#2a2540] to-[#363636]"}`}>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.12),transparent_50%)]" />
-                  <h3 className="relative font-serif text-[28px] font-bold">{p.t}</h3>
-                  <p className="relative opacity-80 my-3 text-sm max-w-[320px]">{p.d}</p>
-                  <Link href="/programs" className="relative font-semibold inline-flex items-center gap-1.5 text-sm">Learn More <span>→</span></Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProgramsSection />
 
       {/* Industries */}
       <section className="py-14 bg-soft">
@@ -74,45 +47,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose */}
-      <section className="py-14">
-        <div className={wrap}>
-          <Reveal className="text-center max-w-[560px] mx-auto mb-10">
-            <h2 className="font-serif text-[clamp(28px,2.8vw,36px)] font-bold text-dark">Why Choose Hireginie?</h2>
-            <p className="text-warm-grey mt-3 text-[16px]">Your Growth is Our Priority</p>
-          </Reveal>
-          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black/10">
-            {WHY.map((w, idx) => (
-              <Reveal key={w.t} delay={idx * 0.1} className="px-8 py-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-[32px] h-[32px] grid place-items-center rounded-lg bg-orange-50 text-accent text-lg">{w.i}</span>
-                  <h3 className="text-[16px] font-semibold text-dark">{w.t}</h3>
-                </div>
-                <p className="text-warm-grey text-[16px]">{w.d}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyHireginie />
 
       {/* Testimonials */}
-      <section className="py-14 bg-soft">
+      <section className="py-14 bg-white">
         <div className={wrap}>
           <Reveal className="text-center max-w-[560px] mx-auto mb-10">
-            <h2 className="font-serif text-[clamp(28px,2.8vw,36px)] font-bold text-dark">What Our Clients Say</h2>
-            <p className="text-warm-grey mt-3 text-[16px]">The quality we serve</p>
+            <span className="block font-serif text-dark font-bold text-[16px] mb-2">The Quality We Serve</span>
+            <h2 className="font-serif text-[clamp(28px,3.4vw,44px)] font-black text-dark">What Our Client Says</h2>
           </Reveal>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 max-w-[980px] mx-auto">
             {QUOTES.map((q, idx) => (
               <Reveal key={q.n} delay={idx * 0.1}>
-                <div className="h-full bg-white border border-black/8 rounded-2xl p-7 transition-all hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(20,19,26,0.08)]">
-                  <p className="text-[16px] text-dark/80 leading-relaxed">&ldquo;{q.q}&rdquo;</p>
-                  <div className="flex items-center gap-3 mt-5">
-                    <span className="w-11 h-11 rounded-full grid place-items-center text-white text-sm font-bold bg-accent">{q.a}</span>
-                    <div>
-                      <b className="text-sm block text-dark">{q.n}</b>
-                      <small className="text-warm-grey text-xs">{q.r}</small>
-                    </div>
+                <div className="h-full min-h-[300px] bg-[#E7E6FB] rounded-tl-[6px] rounded-tr-[32px] rounded-br-[6px] rounded-bl-[32px] p-6 flex flex-col transition-all hover:-translate-y-1.5">
+                  <p className="text-[19px] text-slate leading-relaxed">{q.q}</p>
+                  <div className="mt-auto pt-6">
+                    <b className="text-[17px] block text-dark">{q.n}</b>
+                    <small className="text-slate text-[15px]">{q.r}</small>
                   </div>
                 </div>
               </Reveal>

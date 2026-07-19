@@ -1,8 +1,7 @@
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 
-export const metadata = { title: "About Us — Hireginie" };
+export const metadata = { title: "About Us | Hireginie" };
 
 const STATS = [
   { b: "120+", s: "Closures completed" },
@@ -38,7 +37,7 @@ export default function About() {
             <h2 className="text-[clamp(26px,3.5vw,36px)] font-semibold mt-3 mb-4">Your fastest way to gain Hiring Success</h2>
             <p className="text-muted mb-3.5 text-[15px]">At Hireginie we enable organizations to streamline recruitment, reduce time-to-fill, and focus on strategic growth.</p>
             <p className="text-muted mb-3.5 text-[15px]">As a tech-enabled Talent Search Partner, we integrate all elements of the talent ecosystem to deliver precise, scalable hiring outcomes.</p>
-            <p className="text-muted text-[15px]">By combining intelligent technology with deep domain expertise, Hireginie addresses key inefficiencies in traditional recruitment models — delivering results across industries, roles and geographies.</p>
+            <p className="text-muted text-[15px]">By combining intelligent technology with deep domain expertise, Hireginie addresses key inefficiencies in traditional recruitment models, delivering results across industries, roles and geographies.</p>
           </Reveal>
         </div>
       </section>
@@ -64,7 +63,7 @@ export default function About() {
         <div className={`${wrap} grid md:grid-cols-2 gap-6`}>
           {[
             { e: "Our", t: "Mission", d: "Deliver strategic talent solutions that help organizations build high-performing teams and achieve sustainable growth. Transform hiring through an AI-first, technology-enabled marketplace that drives speed, precision, and quality." },
-            { e: "Our", t: "Vision", d: "Build the most trusted tech-enabled talent marketplace for businesses, talent, and partners — creating a future where opportunity is inclusive, accessible, and driven by the power of technology." },
+            { e: "Our", t: "Vision", d: "Build the most trusted tech-enabled talent marketplace for businesses, talent, and partners, creating a future where opportunity is inclusive, accessible, and driven by the power of technology." },
           ].map((m, idx) => (
             <Reveal key={m.t} delay={idx * 0.1}>
               <div className="bg-soft rounded-[18px] p-9 h-full">
@@ -95,19 +94,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      <div className="pt-10 pb-24">
-        <div className={wrap}>
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl text-center text-white px-6 py-14 max-w-[920px] mx-auto bg-gradient-to-br from-[#1a1726] to-accent-deep">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(139,115,255,0.5),transparent_60%)]" />
-              <h2 className="relative text-[clamp(24px,3.6vw,34px)] font-semibold">Let&apos;s Build Your Next High-Performing Team</h2>
-              <p className="relative opacity-85 mt-2.5 mb-6">Partner with us for smart, scalable and inclusive hiring solutions.</p>
-              <Link href="/contact" className="relative inline-flex items-center gap-2 bg-gradient-to-br from-accent to-accent-deep text-white font-semibold px-7 py-3.5 rounded-full hover:-translate-y-0.5 transition-all shadow-[0_10px_30px_rgba(107,78,255,0.4)]">Get Started <span>→</span></Link>
-            </div>
-          </Reveal>
-        </div>
-      </div>
     </>
   );
 }
