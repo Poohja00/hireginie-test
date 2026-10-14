@@ -32,7 +32,7 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     const p = PALETTE[theme];
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    let w = 0, h = 0, raf = 0, visible = true;
+    let w = 0, h = 0, raf = 0, visible = true, last = 0, scrolling = false, idle = 0;
     const mouse = { x: 0.5, y: 0.5, sx: 0.5, sy: 0.5 };
 
     const resize = () => {
@@ -67,6 +67,10 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     };
 
     const frame = (ms: number) => {
+      if (!reduce && visible) raf = requestAnimationFrame(frame);
+      // skip drawing while scrolling and cap at ~40fps so the main thread stays free
+      if (scrolling || ms - last < 25) return;
+      last = ms;
       const t = ms / 1000;
       mouse.sx += (mouse.x - mouse.sx) * 0.04;
       mouse.sy += (mouse.y - mouse.sy) * 0.04;
@@ -92,10 +96,13 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
 
       ribbon(t, 0.33, 0.1, 1, 46, 0);
       ribbon(t, 0.45, 0.08, -1, 36, 2.4);
-
-      if (!reduce && visible) raf = requestAnimationFrame(frame);
     };
 
+    const onScroll = () => {
+      scrolling = true;
+      clearTimeout(idle);
+      idle = window.setTimeout(() => { scrolling = false; }, 120);
+    };
     const onMove = (e: PointerEvent) => {
       const r = canvas.getBoundingClientRect();
       mouse.x = (e.clientX - r.left) / r.width;
@@ -110,11 +117,14 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     raf = requestAnimationFrame(frame);
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onMove);
+    window.addEventListener("scroll", onScroll, { passive: true });
     io.observe(canvas);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(idle);
       io.disconnect();
     };
   }, [theme]);
