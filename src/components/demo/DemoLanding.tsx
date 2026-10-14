@@ -61,8 +61,8 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
   return (
     <main className={`${serif.className} bg-white text-[#14070a] [&_h1]:[font-family:inherit] [&_h2]:[font-family:inherit] [&_h3]:[font-family:inherit]`}>
       {/* Nav */}
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)]" : "bg-transparent"}`}>
-        <div className="mx-auto flex h-[86px] max-w-[88rem] items-center justify-between px-6 lg:px-10">
+      <header className="fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500">
+        <div className={`mx-auto flex items-center justify-between transition-all duration-500 ${scrolled ? "mt-3 h-[70px] max-w-[1180px] rounded-full border border-white/50 bg-white/65 px-6 shadow-[0_10px_40px_rgba(60,10,25,0.18)] backdrop-blur-xl" : "mt-0 h-[86px] max-w-[88rem] px-6 lg:px-10"}`}>
           <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={180} height={44} className={`h-[44px] w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
           <nav className={`hidden gap-12 font-sans text-[18px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}

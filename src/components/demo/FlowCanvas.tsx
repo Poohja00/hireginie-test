@@ -90,8 +90,8 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
       ctx.closePath();
       ctx.fill();
 
-      ribbon(t, 0.46, 0.1, 1, 46, 0);
-      ribbon(t, 0.58, 0.08, -1, 36, 2.4);
+      ribbon(t, 0.33, 0.1, 1, 46, 0);
+      ribbon(t, 0.45, 0.08, -1, 36, 2.4);
 
       if (!reduce && visible) raf = requestAnimationFrame(frame);
     };
