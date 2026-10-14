@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 import FlowCanvas from "@/components/demo/FlowCanvas";
 
@@ -13,11 +13,24 @@ type Theme = "dark" | "light";
 
 const NAV = ["Company", "Solutions", "Programs", "Insights"];
 
-const FEATURES = [
-  { t: "Faster Hiring", d: "Quality talent, quickly", i: "M13 2 4 14h7l-1 8 9-12h-7l1-8Z" },
-  { t: "Skilled Recruiters", d: "Industry-focused", i: "M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0ZM4 21c0-4 3.6-6 8-6s8 2 8 6" },
-  { t: "Scalable Solutions", d: "For startups to enterprises", i: "M5 21V13M12 21V6M19 21V10" },
+const STATS: { n: number; suffix: string; text?: string; l: string }[] = [
+  { n: 5000, suffix: "+", l: "Successful Hires" },
+  { n: 40, suffix: "+", l: "Industries Served" },
+  { n: 0, suffix: "", text: "Pan India", l: "Talent Network" },
+  { n: 48, suffix: " hours", l: "Avg. Turnaround" },
 ];
+
+function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const raw = useMotionValue(0);
+  const spring = useSpring(raw, { stiffness: 60, damping: 20 });
+  useEffect(() => { if (inView) raw.set(target); }, [inView, raw, target]);
+  useEffect(() => spring.on("change", (v) => {
+    if (ref.current) ref.current.textContent = Math.round(v).toLocaleString() + suffix;
+  }), [spring, suffix]);
+  return <span ref={ref}>0{suffix}</span>;
+}
 
 const LOGOS = [
   "ACT.png",
@@ -92,14 +105,16 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
             <span className={`${crimson} cursor-pointer rounded-md px-9 py-4 text-[18px] font-medium text-white shadow-[0_10px_30px_rgba(179,32,63,0.45)] transition-transform hover:-translate-y-0.5`}>Talk to our Experts →</span>
             <span className={`cursor-pointer rounded-md border px-9 py-4 text-[18px] font-medium transition-colors ${dark ? "border-white/70 text-white hover:bg-white/10" : "border-[#b3203f] text-[#b3203f] hover:bg-[#b3203f]/5"}`}>Explore Solutions</span>
           </motion.div>
-          <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="mt-16 flex flex-wrap items-center justify-center gap-y-6 font-sans">
-            {FEATURES.map((f, i) => (
-              <div key={f.t} className={`flex items-center gap-4 px-10 text-left ${i > 0 ? (dark ? "md:border-l md:border-white/20" : "md:border-l md:border-black/10") : ""}`}>
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={dark ? "#f06c82" : "#9d1230"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={f.i} /></svg>
-                <div>
-                  <p className={`text-[18px] ${ink}`}>{f.t}</p>
-                  <p className={`text-[16px] ${dark ? "text-white/60" : "text-[#6b5a5d]"}`}>{f.d}</p>
+          <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="mt-14 flex flex-wrap items-start justify-center gap-y-8 font-sans">
+            {STATS.map((x) => (
+              <div key={x.l} className="px-12 text-left">
+                <div className="flex items-center gap-3">
+                  <span className={`grid h-5 w-5 place-items-center rounded-full border-2 ${dark ? "border-white/60" : "border-[#5D6585]"}`}><span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-white/80" : "bg-[#5D6585]"}`} /></span>
+                  <span className="bg-gradient-to-r from-[#FE622A] to-[#E5A100] bg-clip-text text-[40px] font-extrabold leading-none text-transparent" style={{ fontFamily: "var(--font-serif)" }}>
+                    {x.text ?? <CountUp target={x.n} suffix={x.suffix} />}
+                  </span>
                 </div>
+                <p className={`mt-3 pl-8 text-[18px] ${ink}`}>{x.l}</p>
               </div>
             ))}
           </motion.div>
