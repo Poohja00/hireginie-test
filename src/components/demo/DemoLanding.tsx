@@ -109,8 +109,8 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
             {STATS.map((x) => (
               <div key={x.l} className="px-12 text-left">
                 <div className="flex items-center gap-3">
-                  <span className={`grid h-5 w-5 place-items-center rounded-full border-2 ${dark ? "border-white/60" : "border-[#5D6585]"}`}><span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-white/80" : "bg-[#5D6585]"}`} /></span>
-                  <span className="bg-gradient-to-r from-[#FE622A] to-[#E5A100] bg-clip-text text-[40px] font-extrabold leading-none text-transparent" style={{ fontFamily: "var(--font-serif)" }}>
+                  <span className={`grid h-5 w-5 place-items-center rounded-full border-2 ${dark ? "border-[#f06c82]" : "border-[#b3203f]"}`}><span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-[#f06c82]" : "bg-[#b3203f]"}`} /></span>
+                  <span className={`bg-gradient-to-r ${dark ? "from-[#ffb3be] to-[#e0405f]" : "from-[#b3203f] to-[#6e0f26]"} bg-clip-text text-[40px] font-extrabold leading-none text-transparent`} style={{ fontFamily: "var(--font-serif)" }}>
                     {x.text ?? <CountUp target={x.n} suffix={x.suffix} />}
                   </span>
                 </div>
