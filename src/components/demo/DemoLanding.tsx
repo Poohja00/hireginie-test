@@ -90,23 +90,23 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Hero */}
       <section className={`relative isolate overflow-hidden ${dark ? "bg-[#0c0507]" : "bg-gradient-to-b from-white via-[#fff6f7] to-white"}`}>
         <FlowCanvas theme={theme} />
-        <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[88rem] flex-col items-center justify-center px-6 pb-10 pt-[170px] text-center">
-          <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`text-[18px] uppercase tracking-[0.3em] ${eyebrow}`}>
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[88rem] flex-col items-center justify-center px-6 pb-8 pt-[110px] text-center">
+          <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`text-[15px] uppercase tracking-[0.3em] ${eyebrow}`}>
             Tech-Enabled Recruitment &amp; Staffing Partner
           </motion.p>
-          <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className={`mt-8 text-[clamp(52px,8vw,96px)] font-semibold leading-[0.98] ${ink}`}>
+          <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className={`mt-5 text-[clamp(44px,6.2vw,80px)] font-semibold leading-[1] ${ink}`}>
             Hire Better.
             <br />
             <span className={dark ? "bg-gradient-to-r from-[#ff9aa8] to-[#c42a4a] bg-clip-text text-transparent" : "text-[#b3141f]"}>Scale Faster.</span>
           </motion.h1>
-          <motion.p variants={rise} custom={2} initial="hidden" animate="show" className={`mt-8 max-w-[640px] text-[22px] leading-relaxed ${sub}`}>
+          <motion.p variants={rise} custom={2} initial="hidden" animate="show" className={`mt-6 max-w-[640px] text-[20px] leading-relaxed ${sub}`}>
             Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
           </motion.p>
-          <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-10 flex flex-wrap justify-center gap-5">
-            <span className={`${crimson} cursor-pointer rounded-md px-9 py-4 text-[18px] font-medium text-white shadow-[0_10px_30px_rgba(179,32,63,0.45)] transition-transform hover:-translate-y-0.5`}>Talk to our Experts →</span>
-            <span className={`cursor-pointer rounded-md border px-9 py-4 text-[18px] font-medium transition-colors ${dark ? "border-white/70 text-white hover:bg-white/10" : "border-[#b3203f] text-[#b3203f] hover:bg-[#b3203f]/5"}`}>Explore Solutions</span>
+          <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-7 flex flex-wrap justify-center gap-5">
+            <span className={`${crimson} cursor-pointer rounded-md px-8 py-3.5 text-[17px] font-medium text-white shadow-[0_10px_30px_rgba(179,32,63,0.45)] transition-transform hover:-translate-y-0.5`}>Talk to our Experts →</span>
+            <span className={`cursor-pointer rounded-md border px-8 py-3.5 text-[17px] font-medium transition-colors ${dark ? "border-white/70 text-white hover:bg-white/10" : "border-[#b3203f] text-[#b3203f] hover:bg-[#b3203f]/5"}`}>Explore Solutions</span>
           </motion.div>
-          <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="mt-14 flex flex-wrap items-start justify-center gap-y-8">
+          <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="mt-9 flex flex-wrap items-start justify-center gap-y-8">
             {STATS.map((x) => (
               <div key={x.l} className="px-12 text-left">
                 <div className="flex items-center gap-3">
