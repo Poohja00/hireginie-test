@@ -36,7 +36,7 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     const mouse = { x: 0.5, y: 0.5, sx: 0.5, sy: 0.5 };
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const r = canvas.getBoundingClientRect();
       w = r.width; h = r.height;
       canvas.width = w * dpr; canvas.height = h * dpr;
@@ -44,7 +44,7 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     };
 
     const ribbon = (t: number, base: number, amp: number, dir: number, lines: number, seed: number) => {
-      const step = 8;
+      const step = 16;
       for (let k = 0; k < lines; k++) {
         const kk = k / lines;
         ctx.beginPath();
@@ -83,7 +83,7 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
       ctx.fillStyle = p.fill;
       ctx.beginPath();
       ctx.moveTo(0, h);
-      for (let x = 0; x <= w; x += 12) {
+      for (let x = 0; x <= w; x += 24) {
         ctx.lineTo(x, h * 0.55 + Math.sin(x / w * 4 + t * 0.4) * h * 0.1);
       }
       ctx.lineTo(w, h);
@@ -119,5 +119,5 @@ export default function FlowCanvas({ theme }: { theme: Theme }) {
     };
   }, [theme]);
 
-  return <canvas ref={ref} className="absolute inset-0 h-full w-full" aria-hidden />;
+  return <canvas ref={ref} className="absolute inset-0 h-full w-full [will-change:transform]" aria-hidden />;
 }
