@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 import FlowCanvas from "@/components/demo/FlowCanvas";
@@ -44,6 +45,14 @@ const rise = {
 
 export default function DemoLanding({ theme }: { theme: Theme }) {
   const dark = theme === "dark";
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 40);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
+  const navInk = dark && !scrolled ? "text-white" : "text-[#14070a]";
   const ink = dark ? "text-white" : "text-[#14070a]";
   const sub = dark ? "text-white/80" : "text-[#4a3b3e]";
   const eyebrow = dark ? "text-[#f08a9a]" : "text-[#7a1230]";
@@ -52,10 +61,10 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
   return (
     <main className={`${serif.className} bg-white text-[#14070a] [&_h1]:[font-family:inherit] [&_h2]:[font-family:inherit] [&_h3]:[font-family:inherit]`}>
       {/* Nav */}
-      <header className="relative z-30 bg-white border-b border-black/5">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)]" : "bg-transparent"}`}>
         <div className="mx-auto flex h-[86px] max-w-[88rem] items-center justify-between px-6 lg:px-10">
-          <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={180} height={44} className="h-[44px] w-auto" /></Link>
-          <nav className="hidden gap-12 font-sans text-[18px] text-[#14070a] md:flex">
+          <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={180} height={44} className={`h-[44px] w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
+          <nav className={`hidden gap-12 font-sans text-[18px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}
           </nav>
           <span className={`${crimson} font-sans cursor-pointer rounded-md px-6 py-3.5 text-[17px] font-medium text-white shadow-[0_8px_24px_rgba(120,15,40,0.35)] transition-transform hover:-translate-y-0.5`}>
@@ -67,7 +76,7 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Hero */}
       <section className={`relative isolate overflow-hidden ${dark ? "bg-[#0c0507]" : "bg-gradient-to-b from-white via-[#fff6f7] to-white"}`}>
         <FlowCanvas theme={theme} />
-        <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[88rem] flex-col items-center justify-center px-6 pb-10 pt-24 text-center">
+        <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[88rem] flex-col items-center justify-center px-6 pb-10 pt-[170px] text-center">
           <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`font-sans text-[14px] uppercase tracking-[0.38em] ${eyebrow}`}>
             Tech-Enabled Recruitment &amp; Staffing Partner
           </motion.p>
