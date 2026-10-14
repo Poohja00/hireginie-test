@@ -5,6 +5,6 @@ import Navbar from "@/components/Navbar";
 
 export default function ConditionalNavbar() {
   const pathname = usePathname();
-  if (pathname?.startsWith("/unauthorized")) return null;
+  if (pathname?.startsWith("/unauthorized") || pathname?.startsWith("/demo")) return null;
   return <Navbar />;
 }

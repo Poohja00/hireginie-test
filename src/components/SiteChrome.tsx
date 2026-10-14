@@ -6,7 +6,7 @@ import CtaBanner from "@/components/CtaBanner";
 
 export default function SiteChrome() {
   const pathname = usePathname();
-  const hideChrome = pathname?.startsWith("/admin") || pathname?.startsWith("/unauthorized");
+  const hideChrome = pathname?.startsWith("/admin") || pathname?.startsWith("/unauthorized") || pathname?.startsWith("/demo");
 
   if (hideChrome) return null;
 
