@@ -91,7 +91,7 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       <section className={`relative isolate overflow-hidden ${dark ? "bg-[#0c0507]" : "bg-gradient-to-b from-white via-[#fff6f7] to-white"}`}>
         <FlowCanvas theme={theme} />
         <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[88rem] flex-col items-center justify-center px-6 pb-10 pt-[170px] text-center">
-          <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`text-[14px] uppercase tracking-[0.38em] ${eyebrow}`}>
+          <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`text-[18px] uppercase tracking-[0.3em] ${eyebrow}`}>
             Tech-Enabled Recruitment &amp; Staffing Partner
           </motion.p>
           <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className={`mt-8 text-[clamp(52px,8vw,96px)] font-semibold leading-[0.98] ${ink}`}>
@@ -124,7 +124,7 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
 
       {/* Trusted by */}
       <section className="bg-[#fffafa] py-14">
-        <p className="text-center text-[14px] font-semibold uppercase tracking-[0.38em] text-[#9d1230]">Trusted by growing businesses across India</p>
+        <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max">
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
@@ -139,7 +139,7 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Industries */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
-          <p className="text-[14px] uppercase tracking-[0.38em] text-[#9d1230]">Industries we serve</p>
+          <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>
           <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">Building Teams Across 25+ Industries</h2>
           <p className="mt-3 text-[20px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
           <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
@@ -158,7 +158,7 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Why */}
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
-          <p className="text-[14px] uppercase tracking-[0.38em] text-[#9d1230]">Why teams partner with us</p>
+          <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>
           <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">Your Growth is Our Priority</h2>
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
