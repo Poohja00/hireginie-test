@@ -50,6 +50,16 @@ const LOGOS = [
   "logo_Black.png",
 ];
 
+const IND_ICON: Record<string, string> = {
+  "IT & Software": "M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM10 10l-2 2 2 2M14 10l2 2-2 2M13 9l-2 6",
+  "Education": "M2 9l10-5 10 5-10 5-10-5ZM6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v6",
+  "Logistics": "M2 7h12v9H2zM14 10h4l3 3v3h-7M5 18.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0ZM15 18.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0Z",
+  "E-commerce": "M2 4h3l2.2 10.5h10.6L20 7H6M9 19a1.2 1.2 0 1 0 2.4 0A1.2 1.2 0 0 0 9 19ZM16 19a1.2 1.2 0 1 0 2.4 0A1.2 1.2 0 0 0 16 19Z",
+  "FMCG": "M3 21V9l5 3V9l5 3V5h3l1 5v11H3ZM7 16h2M12 16h2",
+  "Jewelry": "M6 3h12l4 6-10 12L2 9l4-6ZM2 9h20M9 3l3 6 3-6M12 21V9",
+  "Telecom": "M4 14v-2a8 8 0 0 1 16 0v2M4 13h3v6H4zM17 13h3v6h-3zM20 19c0 2-2 3-5 3h-2",
+};
+
 const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "Telecom", "+ 18 more"];
 
 const WHY = [
@@ -189,14 +199,27 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <h2 style={hd} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
           <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
           <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
-            {INDUSTRIES.map((n, i) => (
+            {INDUSTRIES.map((n, i) => {
+              const path = IND_ICON[n];
+              return (
               <motion.div key={n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.5 }} className="group">
-                <div className="mx-auto grid h-[72px] w-[72px] place-items-center rounded-2xl bg-[#fdeeef] text-[#b3203f] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><path d="m10 10-2 2 2 2M14 10l2 2-2 2" /></svg>
-                </div>
-                <p className="mt-3 text-[15px] text-[#3d3033]">{n}</p>
+                {split && !path ? (
+                  <p className="mt-6 text-[#14070a]" style={hd}><span className="text-[22px]">+ 18</span> <span className="text-[13px]">more</span></p>
+                ) : (
+                  <>
+                    <div className={`mx-auto grid place-items-center transition-all duration-300 group-hover:-translate-y-1.5 ${split ? "h-[64px] w-[64px] rounded-full bg-[#fdf1f0] text-[#d3354f]" : "h-[72px] w-[72px] rounded-2xl bg-[#fdeeef] text-[#b3203f] group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]"}`}>
+                      {split && path ? (
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg>
+                      ) : (
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><path d="m10 10-2 2 2 2M14 10l2 2-2 2" /></svg>
+                      )}
+                    </div>
+                    <p className="mt-3 text-[15px] font-medium text-[#3d3033]">{n}</p>
+                  </>
+                )}
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
