@@ -103,8 +103,8 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${split && !scrolled ? "bg-white" : "px-4"}`}>
         <div className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${scrolled ? `mt-3 ${split ? "h-[66px]" : "h-[78px]"} max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu` : `mt-0 ${split ? "h-[70px]" : "h-[96px]"} max-w-[88rem] px-6 lg:px-10`}`}>
           <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`${split ? "h-[50px]" : "h-[58px]"} w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
-          <div className={split ? "flex items-center gap-12" : "contents"}>
-          <nav className={`hidden gap-12 text-[16px] ${navInk} md:flex`}>
+          <div className={split ? "flex items-center gap-16" : "contents"}>
+          <nav className={`hidden ${split ? "gap-16" : "gap-12"} text-[16px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n}>{el(NAV_HREF[n], "cursor-pointer hover:text-[#b3203f] transition-colors", n)}</span>)}
           </nav>
           {el("/contact", `${split ? "bg-black" : crimson} cursor-pointer rounded-md px-5 py-3 text-[15px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`, "Book a Consultation →")}
