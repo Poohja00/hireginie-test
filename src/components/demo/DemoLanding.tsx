@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { Playfair_Display, DM_Sans, Source_Serif_4 } from "next/font/google";
+import { Playfair_Display, DM_Sans, Domine } from "next/font/google";
 import FlowCanvas from "@/components/demo/FlowCanvas";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["500", "600", "700"] });
-const statSerif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "500", "600"] });
+const domine = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const sans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 type Theme = "dark" | "light";
@@ -68,6 +68,7 @@ const rise = {
 export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme; variant?: "flow" | "split" }) {
   const dark = theme === "dark";
   const split = variant === "split";
+  const hd = split ? { fontFamily: domine.style.fontFamily } : hf;
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
@@ -105,7 +106,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <div className="grid items-center gap-6 px-6 pb-4 pt-[84px] lg:grid-cols-[1fr_50vw] lg:gap-0 lg:pb-0 lg:pl-[3.5vw] lg:pr-[5.4vw] lg:pt-[70px]">
             <div>
               <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-semibold text-[#14070a] lg:text-[1.4vw]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a] lg:text-[4.3vw] lg:leading-[1.46]">
+              <motion.h1 style={hd} variants={rise} custom={1} initial="hidden" animate="show" className="mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a] lg:text-[4.1vw] lg:leading-[1.53]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
               <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 text-[15px] leading-relaxed text-[#14070a] lg:mt-[2vw] lg:text-[1.27vw] lg:leading-[1.63]">
@@ -122,7 +123,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               {SPLIT_STATS.map((x) => (
                 <div key={x.l} className="flex items-center gap-3 lg:gap-[1.1vw]">
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-[11px] text-white lg:h-[2.4vw] lg:w-[2.4vw] lg:text-[1vw]">★</span>
-                  <div className={statSerif.className}>
+                  <div className={domine.className}>
                     <p className="text-[19px] font-medium leading-none text-[#1a1a1a] lg:text-[1.86vw]">{x.n}</p>
                     <p className="mt-1 text-[12px] font-medium text-[#b3203f] lg:mt-[0.45vw] lg:text-[1.05vw]">{x.l}</p>
                   </div>
@@ -138,7 +139,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <motion.p variants={rise} custom={0} initial="hidden" animate="show" className={`text-[15px] uppercase tracking-[0.3em] ${eyebrow}`}>
             Tech-Enabled Recruitment &amp; Staffing Partner
           </motion.p>
-          <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className={`mt-5 text-[clamp(44px,6.2vw,80px)] font-semibold leading-[1] ${ink}`}>
+          <motion.h1 style={hd} variants={rise} custom={1} initial="hidden" animate="show" className={`mt-5 text-[clamp(44px,6.2vw,80px)] font-semibold leading-[1] ${ink}`}>
             Hire Better.
             <br />
             <span className={dark ? "bg-gradient-to-r from-[#ff9aa8] to-[#c42a4a] bg-clip-text text-transparent" : "text-[#b3141f]"}>Scale Faster.</span>
@@ -155,7 +156,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               <div key={x.l} className="px-12 text-left">
                 <div className="flex items-center gap-3">
                   <span className={`grid h-5 w-5 place-items-center rounded-full border-2 ${dark ? "border-[#f06c82]" : "border-[#b3203f]"}`}><span className={`h-1.5 w-1.5 rounded-full ${dark ? "bg-[#f06c82]" : "bg-[#b3203f]"}`} /></span>
-                  <span className={`bg-gradient-to-r ${dark ? "from-[#ffb3be] to-[#e0405f]" : "from-[#b3203f] to-[#6e0f26]"} bg-clip-text text-[46px] font-semibold leading-none [font-variant-numeric:lining-nums] text-transparent`} style={hf}>
+                  <span className={`bg-gradient-to-r ${dark ? "from-[#ffb3be] to-[#e0405f]" : "from-[#b3203f] to-[#6e0f26]"} bg-clip-text text-[46px] font-semibold leading-none [font-variant-numeric:lining-nums] text-transparent`} style={hd}>
                     {x.text ?? <CountUp target={x.n} suffix={x.suffix} />}
                   </span>
                 </div>
@@ -169,7 +170,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
 
       {/* Trusted by */}
       <section className={`bg-[#fffafa] ${split ? "pb-8 pt-12" : "py-14"}`}>
-        {split ? <h2 style={hf} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
+        {split ? <h2 style={hd} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
@@ -185,7 +186,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <section className={`bg-white ${split ? "pb-20 pt-6" : "py-20"}`}>
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
-          <h2 style={hf} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
+          <h2 style={hd} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
           <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
           <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
             {INDUSTRIES.map((n, i) => (
@@ -204,7 +205,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
-          <h2 style={hf} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
+          <h2 style={hd} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
           {split && <p className="mt-3 text-[17px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
@@ -213,7 +214,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" /></svg>
                 </span>
                 <div>
-                  <h3 style={hf} className={`text-[23px] font-medium leading-snug`}>{w.t}</h3>
+                  <h3 style={hd} className={`text-[23px] font-medium leading-snug`}>{w.t}</h3>
                   <p className="mt-4 text-[16px] leading-relaxed text-[#5a4a4d]">{w.d}</p>
                 </div>
               </motion.div>
