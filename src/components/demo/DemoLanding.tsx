@@ -110,7 +110,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                 Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
               <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-8">
-                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-9 py-2.5 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-14 py-2.5 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
