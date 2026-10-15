@@ -53,7 +53,7 @@ export default function SiteNav() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`transition-colors hover:text-[#b3203f] ${pathname?.startsWith(l.href) ? "text-[#b3203f]" : ""}`}
+                  className={`transition-colors hover:text-[#b3203f]`}
                 >
                   {l.label}
                 </Link>
