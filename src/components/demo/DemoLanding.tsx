@@ -21,6 +21,13 @@ const STATS: { n: number; suffix: string; text?: string; l: string }[] = [
   { n: 48, suffix: " hours", l: "Avg. Turnaround" },
 ];
 
+const SPLIT_STATS = [
+  { n: "10+", l: "Successful Hires" },
+  { n: "50+", l: "Industry Expertise" },
+  { n: "Pan India", l: "Talent Network" },
+  { n: "48 Hours", l: "Turnaround time" },
+];
+
 function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
@@ -57,8 +64,9 @@ const rise = {
   show: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.2, 0.7, 0.3, 1] as const } }),
 };
 
-export default function DemoLanding({ theme }: { theme: Theme }) {
+export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme; variant?: "flow" | "split" }) {
   const dark = theme === "dark";
+  const split = variant === "split";
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
@@ -88,6 +96,38 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       </header>
 
       {/* Hero */}
+      {split ? (
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
+          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[100px] lg:grid-cols-[1fr_1.15fr] lg:px-10">
+            <div>
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[18px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(40px,5vw,68px)] font-semibold leading-[1.15] text-[#14070a]">
+                Hire Better.<br />Scale Faster.
+              </motion.h1>
+              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-8 max-w-[520px] text-[19px] leading-relaxed text-[#14070a]">
+                Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
+              </motion.p>
+              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-10">
+                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-12 py-3.5 text-[17px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+              </motion.div>
+            </div>
+            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
+              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority className="ml-auto h-auto max-h-[62vh] w-auto max-w-full mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
+            </motion.div>
+            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-14 gap-y-6 lg:col-span-2">
+              {SPLIT_STATS.map((x) => (
+                <div key={x.l} className="flex items-center gap-3">
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#14070a] text-[11px] text-white">★</span>
+                  <div>
+                    <p style={hf} className="text-[24px] font-medium leading-none text-[#14070a]">{x.n}</p>
+                    <p style={hf} className="mt-1 text-[14px] text-[#b3203f]">{x.l}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      ) : (
       <section className={`relative isolate overflow-hidden ${dark ? "bg-[#0c0507]" : "bg-gradient-to-b from-white via-[#fff6f7] to-white"}`}>
         <FlowCanvas theme={theme} />
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[88rem] flex-col items-center justify-center px-6 pb-8 pt-[110px] text-center">
@@ -121,10 +161,11 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Trusted by */}
       <section className="bg-[#fffafa] py-14">
-        <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>
+        {split ? <h2 style={hf} className="text-center text-[clamp(30px,3.4vw,42px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max">
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
@@ -139,8 +180,8 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Industries */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
-          <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>
-          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">Building Teams Across 25+ Industries</h2>
+          {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
+          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
           <p className="mt-3 text-[20px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
           <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
             {INDUSTRIES.map((n, i) => (
@@ -158,8 +199,9 @@ export default function DemoLanding({ theme }: { theme: Theme }) {
       {/* Why */}
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
-          <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>
-          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">Your Growth is Our Priority</h2>
+          {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
+          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
+          {split && <p className="mt-3 text-[20px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
               <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
