@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, DM_Sans, Source_Serif_4 } from "next/font/google";
 import FlowCanvas from "@/components/demo/FlowCanvas";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["500", "600", "700"] });
+const statSerif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "500", "600"] });
 const sans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 type Theme = "dark" | "light";
@@ -116,13 +117,13 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
               <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 47vw, 100vw" quality={90} className="ml-auto h-auto max-h-[calc(100svh-170px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
             </motion.div>
-            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:pt-[0.8vw]">
+            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:gap-x-[3.3vw] lg:pt-[0.8vw]">
               {SPLIT_STATS.map((x) => (
-                <div key={x.l} className="flex items-center gap-3">
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#14070a] text-[11px] text-white">★</span>
-                  <div>
-                    <p style={hf} className="text-[19px] font-medium leading-none text-[#14070a]">{x.n}</p>
-                    <p style={hf} className="mt-1 text-[12px] text-[#b3203f]">{x.l}</p>
+                <div key={x.l} className="flex items-center gap-3 lg:gap-[1.1vw]">
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-[11px] text-white lg:h-[2.4vw] lg:w-[2.4vw] lg:text-[1vw]">★</span>
+                  <div className={statSerif.className}>
+                    <p className="text-[19px] font-medium leading-none text-[#1a1a1a] lg:text-[1.86vw]">{x.n}</p>
+                    <p className="mt-1 text-[12px] font-medium text-[#b3203f] lg:mt-[0.45vw] lg:text-[1.05vw]">{x.l}</p>
                   </div>
                 </div>
               ))}
