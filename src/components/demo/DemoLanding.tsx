@@ -231,7 +231,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
-          <h2 style={hd} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
+          <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
           {split && <p className="mt-3 text-[17px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
