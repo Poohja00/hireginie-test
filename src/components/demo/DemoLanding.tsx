@@ -167,7 +167,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       )}
 
       {/* Trusted by */}
-      <section className="bg-[#fffafa] py-14">
+      <section className={`bg-[#fffafa] ${split ? "pb-8 pt-12" : "py-14"}`}>
         {split ? <h2 style={hf} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
@@ -181,7 +181,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       </section>
 
       {/* Industries */}
-      <section className="bg-white py-20">
+      <section className={`bg-white ${split ? "pb-20 pt-6" : "py-20"}`}>
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
           <h2 style={hf} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
