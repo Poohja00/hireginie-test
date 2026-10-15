@@ -107,7 +107,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                 Hire Better.<br />Scale Faster.
               </motion.h1>
               <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[440px] text-[14px] leading-relaxed text-[#14070a]">
-                Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
+                Helping startups and enterprises hire top talent across<br />technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
               <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-8">
                 <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-20 py-2.5 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
