@@ -100,7 +100,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
         <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
           <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[96px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
             <div>
-              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[16px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
               <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(32px,4.2vw,72px)] font-semibold leading-[1.15] text-[#14070a]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
