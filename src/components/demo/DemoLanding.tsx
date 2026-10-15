@@ -75,9 +75,13 @@ const rise = {
   show: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.2, 0.7, 0.3, 1] as const } }),
 };
 
-export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme; variant?: "flow" | "split" }) {
+const NAV_HREF: Record<string, string> = { Company: "/about", Solutions: "/services", Programs: "/programs", Insights: "/blogs" };
+
+export default function DemoLanding({ theme, variant = "flow", live = false }: { theme: Theme; variant?: "flow" | "split"; live?: boolean }) {
   const dark = theme === "dark";
   const split = variant === "split";
+  // live = rendered on the real home page: nav items and CTAs become real links
+  const el = (href: string, cls: string, kids: React.ReactNode) => live ? <Link href={href} className={cls}>{kids}</Link> : <span className={cls}>{kids}</span>;
   const hd = split ? { fontFamily: domine.style.fontFamily } : hf;
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -101,11 +105,9 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`${split ? "h-[50px]" : "h-[58px]"} w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
           <div className={split ? "flex items-center gap-12" : "contents"}>
           <nav className={`hidden gap-12 text-[16px] ${navInk} md:flex`}>
-            {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}
+            {NAV.map((n) => <span key={n}>{el(NAV_HREF[n], "cursor-pointer hover:text-[#b3203f] transition-colors", n)}</span>)}
           </nav>
-          <span className={`${split ? "bg-black" : crimson} cursor-pointer rounded-md px-5 py-3 text-[15px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`}>
-            Book a Consultation →
-          </span>
+          {el("/contact", `${split ? "bg-black" : crimson} cursor-pointer rounded-md px-5 py-3 text-[15px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`, "Book a Consultation →")}
           </div>
         </div>
       </header>
@@ -123,11 +125,11 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                 Helping startups and enterprises hire top talent across<br />technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
               <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-6 lg:mt-[3vw]">
-                <span className="block w-full max-w-[420px] cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] py-3.5 text-center text-[14px] font-semibold text-white lg:w-[29vw] lg:max-w-none lg:rounded-[0.6vw] lg:py-0 lg:text-[0.97vw] lg:leading-[3.6vw] shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+                {el("/contact", "block w-full max-w-[420px] cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] py-3.5 text-center text-[14px] font-semibold text-white lg:w-[29vw] lg:max-w-none lg:rounded-[0.6vw] lg:py-0 lg:text-[0.97vw] lg:leading-[3.6vw] shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5", "Talk to our Experts")}
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 50vw, 100vw" quality={90} className="ml-auto h-auto max-h-[calc(100svh-150px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
+              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 50vw, 100vw" className="ml-auto h-auto max-h-[calc(100svh-150px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
             </motion.div>
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:gap-x-[3.3vw] lg:pt-[0.8vw]">
               {SPLIT_STATS.map((x) => (
