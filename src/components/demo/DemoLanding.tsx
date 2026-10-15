@@ -62,6 +62,13 @@ const IND_ICON: Record<string, string> = {
 
 const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "Telecom", "+ 18 more"];
 
+// Why-section icons (split design): AI in a magnifier, buildings, AI in a bulb. Paths are 24x24 strokes.
+const WHY_ICON = [
+  "M10.5 3.5a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM15.7 15.7 21 21M7.7 13l2-6 2 6M8.4 11.2h2.6M13.7 7.4v5.6",
+  "M4 21V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v17M14 10h5a1 1 0 0 1 1 1v10M2 21h20M7 7h2M10 7h1M7 11h2M10 11h1M7 15h2M10 15h1M16.5 14h1M16.5 17.5h1",
+  "M9 18h6M10 21h4M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.1 1 1.7h5.6c0-.6.4-1.2 1-1.7A6.5 6.5 0 0 0 12 2.5ZM10.2 11.6l1.5-4 1.5 4M10.6 10.4h2.2M14.6 7.6v4",
+];
+
 const WHY = [
   { t: "Smarter Talent Access", d: "Technology and expertise working together to find the right talent." },
   { t: "Specialized Hiring Expertise", d: "Recruiters with industry expertise for roles that demand deeper context." },
@@ -236,9 +243,13 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
               <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
+                {split ? (
+                  <svg className="mt-0.5 shrink-0" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="url(#indGrad)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d={WHY_ICON[i]} /></svg>
+                ) : (
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#fdeeef] text-[#b3203f]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" /></svg>
                 </span>
+                )}
                 <div>
                   <h3 style={hd} className={`text-[23px] font-medium leading-snug`}>{w.t}</h3>
                   <p className="mt-4 text-[16px] leading-relaxed text-[#5a4a4d]">{w.d}</p>
