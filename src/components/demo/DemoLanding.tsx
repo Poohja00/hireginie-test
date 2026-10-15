@@ -106,7 +106,8 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
   return (
     <main className={`${split ? "" : sans.className} bg-white text-[#14070a] [&_h1]:[font-family:inherit] [&_h2]:[font-family:inherit] [&_h3]:[font-family:inherit]`} style={split ? { fontFamily: `Satoshi, ${sans.style.fontFamily}` } : undefined}>
       {split && <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" precedence="default" />}
-      {/* Nav */}
+      {/* Nav: on the live home page the shared SiteNav (layout) is used instead */}
+      {!live && (
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${split && !scrolled ? "bg-white" : "px-4"}`}>
         <div className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${scrolled ? `mt-3 ${split ? "h-[66px]" : "h-[78px]"} max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu` : `mt-0 ${split ? "h-[70px]" : "h-[96px]"} max-w-[88rem] px-6 lg:px-10`}`}>
           <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`${split ? "h-[50px]" : "h-[58px]"} w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
@@ -118,6 +119,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
           </div>
         </div>
       </header>
+      )}
 
       {/* Hero */}
       {split ? (
