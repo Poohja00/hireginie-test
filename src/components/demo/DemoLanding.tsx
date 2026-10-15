@@ -170,7 +170,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <section className="bg-[#fffafa] py-14">
         {split ? <h2 style={hf} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
-          <div className="animate-marquee flex w-max">
+          <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
               <div key={i} className="flex h-16 w-[200px] shrink-0 items-center justify-center">
                 <Image src={`/logo/${f}`} alt="" width={130} height={46} className="h-auto max-h-[46px] w-auto object-contain" />
