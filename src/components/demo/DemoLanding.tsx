@@ -100,23 +100,23 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       {/* Hero */}
       {split ? (
         <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
-          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-8 pt-[84px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+          <div className="grid items-center gap-6 px-6 pb-4 pt-[84px] lg:grid-cols-[1fr_47vw] lg:gap-0 lg:pb-0 lg:pl-[3.5vw] lg:pr-[5.4vw] lg:pt-[70px]">
             <div>
-              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(32px,4.2vw,72px)] font-semibold leading-[1.15] text-[#14070a]">
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-semibold text-[#14070a] lg:text-[1.27vw]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a] lg:text-[4.3vw] lg:leading-[1.46]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
-              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[440px] text-[14px] leading-relaxed text-[#14070a]">
+              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 text-[15px] leading-relaxed text-[#14070a] lg:mt-[2vw] lg:text-[1.27vw] lg:leading-[1.63]">
                 Helping startups and enterprises hire top talent across<br />technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
-              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-8">
-                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-28 py-2.5 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-6 lg:mt-[3vw]">
+                <span className="block w-full max-w-[420px] cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] py-3.5 text-center text-[14px] font-semibold text-white lg:w-[29vw] lg:max-w-none lg:rounded-[0.6vw] lg:py-0 lg:text-[0.97vw] lg:leading-[3.6vw] shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration-red-v3.webp" alt="Hiring pipeline illustration" width={1125} height={915} priority sizes="(min-width:1024px) 62vw, 100vw" quality={90} className="ml-auto h-auto max-h-[79svh] w-full origin-right scale-[1.05] object-contain object-right opacity-[0.88] mix-blend-multiply [filter:saturate(0.82)_brightness(1.07)]" />
+              <Image src="/hero-illustration-red-v3.webp" alt="Hiring pipeline illustration" width={1125} height={915} priority sizes="(min-width:1024px) 47vw, 100vw" quality={90} className="ml-auto h-auto w-full object-contain object-right opacity-[0.88] mix-blend-multiply [filter:saturate(0.82)_brightness(1.07)]" />
             </motion.div>
-            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 lg:col-span-2">
+            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:pt-[0.8vw]">
               {SPLIT_STATS.map((x) => (
                 <div key={x.l} className="flex items-center gap-3">
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-[#14070a] text-[11px] text-white">★</span>
