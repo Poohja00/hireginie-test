@@ -89,7 +89,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <nav className={`hidden gap-12 text-[18px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}
           </nav>
-          <span className={`${crimson} cursor-pointer rounded-md px-6 py-3.5 text-[17px] font-medium text-white shadow-[0_8px_24px_rgba(120,15,40,0.35)] transition-transform hover:-translate-y-0.5`}>
+          <span className={`${split ? "bg-black" : crimson} cursor-pointer rounded-md px-6 py-3.5 text-[17px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`}>
             Book a Consultation →
           </span>
         </div>
