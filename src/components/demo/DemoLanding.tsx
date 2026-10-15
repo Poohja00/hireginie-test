@@ -86,10 +86,10 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <header className="fixed inset-x-0 top-0 z-50 px-4 transition-all duration-500">
         <div className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${scrolled ? "mt-3 h-[78px] max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu" : "mt-0 h-[96px] max-w-[88rem] px-6 lg:px-10"}`}>
           <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`h-[58px] w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
-          <nav className={`hidden gap-12 text-[18px] ${navInk} md:flex`}>
+          <nav className={`hidden gap-12 text-[16px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}
           </nav>
-          <span className={`${split ? "bg-black" : crimson} cursor-pointer rounded-md px-6 py-3.5 text-[17px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`}>
+          <span className={`${split ? "bg-black" : crimson} cursor-pointer rounded-md px-5 py-3 text-[15px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`}>
             Book a Consultation →
           </span>
         </div>
@@ -101,14 +101,14 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[96px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
             <div>
               <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[16px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(36px,4.8vw,84px)] font-semibold leading-[1.15] text-[#14070a]">
+              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(32px,4.2vw,72px)] font-semibold leading-[1.15] text-[#14070a]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
-              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[460px] text-[16px] leading-relaxed text-[#14070a]">
+              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[440px] text-[14px] leading-relaxed text-[#14070a]">
                 Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
               <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-8">
-                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-10 py-3 text-[15px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-9 py-2.5 text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
@@ -119,8 +119,8 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                 <div key={x.l} className="flex items-center gap-3">
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-[#14070a] text-[11px] text-white">★</span>
                   <div>
-                    <p style={hf} className="text-[21px] font-medium leading-none text-[#14070a]">{x.n}</p>
-                    <p style={hf} className="mt-1 text-[13px] text-[#b3203f]">{x.l}</p>
+                    <p style={hf} className="text-[19px] font-medium leading-none text-[#14070a]">{x.n}</p>
+                    <p style={hf} className="mt-1 text-[12px] text-[#b3203f]">{x.l}</p>
                   </div>
                 </div>
               ))}
@@ -165,7 +165,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
 
       {/* Trusted by */}
       <section className="bg-[#fffafa] py-14">
-        {split ? <h2 style={hf} className="text-center text-[clamp(30px,3.4vw,42px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
+        {split ? <h2 style={hf} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max">
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
@@ -181,15 +181,15 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
-          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
-          <p className="mt-3 text-[20px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
+          <h2 style={hf} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
+          <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
           <div className="mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8">
             {INDUSTRIES.map((n, i) => (
               <motion.div key={n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.5 }} className="group">
                 <div className="mx-auto grid h-[72px] w-[72px] place-items-center rounded-2xl bg-[#fdeeef] text-[#b3203f] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><path d="m10 10-2 2 2 2M14 10l2 2-2 2" /></svg>
                 </div>
-                <p className="mt-3 text-[17px] text-[#3d3033]">{n}</p>
+                <p className="mt-3 text-[15px] text-[#3d3033]">{n}</p>
               </motion.div>
             ))}
           </div>
@@ -200,8 +200,8 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       <section className="bg-white pb-28">
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
-          <h2 style={hf} className="mt-4 text-[clamp(32px,4vw,48px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
-          {split && <p className="mt-3 text-[20px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
+          <h2 style={hf} className="mt-4 text-[clamp(28px,3.4vw,42px)] font-semibold">{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
+          {split && <p className="mt-3 text-[17px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
           <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
               <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
@@ -209,8 +209,8 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" /></svg>
                 </span>
                 <div>
-                  <h3 style={hf} className={`text-[27px] font-medium leading-snug`}>{w.t}</h3>
-                  <p className="mt-4 text-[18px] leading-relaxed text-[#5a4a4d]">{w.d}</p>
+                  <h3 style={hf} className={`text-[23px] font-medium leading-snug`}>{w.t}</h3>
+                  <p className="mt-4 text-[16px] leading-relaxed text-[#5a4a4d]">{w.d}</p>
                 </div>
               </motion.div>
             ))}
