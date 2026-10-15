@@ -84,21 +84,23 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
     <main className={`${sans.className} bg-white text-[#14070a] [&_h1]:[font-family:inherit] [&_h2]:[font-family:inherit] [&_h3]:[font-family:inherit]`}>
       {/* Nav */}
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${split ? `bg-white ${scrolled ? "shadow-[0_2px_20px_rgba(0,0,0,0.08)]" : ""}` : "px-4"}`}>
-        <div className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${scrolled && !split ? "mt-3 h-[78px] max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu" : "mt-0 h-[96px] max-w-[88rem] px-6 lg:px-10"}`}>
-          <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`h-[58px] w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
+        <div className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${scrolled && !split ? "mt-3 h-[78px] max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu" : `mt-0 ${split ? "h-[70px]" : "h-[96px]"} max-w-[88rem] px-6 lg:px-10`}`}>
+          <Link href="/"><Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} className={`${split ? "h-[50px]" : "h-[58px]"} w-auto transition-[filter] ${dark && !scrolled ? "brightness-0 invert" : ""}`} /></Link>
+          <div className={split ? "flex items-center gap-12" : "contents"}>
           <nav className={`hidden gap-12 text-[16px] ${navInk} md:flex`}>
             {NAV.map((n) => <span key={n} className="cursor-pointer hover:text-[#b3203f] transition-colors">{n}</span>)}
           </nav>
           <span className={`${split ? "bg-black" : crimson} cursor-pointer rounded-md px-5 py-3 text-[15px] font-medium text-white ${split ? "shadow-[0_8px_24px_rgba(0,0,0,0.3)]" : "shadow-[0_8px_24px_rgba(120,15,40,0.35)]"} transition-transform hover:-translate-y-0.5`}>
             Book a Consultation →
           </span>
+          </div>
         </div>
       </header>
 
       {/* Hero */}
       {split ? (
         <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
-          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[96px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-8 pt-[84px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
             <div>
               <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
               <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(32px,4.2vw,72px)] font-semibold leading-[1.15] text-[#14070a]">
@@ -112,7 +114,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority sizes="(min-width:1024px) 62vw, 100vw" quality={90} className="ml-auto h-auto max-h-[60svh] w-full object-contain object-right mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
+              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority sizes="(min-width:1024px) 62vw, 100vw" quality={90} className="ml-auto h-auto max-h-[72svh] w-full object-contain object-right mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
             </motion.div>
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 lg:col-span-2">
               {SPLIT_STATS.map((x) => (
