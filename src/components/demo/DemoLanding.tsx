@@ -101,7 +101,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
           <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[96px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
             <div>
               <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[16px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(34px,3.9vw,60px)] font-semibold leading-[1.15] text-[#14070a]">
+              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(36px,4.8vw,84px)] font-semibold leading-[1.15] text-[#14070a]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
               <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[460px] text-[16px] leading-relaxed text-[#14070a]">
@@ -112,7 +112,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority className="ml-auto h-auto max-h-[calc(100svh-230px)] w-auto max-w-full origin-right scale-[1.08] mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
+              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority className="ml-auto h-auto max-h-[calc(100svh-190px)] w-auto max-w-full origin-right scale-[1.1] mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
             </motion.div>
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 lg:col-span-2">
               {SPLIT_STATS.map((x) => (
