@@ -98,29 +98,29 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       {/* Hero */}
       {split ? (
         <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
-          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[100px] lg:grid-cols-[1fr_1.15fr] lg:px-10">
+          <div className="mx-auto grid max-w-[88rem] items-center gap-6 px-6 pb-10 pt-[96px] lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
             <div>
-              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[18px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(40px,5vw,68px)] font-semibold leading-[1.15] text-[#14070a]">
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[16px] font-medium text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-4 text-[clamp(34px,3.9vw,60px)] font-semibold leading-[1.15] text-[#14070a]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
-              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-8 max-w-[520px] text-[19px] leading-relaxed text-[#14070a]">
+              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 max-w-[460px] text-[16px] leading-relaxed text-[#14070a]">
                 Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
-              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-10">
-                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-12 py-3.5 text-[17px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
+              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-8">
+                <span className="inline-block cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] px-10 py-3 text-[15px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5">Talk to our Experts</span>
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority className="ml-auto h-auto max-h-[62vh] w-auto max-w-full mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
+              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority className="ml-auto h-auto max-h-[66vh] w-auto max-w-full mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
             </motion.div>
-            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-14 gap-y-6 lg:col-span-2">
+            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 lg:col-span-2">
               {SPLIT_STATS.map((x) => (
                 <div key={x.l} className="flex items-center gap-3">
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-[#14070a] text-[11px] text-white">★</span>
                   <div>
-                    <p style={hf} className="text-[24px] font-medium leading-none text-[#14070a]">{x.n}</p>
-                    <p style={hf} className="mt-1 text-[14px] text-[#b3203f]">{x.l}</p>
+                    <p style={hf} className="text-[21px] font-medium leading-none text-[#14070a]">{x.n}</p>
+                    <p style={hf} className="mt-1 text-[13px] text-[#b3203f]">{x.l}</p>
                   </div>
                 </div>
               ))}
