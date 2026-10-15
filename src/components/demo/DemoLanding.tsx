@@ -112,7 +112,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority sizes="(min-width:1024px) 62vw, 100vw" quality={90} className="ml-auto h-auto max-h-[calc(100svh-190px)] w-full object-contain object-right mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
+              <Image src="/hero-illustration.png" alt="Hiring pipeline illustration" width={1100} height={900} priority sizes="(min-width:1024px) 62vw, 100vw" quality={90} className="ml-auto h-auto max-h-[60svh] w-full object-contain object-right mix-blend-multiply [filter:hue-rotate(-28deg)_saturate(1.15)]" />
             </motion.div>
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 lg:col-span-2">
               {SPLIT_STATS.map((x) => (
