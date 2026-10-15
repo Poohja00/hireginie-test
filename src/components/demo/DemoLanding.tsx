@@ -250,7 +250,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       </section>
           {/* TODO-CLEANUP: empty gap on purpose (home only) to be filled with the next sections
           (e.g. Services, Programs, Testimonials). Remove this spacer when they are added. */}
-      {live && <div className="h-[700px]" aria-hidden />}
+      {live && <div className="h-[1200px]" aria-hidden />}
 </main>
   );
 }
