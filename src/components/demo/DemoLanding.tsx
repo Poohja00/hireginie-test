@@ -100,9 +100,9 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
       {/* Hero */}
       {split ? (
         <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
-          <div className="grid items-center gap-6 px-6 pb-4 pt-[84px] lg:grid-cols-[1fr_43vw] lg:gap-0 lg:pb-0 lg:pl-[3.5vw] lg:pr-[5.4vw] lg:pt-[70px]">
+          <div className="grid items-center gap-6 px-6 pb-4 pt-[84px] lg:grid-cols-[1fr_47vw] lg:gap-0 lg:pb-0 lg:pl-[3.5vw] lg:pr-[5.4vw] lg:pt-[70px]">
             <div>
-              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-semibold text-[#14070a] lg:text-[1.27vw]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-semibold text-[#14070a] lg:text-[1.4vw]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
               <motion.h1 style={hf} variants={rise} custom={1} initial="hidden" animate="show" className="mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a] lg:text-[4.3vw] lg:leading-[1.46]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
@@ -114,7 +114,7 @@ export default function DemoLanding({ theme, variant = "flow" }: { theme: Theme;
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 43vw, 100vw" quality={90} className="ml-auto h-auto max-h-[calc(100svh-200px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
+              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 47vw, 100vw" quality={90} className="ml-auto h-auto max-h-[calc(100svh-170px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
             </motion.div>
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:pt-[0.8vw]">
               {SPLIT_STATS.map((x) => (
