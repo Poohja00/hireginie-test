@@ -42,6 +42,9 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
+// per-logo height overrides for the split carousel (very wide wordmarks need to be shorter to look balanced)
+const LOGO_H: Record<string, string> = { "appsforbharat.svg": "h-[22px]" };
+
 const LOGOS = [
   "ACT.png",
   "ihx_logo.svg",
@@ -208,8 +211,9 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
-              <div key={i} className={`flex h-16 shrink-0 items-center justify-center ${split ? "w-[140px]" : "w-[200px]"}`}>
-                <Image src={`/logo/${f}`} alt="" width={130} height={46} className="h-auto max-h-[46px] w-auto object-contain" />
+              <div key={i} className={`flex h-16 shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
+                {/* split: no fixed cell width, so the gap between neighbouring logos is the same (64px) whatever each logo's own width is */}
+                <Image src={`/logo/${f}`} alt="" width={130} height={46} className={split ? `${LOGO_H[f] ?? "h-[40px]"} w-auto max-w-none object-contain` : "h-auto max-h-[46px] w-auto object-contain"} />
               </div>
             ))}
           </div>
