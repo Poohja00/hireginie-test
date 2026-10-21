@@ -55,7 +55,7 @@ const LOGO_H: Record<string, string> = {
   "scripbox.svg": "h-[43px]",
   "appsforbharat.svg": "h-[20px]",
   "iiitdm-t.webp": "h-[51px]",
-  "wealthmax.jpg": "h-[55px]",
+  "wealthmax.png": "h-[55px]",
   "travclan.png": "h-[43px]",
   "hyperthink.png": "h-[55px]",
   "wishlink.png": "h-[63px]",
@@ -78,7 +78,7 @@ const LOGOS = [
   "scripbox.svg",
   "appsforbharat.svg",
   "iiitdm-t.webp",
-  "wealthmax.jpg",
+  "wealthmax.png",
   "travclan.png",
   "hyperthink.png",
   "wishlink.png",
@@ -232,10 +232,10 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         {split ? <h2 style={hd} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
-            {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
+            {[...LOGOS, ...LOGOS].map((f, i) => (
               <div key={i} className={`flex h-[72px] shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
                 {/* split: no fixed cell width, so the gap between neighbouring logos is the same (64px) whatever each logo's own width is */}
-                <Image src={`/logo/${f}`} alt="" width={130} height={46} unoptimized loading="eager" className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain mix-blend-multiply` : "h-auto max-h-[46px] w-auto object-contain"} />
+                <Image src={`/logo/${f}`} alt="" width={130} height={46} unoptimized loading="eager" className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain` : "h-auto max-h-[46px] w-auto object-contain"} />
               </div>
             ))}
           </div>
