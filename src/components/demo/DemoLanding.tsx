@@ -44,9 +44,9 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
 
 // per-logo heights for the split carousel: normalised so every logo has about the same visual area (scaled 0.88 from a 190px width / 64px height cap)
 const LOGO_H: Record<string, string> = {
-  "ACT-t.png": "h-[52px]",
-  "ihx_logo.svg": "h-[75px]",
-  "MyGate_new_logo_1-01-1-t.png": "h-[39px]",
+  "ACT-t.png": "h-[42px]",
+  "ihx_logo.svg": "h-[58px]",
+  "MyGate_new_logo_1-01-1-t.png": "h-[32px]",
   "images-t.png": "h-[29px]",
   "synapx-s.png": "h-[41px]",
   "logo_Black-t.png": "h-[47px]",
