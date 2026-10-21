@@ -49,6 +49,18 @@ const LOGOS = [
   "images.png",
   "1761232166717-Synapx Logo for White Background.png",
   "logo_Black.png",
+  // clients added 2026-10-21 (full logos where found, 256px icons where only the icon was available)
+  "awign.png",
+  "nxtwave.svg",
+  "scripbox.svg",
+  "appsforbharat.svg",
+  "iiitdm.webp",
+  "wealthmax.jpg",
+  "travclan-icon.png",
+  "wishlink-icon.png",
+  "flxho-icon.png",
+  "noventiq-icon.png",
+  // TODO: still missing a usable logo file: Hyperthink, ShopDeck, MikeLegal
 ];
 
 const IND_ICON: Record<string, string> = {
