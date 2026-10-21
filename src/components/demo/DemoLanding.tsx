@@ -48,7 +48,7 @@ const LOGO_H: Record<string, string> = {
   "ihx_logo.svg": "h-[81px]",
   "MyGate_new_logo_1-01-1-t.png": "h-[42px]",
   "images-t.png": "h-[31px]",
-  "1761232166717-Synapx Logo for White Background.png": "h-[45px]",
+  "synapx-s.png": "h-[45px]",
   "logo_Black-t.png": "h-[51px]",
   "awign-t.png": "h-[39px]",
   "nxtwave.svg": "h-[56px]",
@@ -70,7 +70,7 @@ const LOGOS = [
   "ihx_logo.svg",
   "MyGate_new_logo_1-01-1-t.png",
   "images-t.png",
-  "1761232166717-Synapx Logo for White Background.png",
+  "synapx-s.png",
   "logo_Black-t.png",
   // clients added 2026-10-21 (full logos where found, 256px icons where only the icon was available)
   "awign-t.png",
@@ -235,7 +235,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
               <div key={i} className={`flex h-[72px] shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
                 {/* split: no fixed cell width, so the gap between neighbouring logos is the same (64px) whatever each logo's own width is */}
-                <Image src={`/logo/${f}`} alt="" width={130} height={46} className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain mix-blend-multiply` : "h-auto max-h-[46px] w-auto object-contain"} />
+                <Image src={`/logo/${f}`} alt="" width={130} height={46} unoptimized loading="eager" className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain mix-blend-multiply` : "h-auto max-h-[46px] w-auto object-contain"} />
               </div>
             ))}
           </div>
