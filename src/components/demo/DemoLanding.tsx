@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Playfair_Display, DM_Sans, Domine } from "next/font/google";
 import FlowCanvas from "@/components/demo/FlowCanvas";
+import { HomeServices, HomePrograms, HomeTestimonials } from "@/components/demo/HomeSections";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["500", "600", "700"] });
 const domine = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -203,6 +204,8 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         </div>
       </section>
 
+      {split && <HomeServices />}
+      {split && <HomePrograms />}
       {split && (<svg width="0" height="0" className="absolute" aria-hidden><defs><linearGradient id="indGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f2707f" /><stop offset="1" stopColor="#c9243f" /></linearGradient></defs></svg>)}
       {/* Industries */}
       <section className={`bg-white ${split ? "pb-20 pt-6" : "py-20"}`}>
@@ -261,9 +264,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
           </div>
         </div>
       </section>
-          {/* TODO-CLEANUP: empty gap on purpose (home only) to be filled with the next sections
-          (e.g. Services, Programs, Testimonials). Remove this spacer when they are added. */}
-      {live && <div className="h-[1200px]" aria-hidden />}
+      {split && <HomeTestimonials />}
 </main>
   );
 }
