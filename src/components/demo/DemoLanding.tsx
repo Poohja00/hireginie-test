@@ -42,28 +42,50 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-// per-logo height overrides for the split carousel (very wide wordmarks need to be shorter to look balanced)
-const LOGO_H: Record<string, string> = { "appsforbharat.svg": "h-[22px]" };
+// per-logo heights for the split carousel: normalised so every logo has about the same visual area (scaled 0.88 from a 190px width / 64px height cap)
+const LOGO_H: Record<string, string> = {
+  "ACT-t.png": "h-[56px]",
+  "ihx_logo.svg": "h-[81px]",
+  "MyGate_new_logo_1-01-1-t.png": "h-[42px]",
+  "images-t.png": "h-[31px]",
+  "1761232166717-Synapx Logo for White Background.png": "h-[45px]",
+  "logo_Black-t.png": "h-[51px]",
+  "awign-t.png": "h-[39px]",
+  "nxtwave.svg": "h-[56px]",
+  "scripbox.svg": "h-[43px]",
+  "appsforbharat.svg": "h-[20px]",
+  "iiitdm-t.webp": "h-[51px]",
+  "wealthmax.jpg": "h-[55px]",
+  "travclan.png": "h-[43px]",
+  "hyperthink.png": "h-[55px]",
+  "wishlink.png": "h-[63px]",
+  "flxho.png": "h-[67px]",
+  "noventiq.png": "h-[34px]",
+  "shopdeck.png": "h-[35px]",
+  "mikelegal.png": "h-[48px]",
+};
 
 const LOGOS = [
-  "ACT.png",
+  "ACT-t.png",
   "ihx_logo.svg",
-  "MyGate_new_logo_1-01-1.png",
-  "images.png",
+  "MyGate_new_logo_1-01-1-t.png",
+  "images-t.png",
   "1761232166717-Synapx Logo for White Background.png",
-  "logo_Black.png",
+  "logo_Black-t.png",
   // clients added 2026-10-21 (full logos where found, 256px icons where only the icon was available)
-  "awign.png",
+  "awign-t.png",
   "nxtwave.svg",
   "scripbox.svg",
   "appsforbharat.svg",
-  "iiitdm.webp",
+  "iiitdm-t.webp",
   "wealthmax.jpg",
-  "travclan-icon.png",
-  "wishlink-icon.png",
-  "flxho-icon.png",
-  "noventiq-icon.png",
-  // TODO: still missing a usable logo file: Hyperthink, ShopDeck, MikeLegal
+  "travclan.png",
+  "hyperthink.png",
+  "wishlink.png",
+  "flxho.png",
+  "noventiq.png",
+  "shopdeck.png",
+  "mikelegal.png",
 ];
 
 const IND_ICON: Record<string, string> = {
@@ -211,9 +233,9 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
-              <div key={i} className={`flex h-16 shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
+              <div key={i} className={`flex h-[72px] shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
                 {/* split: no fixed cell width, so the gap between neighbouring logos is the same (64px) whatever each logo's own width is */}
-                <Image src={`/logo/${f}`} alt="" width={130} height={46} className={split ? `${LOGO_H[f] ?? "h-[40px]"} w-auto max-w-none object-contain` : "h-auto max-h-[46px] w-auto object-contain"} />
+                <Image src={`/logo/${f}`} alt="" width={130} height={46} className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain mix-blend-multiply` : "h-auto max-h-[46px] w-auto object-contain"} />
               </div>
             ))}
           </div>
