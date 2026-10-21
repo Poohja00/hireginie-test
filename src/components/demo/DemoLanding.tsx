@@ -63,32 +63,6 @@ const LOGO_H: Record<string, string> = {
   "noventiq.png": "h-[34px]",
   "shopdeck.png": "h-[35px]",
   "mikelegal.png": "h-[48px]",
-  "c-abcapital.svg": "h-[38px]",
-  "c-axismaxlife.svg": "h-[48px]",
-  "c-beiersdorf.png": "h-[28px]",
-  "c-bigbasket.png": "h-[51px]",
-  "c-deconstruct.png": "h-[55px]",
-  "c-doublea.png": "h-[56px]",
-  "c-equitas.png": "h-[49px]",
-  "c-fisdom.svg": "h-[41px]",
-  "c-gocomet.png": "h-[22px]",
-  "c-hdfcbank.svg": "h-[33px]",
-  "c-impelsys.svg": "h-[32px]",
-  "c-jyothy.png": "h-[43px]",
-  "c-kotak.svg": "h-[43px]",
-  "c-ltapparel.png": "h-[46px]",
-  "c-medorah.png": "h-[56px]",
-  "c-nuvama.svg": "h-[29px]",
-  "c-oyo.png": "h-[56px]",
-  "c-portea.svg": "h-[42px]",
-  "c-porter.svg": "h-[27px]",
-  "c-practo.png": "h-[45px]",
-  "c-qapita.png": "h-[49px]",
-  "c-remedinet.png": "h-[44px]",
-  "c-sleepco.png": "h-[37px]",
-  "c-smartworks.png": "h-[36px]",
-  "c-squadstack.svg": "h-[24px]",
-  "c-walkingtree.png": "h-[56px]",
 };
 
 const LOGOS = [
@@ -112,82 +86,7 @@ const LOGOS = [
   "noventiq.png",
   "shopdeck.png",
   "mikelegal.png",
-  // clients added from the full client list (real logos)
-  "c-abcapital.svg",
-  "c-axismaxlife.svg",
-  "c-beiersdorf.png",
-  "c-bigbasket.png",
-  "c-deconstruct.png",
-  "c-doublea.png",
-  "c-equitas.png",
-  "c-fisdom.svg",
-  "c-gocomet.png",
-  "c-hdfcbank.svg",
-  "c-impelsys.svg",
-  "c-jyothy.png",
-  "c-kotak.svg",
-  "c-ltapparel.png",
-  "c-medorah.png",
-  "c-nuvama.svg",
-  "c-oyo.png",
-  "c-portea.svg",
-  "c-porter.svg",
-  "c-practo.png",
-  "c-qapita.png",
-  "c-remedinet.png",
-  "c-sleepco.png",
-  "c-smartworks.png",
-  "c-squadstack.svg",
-  "c-walkingtree.png",
 ];
-
-// TODO: no usable logo file found for these clients yet, shown as plain names. Swap each for a logo file in public/logo + LOGOS/LOGO_H when received.
-const NAMES = [
-  "Nexxbase",
-  "Jewelex India",
-  "Ambit",
-  "Youkraft",
-  "Medisage",
-  "Uni Design Jewellery",
-  "Spottable",
-  "Axiscades",
-  "TBZ",
-  "Aditya Birla Wholesale Solutions",
-  "Aditya Birla Money",
-  "Plum",
-  "Boxplank",
-  "Mango Advisors",
-  "Evoluzione",
-  "Sprinto",
-  "Oro The Estates",
-  "Dozee",
-  "Dezerv",
-  "Datazymes",
-  "Flobiz",
-  "Leo's",
-  "ET Money",
-  "ED&F Man Commodities",
-  "Comrado Aerospace",
-  "Just Words",
-  "Just Life",
-  "Samar Capital",
-  "RML Pathology",
-  "AfterShip",
-  "India Gold",
-];
-
-// real logos and name-only clients interleaved so the row stays balanced
-const ITEMS: { f?: string; n?: string }[] = (() => {
-  const out: { f?: string; n?: string }[] = [];
-  const step = Math.max(1, Math.round(LOGOS.length / NAMES.length));
-  let ni = 0;
-  LOGOS.forEach((f, i) => {
-    out.push({ f });
-    if ((i + 1) % step === 0 && ni < NAMES.length) out.push({ n: NAMES[ni++] });
-  });
-  while (ni < NAMES.length) out.push({ n: NAMES[ni++] });
-  return out;
-})();
 
 const IND_ICON: Record<string, string> = {
   "IT & Software": "M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM10 10l-2 2 2 2M14 10l2 2-2 2M13 9l-2 6",
@@ -333,14 +232,10 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         {split ? <h2 style={hd} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
-            {[...ITEMS, ...ITEMS].map((it, i) => (
+            {[...LOGOS, ...LOGOS].map((f, i) => (
               <div key={i} className={`flex h-[72px] shrink-0 items-center ${split ? "px-8" : "w-[200px] justify-center"}`}>
                 {/* split: no fixed cell width, so the gap between neighbouring logos is the same (64px) whatever each logo's own width is */}
-                {it.f ? (
-                  <Image src={`/logo/${it.f}`} alt="" width={130} height={46} unoptimized loading="eager" className={split ? `${LOGO_H[it.f]} w-auto max-w-none object-contain` : "h-auto max-h-[46px] w-auto object-contain"} />
-                ) : (
-                  <span className="whitespace-nowrap text-[22px] font-bold tracking-tight text-[#3d2a2e]" style={{ fontFamily: "Satoshi, sans-serif" }}>{it.n}</span>
-                )}
+                <Image src={`/logo/${f}`} alt="" width={130} height={46} unoptimized loading="eager" className={split ? `${LOGO_H[f]} w-auto max-w-none object-contain` : "h-auto max-h-[46px] w-auto object-contain"} />
               </div>
             ))}
           </div>
