@@ -81,8 +81,8 @@ export function HomePrograms() {
           {PROGRAMS.map((p, i) => (
             <motion.div key={p.tag} {...rise(i)}>
               <div className={`flex h-full overflow-hidden ${CARD}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.img} alt={p.tag} className="hidden w-[38%] object-cover sm:block" />
+                {/* TODO-CLEANUP: gray placeholder on purpose, swap for the program illustration (p.img holds the old stock photo) */}
+                <div className="hidden w-[38%] bg-[#e4e4e7] sm:block" aria-hidden />
                 <div className="flex flex-1 flex-col justify-center p-7">
                   <h3 style={hd} className="text-[24px] font-semibold text-[#14070a]">{p.tag}</h3>
                   <p style={hd} className="mt-5 text-[16px] font-medium text-[#14070a]">{p.t}</p>
