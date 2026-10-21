@@ -191,7 +191,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       )}
 
       {/* Trusted by */}
-      <section className={`bg-[#fffafa] ${split ? "pb-8 pt-20" : "py-14"}`}>
+      <section className={`bg-[#fffafa] ${split ? "pb-14 pt-20" : "py-14"}`}>
         {split ? <h2 style={hd} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
@@ -208,7 +208,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       {split && <HomePrograms />}
       {split && (<svg width="0" height="0" className="absolute" aria-hidden><defs><linearGradient id="indGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f2707f" /><stop offset="1" stopColor="#c9243f" /></linearGradient></defs></svg>)}
       {/* Industries */}
-      <section className={`bg-white ${split ? "pb-20 pt-6" : "py-20"}`}>
+      <section className={`bg-white ${split ? "pb-20 pt-16" : "py-20"}`}>
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
           <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
@@ -240,7 +240,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       </section>
 
       {/* Why */}
-      <section className="bg-white pb-28">
+      <section className={`bg-white pb-28 ${split ? "pt-12" : ""}`}>
         <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
           <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>

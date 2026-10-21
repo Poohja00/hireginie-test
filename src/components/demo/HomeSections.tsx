@@ -49,7 +49,7 @@ const rise = (i: number) => ({
 
 export function HomeServices() {
   return (
-    <section className="bg-white pb-16 pt-8">
+    <section className="bg-white pb-20 pt-16">
       <div className="mx-auto max-w-[88rem] px-6 lg:px-10">
         <h2 style={hd} className={TITLE}>How We Help You Hire</h2>
         <p className={SUB}>Comprehensive hiring solutions tailored to your business needs</p>
@@ -73,7 +73,7 @@ export function HomeServices() {
 
 export function HomePrograms() {
   return (
-    <section className="bg-white pb-16 pt-8">
+    <section className="bg-white pb-20 pt-16">
       <div className="mx-auto max-w-[88rem] px-6 lg:px-10">
         <h2 style={hd} className={TITLE}>Talent Development Programs</h2>
         <p className={SUB}>Building talent. Creating opportunities.</p>
@@ -102,7 +102,7 @@ export function HomePrograms() {
 
 export function HomeTestimonials() {
   return (
-    <section className="bg-white pb-24 pt-8">
+    <section className="bg-white pb-24 pt-16">
       <div className="mx-auto max-w-[88rem] px-6 lg:px-10">
         <h2 style={hd} className={TITLE}>Trusted by Growing Teams</h2>
         <p className={SUB}>The Quality We Serve</p>
