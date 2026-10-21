@@ -208,7 +208,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((f, i) => (
-              <div key={i} className="flex h-16 w-[200px] shrink-0 items-center justify-center">
+              <div key={i} className={`flex h-16 shrink-0 items-center justify-center ${split ? "w-[140px]" : "w-[200px]"}`}>
                 <Image src={`/logo/${f}`} alt="" width={130} height={46} className="h-auto max-h-[46px] w-auto object-contain" />
               </div>
             ))}
