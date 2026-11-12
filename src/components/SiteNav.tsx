@@ -61,7 +61,7 @@ export default function SiteNav() {
             </nav>
             <Link
               href="/contact"
-              className="hidden rounded-md bg-black px-5 py-3 text-[15px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform hover:-translate-y-0.5 md:block"
+              className="hidden rounded-md border-[1.5px] border-black bg-black px-5 py-3 text-[15px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-colors duration-200 hover:border-[#b93743] hover:bg-white hover:text-[#b93743] hover:shadow-none md:block"
             >
               Book a Consultation →
             </Link>
