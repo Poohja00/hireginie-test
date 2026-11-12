@@ -7,10 +7,11 @@ export const metadata = { title: "About Us | Hireginie" };
 const domine = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const hd = { fontFamily: domine.style.fontFamily };
 
-const RED = "#b93545";
-const wrap = "mx-auto w-full max-w-[1220px] px-6";
-const TITLE = "text-center text-[clamp(26px,3vw,38px)] font-semibold text-[#14070a]";
-const CARD = "rounded-lg bg-white shadow-[0_6px_28px_rgba(120,30,50,0.10)]";
+const RED = "#b93743";
+const wrap = "mx-auto w-full max-w-[1268px] px-6";
+const TITLE = "text-center text-[28px] font-semibold leading-[44px] lg:text-[34px]";
+const SUB = "mt-[26px] text-center text-[17px] text-[#333] lg:text-[20px] lg:leading-[30px]";
+const CARD = "rounded-lg bg-[#fdfdfd] shadow-[0_6px_28px_rgba(120,30,50,0.10)]";
 // TODO-CLEANUP: gray blocks are placeholders, swap for real company photos when they arrive
 const PLACEHOLDER = "bg-[#d9d9d9]";
 
@@ -54,35 +55,44 @@ const LEADERS = [
   { n: "Silky", r: "Director - CXO" },
 ];
 
+const SMALL = "text-[14px] leading-[22px] text-[#333]";
+
 export default function About() {
+  // Desktop (lg and up) sizes are measured from the 1440px design. Below lg the layout stacks with smaller type.
   return (
     <div className="bg-white text-[#14070a]" style={{ fontFamily: "Satoshi, sans-serif" }}>
       {/* Breadcrumb bar */}
       <div style={{ background: RED }}>
-        <div className="mx-auto w-full max-w-[1320px] px-6 py-6 text-[16px] text-white">
-          <Link href="/" className="hover:underline">Home</Link> | <b className="font-bold">About us</b>
+        <div className="mx-auto flex h-[60px] w-full max-w-[1348px] items-center px-6 text-[17px] text-white lg:h-[79px] lg:text-[20px]">
+          <span>
+            <Link href="/" className="font-medium hover:underline">Home</Link> | <b className="font-bold">About us</b>
+          </span>
         </div>
       </div>
 
       {/* Hero */}
-      <section className="pb-16 pt-16 lg:pt-20">
-        <div className={`${wrap} grid items-center gap-10 lg:grid-cols-[1fr_1.05fr]`}>
-          <Reveal>
-            <h1 style={hd} className="relative z-10 text-[clamp(30px,3.5vw,50px)] font-semibold leading-[1.5] lg:whitespace-nowrap">
+      <section>
+        <div className={`${wrap} grid items-start gap-10 pt-12 lg:grid-cols-[minmax(0,1fr)_611px] lg:gap-0 lg:pt-0`}>
+          <Reveal className="lg:pt-[83px]">
+            <h1 style={hd} className="relative z-10 text-[32px] font-semibold leading-[1.45] lg:whitespace-nowrap lg:text-[52px] lg:leading-[81px]">
               We help India hire people <br className="hidden lg:block" />
               who stay and grow.
             </h1>
-            <p className="mt-6 max-w-[540px] text-[17px] leading-[1.75]">
+            <p className="mt-5 max-w-[545px] text-[17px] leading-[1.6] lg:mt-[26px] lg:text-[20px] lg:leading-[30px]">
               Hireginie Talent Cloud pairs dedicated recruiters with smart technology to build teams for startups and
               enterprises across the country.
             </p>
           </Reveal>
-          <Reveal delay={0.1} className="lg:mt-24">
-            <div className={`${CARD} grid grid-cols-2 gap-x-6 gap-y-14 px-8 py-10 sm:px-[20%]`}>
-              {STATS.map((s) => (
-                <div key={s.s}>
-                  <b style={hd} className="block text-[clamp(20px,1.9vw,27px)] font-medium">{s.b}</b>
-                  <span style={{ ...hd, color: RED }} className="mt-1 block text-[13px] sm:whitespace-nowrap">{s.s}</span>
+          <Reveal delay={0.1} className="lg:mt-[196px]">
+            <div className={`${CARD} flex flex-col gap-10 px-6 pb-[27px] pt-[31px] lg:min-h-[254px] lg:gap-[93px] lg:px-0`}>
+              {[STATS.slice(0, 2), STATS.slice(2)].map((row) => (
+                <div key={row[0].s} className="flex justify-center gap-8 lg:gap-[85px]">
+                  {row.map((st) => (
+                    <div key={st.s}>
+                      <b style={hd} className="block text-[22px] font-medium leading-[30px] lg:text-[26px]">{st.b}</b>
+                      <span style={{ ...hd, color: RED }} className="block text-[13px] leading-[20px] lg:whitespace-nowrap lg:text-[15px]">{st.s}</span>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -91,50 +101,50 @@ export default function About() {
       </section>
 
       {/* Who we are */}
-      <section className="pb-20 pt-6">
+      <section className="pb-14 pt-16 lg:pb-[79px] lg:pt-[89px]">
         <div className={wrap}>
-          <h2 style={hd} className={TITLE}>Who we are</h2>
-          <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-            <Reveal className="max-w-[600px] text-[17px] leading-[1.8] text-[#3d2a2e]">
+          <h2 style={hd} className="text-center text-[28px] font-semibold leading-[48px] lg:text-[40px]">Who we are</h2>
+          <div className="mt-10 grid items-start gap-10 lg:mt-[63px] lg:grid-cols-[1fr_532px] lg:gap-0 lg:pr-[16px]">
+            <Reveal className="max-w-[590px] text-[17px] leading-[1.6] text-[#333] lg:pt-[12px] lg:text-[20px] lg:leading-[30px]">
               <p>
                 Hireginie Talent Cloud started with a simple belief: hiring should feel less like chasing résumés and
                 more like building a team. We combine experienced recruiters with smart tools to match companies with
                 people who fit their work and their culture.
               </p>
-              <p className="mt-7">
+              <p className="mt-[30px]">
                 From tech and non-tech roles to leadership and volume hiring, we handle the process end to end, so our
                 clients can focus on growing their business.
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className={`aspect-[535/278] w-full ${PLACEHOLDER}`} aria-hidden />
+              <div className={`aspect-[532/281] w-full ${PLACEHOLDER}`} aria-hidden />
             </Reveal>
           </div>
         </div>
       </section>
 
       {/* Vision and mission */}
-      <section className="bg-gradient-to-b from-[#fbdde1] to-white pb-24 pt-14">
-        <div className="mx-auto grid w-full max-w-[1320px] gap-8 px-6 lg:grid-cols-[1fr_0.8fr_0.8fr] lg:gap-12">
+      <section className="bg-gradient-to-b from-[#fddadf] to-[#fffbfc] pb-16 pt-12 lg:pb-[88px] lg:pt-[53px]">
+        <div className="mx-auto grid w-full max-w-[1366px] gap-8 px-6 lg:grid-cols-[1fr_388px_388px] lg:gap-[50px] lg:pl-[30px] lg:pr-[18px]">
           <Reveal>
-            <span style={{ color: RED }} className="text-[12px] uppercase tracking-wide">Vision and mission</span>
-            <h2 style={hd} className="mt-4 max-w-[420px] text-[clamp(26px,2.5vw,34px)] font-semibold leading-[1.5]">
+            <span style={{ color: RED }} className="mt-[2px] block text-[11px] uppercase leading-[16px]">Vision and mission</span>
+            <h2 style={hd} className="mt-[11px] max-w-[420px] text-[28px] font-semibold leading-[1.5] lg:text-[34px] lg:leading-[52px]">
               Our Purpose for What&rsquo;s Next
             </h2>
-            <p className="mt-4 text-[16px] text-[#3d2a2e]">Where we are headed, and how we get there.</p>
+            <p className="mt-[16px] text-[17px] text-[#333] lg:text-[20px] lg:leading-[30px]">Where we are headed, and how we get there.</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className={`${CARD} h-full min-h-[270px] p-9`}>
-              <h3 style={hd} className="text-[26px] font-medium">Our Vision</h3>
-              <span className="mt-4 block h-[3px] w-[70px]" style={{ background: RED }} />
-              <p className="mt-7 text-[13px] leading-relaxed text-[#3d2a2e]">To be India&rsquo;s most trusted talent partner.</p>
+            <div className={`${CARD} h-full px-[39px] pb-8 pt-[32px] lg:min-h-[271px]`}>
+              <h3 style={hd} className="text-[28px] font-medium leading-[36px]">Our Vision</h3>
+              <span className="mt-[9px] block h-[3px] w-[73px]" style={{ background: RED }} />
+              <p className={`mt-[27px] ${SMALL}`}>To be India&rsquo;s most trusted talent partner.</p>
             </div>
           </Reveal>
           <Reveal delay={0.16}>
-            <div className={`${CARD} h-full min-h-[270px] p-9`}>
-              <h3 style={hd} className="text-[26px] font-medium">Our mission</h3>
-              <span className="mt-4 block h-[3px] w-[70px]" style={{ background: RED }} />
-              <ul className="mt-7 list-disc space-y-1 pl-5 text-[13px] leading-relaxed text-[#3d2a2e]">
+            <div className={`${CARD} h-full px-[39px] pb-8 pt-[32px] lg:min-h-[271px]`}>
+              <h3 style={hd} className="text-[28px] font-medium leading-[36px]">Our mission</h3>
+              <span className="mt-[9px] block h-[3px] w-[73px]" style={{ background: RED }} />
+              <ul className={`mt-[27px] list-disc pl-[23px] ${SMALL}`}>
                 {MISSION.map((m) => <li key={m}>{m}</li>)}
               </ul>
             </div>
@@ -143,16 +153,16 @@ export default function About() {
       </section>
 
       {/* What makes us different */}
-      <section className="pb-24 pt-4">
+      <section className="pb-20 pt-12 lg:pb-[178px] lg:pt-[47px]">
         <div className={wrap}>
           <h2 style={hd} className={TITLE}>What makes us different</h2>
-          <p className="mt-5 text-center text-[17px] text-[#3d2a2e]">Comprehensive hiring support built around how you actually work.</p>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[7%]">
+          <p className={SUB}>Comprehensive hiring support built around how you actually work.</p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:-mr-[5px] lg:mt-[89px] lg:grid-cols-4 lg:gap-[85px] lg:pl-[11px]">
             {DIFF.map((d, i) => (
               <Reveal key={d.t} delay={i * 0.08}>
-                <div className={`${CARD} h-full min-h-[228px] px-7 py-10`}>
-                  <h3 style={hd} className="max-w-[150px] text-[19px] font-medium leading-[1.6]">{d.t}</h3>
-                  <p className="mt-5 text-[13px] leading-[1.6] text-[#3d2a2e]">{d.d}</p>
+                <div className={`${CARD} h-full px-[27px] pb-7 pt-[28px] lg:min-h-[214px]`}>
+                  <h3 style={hd} className="max-w-[140px] text-[20px] font-medium leading-[30px]">{d.t}</h3>
+                  <p className="mt-[28px] text-[14px] leading-[20px] text-[#333]">{d.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -161,28 +171,28 @@ export default function About() {
       </section>
 
       {/* Our team culture */}
-      <section className="pb-24 pt-10">
-        <div className="mx-auto grid w-full max-w-[1320px] items-center gap-14 px-6 lg:grid-cols-[1fr_1.1fr]">
-          <Reveal className="pt-8">
-            <div className={`grid aspect-[417/202] w-[72%] place-items-center text-[13px] text-[#14070a] ${PLACEHOLDER}`}>company related images*</div>
-            <div className={`ml-[24%] mt-4 grid aspect-[417/202] w-[72%] place-items-center text-[13px] text-[#14070a] ${PLACEHOLDER}`}>company related images*</div>
+      <section className="pb-20 lg:pb-[103px]">
+        <div className="mx-auto grid w-full max-w-[1314px] items-start gap-12 px-6 lg:grid-cols-[658px_1fr] lg:gap-0">
+          <Reveal className="order-2 lg:order-none lg:pt-[64px]">
+            <div className={`grid aspect-[415/202] w-[76%] place-items-center text-[14px] lg:w-[415px] ${PLACEHOLDER}`}>company related images*</div>
+            <div className={`ml-[24%] mt-[21px] grid aspect-[415/202] w-[76%] place-items-center text-[14px] lg:ml-[132px] lg:w-[415px] ${PLACEHOLDER}`}>company related images*</div>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 style={hd} className="text-[clamp(26px,2.6vw,34px)] font-semibold">Our team culture</h2>
-            <p className="mt-6 max-w-[600px] text-[17px] leading-[1.75] text-[#3d2a2e]">
+            <h2 style={hd} className="text-[28px] font-semibold leading-[44px] lg:text-[34px]">Our team culture</h2>
+            <p className="mt-[27px] max-w-[590px] text-[17px] leading-[1.6] text-[#333] lg:text-[20px] lg:leading-[30px]">
               We are a team that learns together, shares credit and holds itself to a high bar for the people we serve.
             </p>
-            <ul className="mt-12 space-y-10">
+            <ul className="mt-[52px] space-y-[49px] lg:pl-[13px]">
               {CULTURE.map((c) => (
-                <li key={c.t} className="flex items-start gap-5">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="mt-0.5 shrink-0" aria-hidden>
-                    <circle cx="18" cy="18" r="12" stroke={RED} strokeWidth="2" />
-                    <path d="m27 27 8 8" stroke={RED} strokeWidth="3" strokeLinecap="round" />
-                    <text x="18" y="22" textAnchor="middle" fontSize="11" fontWeight="700" fill={RED} fontFamily="sans-serif">AI</text>
+                <li key={c.t} className="flex items-start gap-[19px]">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="mt-[2px] shrink-0" aria-hidden>
+                    <circle cx="16" cy="16" r="12.5" stroke={RED} strokeWidth="2" />
+                    <path d="m25.5 25.5 7 7" stroke={RED} strokeWidth="3" strokeLinecap="round" />
+                    <text x="16" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill={RED} fontFamily="sans-serif">AI</text>
                   </svg>
                   <div>
-                    <b className="block text-[20px] font-medium">{c.t}</b>
-                    <p className="mt-3 text-[13px] text-[#3d2a2e]">{c.d}</p>
+                    <b className="block text-[20px] font-medium leading-[32px] lg:text-[24px]">{c.t}</b>
+                    <p className="mt-[15px] text-[15px] leading-[22px] text-[#333]">{c.d}</p>
                   </div>
                 </li>
               ))}
@@ -192,24 +202,24 @@ export default function About() {
       </section>
 
       {/* Our journey */}
-      <section className="pb-20 pt-10 text-white" style={{ background: RED }}>
+      <section className="pb-16 pt-[38px] text-white lg:pb-[93px]" style={{ background: RED }}>
         <div className={wrap}>
-          <h2 style={hd} className="text-center text-[clamp(26px,2.6vw,34px)] font-medium">Our journey</h2>
+          <h2 style={hd} className="text-center text-[28px] font-medium leading-[44px] lg:text-[34px]">Our journey</h2>
           {/* TODO-CLEANUP: placeholder line from the design, replace with real copy once milestones are confirmed */}
-          <p className="mt-5 text-center text-[17px]">Suggested extra section. Replace with your real milestones.</p>
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="mt-[26px] text-center text-[17px] lg:text-[20px] lg:leading-[30px]">Suggested extra section. Replace with your real milestones.</p>
+          <div className="mt-12 grid grid-cols-2 gap-10 lg:mt-[67px] lg:flex lg:justify-between lg:gap-0">
             {JOURNEY.map((j, i) => (
               <Reveal key={j.y} delay={i * 0.08}>
-                <span className="grid h-[86px] w-[86px] place-items-center rounded-full bg-[#fdeeee]">
+                <span className="grid h-[82px] w-[82px] place-items-center rounded-full bg-[#fceced]">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={RED} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="M8 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-2" />
                     <rect x="7" y="3" width="14" height="14" rx="3" />
                     <path d="m12 8-2 2 2 2M16 8l2 2-2 2M14.5 7.5l-1 5" />
                   </svg>
                 </span>
-                <b style={hd} className="mt-6 block text-[19px] font-medium">{j.y}</b>
-                <b style={hd} className="mt-1 block text-[18px] font-medium">{j.t}</b>
-                <p className="mt-4 text-[12px]">{j.d}</p>
+                <b style={hd} className="mt-[22px] block text-[19px] font-medium leading-[26px]">{j.y}</b>
+                <b style={hd} className="mt-[3px] block text-[20px] font-medium leading-[28px]">{j.t}</b>
+                <p className="mt-[16px] text-[13.4px] leading-[18px]">{j.d}</p>
               </Reveal>
             ))}
           </div>
@@ -217,17 +227,17 @@ export default function About() {
       </section>
 
       {/* Meet the leadership */}
-      <section className="pb-32 pt-16">
+      <section className="pb-28 pt-14 lg:pb-[120px] lg:pt-[64px]">
         <div className={wrap}>
           <h2 style={hd} className={TITLE}>Meet the leadership</h2>
-          <p className="mt-5 text-center text-[17px] text-[#3d2a2e]">The one who shapes Hireginie</p>
-          <div className="mx-auto mt-10 grid max-w-[1000px] grid-cols-2 gap-y-10 text-center lg:grid-cols-4">
+          <p className={SUB}>The one who shapes Hireginie</p>
+          <div className="mx-auto mt-[42px] grid max-w-[1088px] grid-cols-2 gap-y-10 text-center lg:grid-cols-4">
             {LEADERS.map((l, i) => (
               <Reveal key={l.n} delay={i * 0.08}>
                 {/* TODO-CLEANUP: gray circle is a placeholder for the leader's photo */}
                 <span className={`mx-auto block h-[134px] w-[134px] rounded-full ${PLACEHOLDER}`} aria-hidden />
-                <b className="mt-4 block text-[16px] font-bold">{l.n}</b>
-                <span className="mt-1 block text-[13px] text-[#3d2a2e]">{l.r}</span>
+                <b className="mt-[16px] block text-[18px] font-bold leading-[24px]">{l.n}</b>
+                <span className="mt-[1px] block text-[15px] leading-[20px]">{l.r}</span>
               </Reveal>
             ))}
           </div>
