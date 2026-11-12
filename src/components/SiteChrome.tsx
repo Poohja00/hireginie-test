@@ -11,8 +11,8 @@ export default function SiteChrome() {
 
   if (hideChrome) return null;
 
-  // Home has its own footer and no CTA banner (new design). Other pages keep both.
-  if (pathname === "/") return <HomeFooter />;
+  // Home and About have the new design: their own footer and no CTA banner. Other pages keep both.
+  if (pathname === "/" || pathname === "/about") return <HomeFooter />;
 
   return (
     <>
