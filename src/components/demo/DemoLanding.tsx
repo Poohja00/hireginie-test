@@ -96,10 +96,21 @@ const IND_ICON: Record<string, string> = {
   "FMCG": "M3 21V10l5 3v-3l5 3V4h3v9l2 1v7H3ZM8 18h2M13 18h2",
   "Jewelry": "M6 3h12l4 6-10 12L2 9l4-6ZM2 9h20M9 3l3 6 3-6M12 21V9",
   "Telecom": "M4 14v-2a8 8 0 0 1 16 0v2M4 13h3v6H4zM17 13h3v6h-3zM20 19c0 2-2 3-5 3h-2",
+  "Banking": "M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18",
+  "Insurance": "M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6l8-3ZM8.5 12l2.5 2.5 4.5-5",
+  "Fintech": "M3 20h18M5 16l4-4 3 3 6-7M15 8h3v3",
+  "Healthcare": "M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3Z",
+  "Pharma": "M10.5 20.5a5 5 0 0 1-7-7l9-9a5 5 0 0 1 7 7l-9 9ZM8.5 8.5l7 7",
+  "Manufacturing": "M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1",
+  "Retail": "M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M10 20v-5h4v5",
+  "Real Estate": "M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6",
+  "Hospitality": "M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-8v5M7 11.5h.01",
+  "Media": "M3 6h18v12H3zM10 9.5v5l4.5-2.5-4.5-2.5Z",
+  "Automotive": "M4 15l1.5-5A2 2 0 0 1 7.4 8.5h9.2a2 2 0 0 1 1.9 1.5L20 15M3 15h18v3H3zM7 18v1.5M17 18v1.5M7 12.5h.01M17 12.5h.01",
 };
 
 const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "Telecom", "+ 18 more"];
-// TODO: placeholder names for the other 11 industries shown after clicking "+ 18 more" (7 above + 11 = 18 in the design). Confirm the real list; they reuse the Jewelry icon until each has its own.
+// TODO: placeholder names for the other 11 industries shown after clicking "+ 18 more" (7 above + 11 = 18 in the design). Confirm the real list and adjust IND_ICON to match.
 const MORE_INDUSTRIES = ["Banking", "Insurance", "Fintech", "Healthcare", "Pharma", "Manufacturing", "Retail", "Real Estate", "Hospitality", "Media", "Automotive"];
 
 // Why-section icons (split design): AI in a magnifier, buildings, AI in a bulb. Paths are 24x24 strokes.
@@ -131,6 +142,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
   const el = (href: string, cls: string, kids: React.ReactNode) => live ? <Link href={href} className={cls}>{kids}</Link> : <span className={cls}>{kids}</span>;
   const hd = split ? { fontFamily: domine.style.fontFamily } : hf;
   const [scrolled, setScrolled] = useState(false);
+  // industries: hovering "+ 18 more" opens the full grid, moving the mouse off the grid closes it
   const [allInd, setAllInd] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 40);
@@ -254,13 +266,13 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
           <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
           <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
-          <div className={`mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 ${split && allInd ? "lg:grid-cols-7 lg:gap-y-12" : "lg:grid-cols-8"}`}>
+          <div onMouseLeave={() => setAllInd(false)} className={`mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 ${split && allInd ? "lg:grid-cols-7 lg:gap-y-12" : "lg:grid-cols-8"}`}>
             {(split && allInd ? [...INDUSTRIES.slice(0, -1), ...MORE_INDUSTRIES] : INDUSTRIES).map((n, i) => {
-              const path = IND_ICON[n] ?? (split && allInd ? IND_ICON["Jewelry"] : undefined);
+              const path = IND_ICON[n];
               return (
               <motion.div key={n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 8) * 0.05, duration: 0.5 }} className="group">
                 {split && !path ? (
-                  <button type="button" onClick={() => setAllInd(true)} aria-expanded={false} className="mt-6 cursor-pointer text-[#14070a] transition-colors hover:text-[#b3203f]" style={hd}><span className="text-[22px]">+ 18</span> <span className="text-[13px]">more</span></button>
+                  <button type="button" onMouseEnter={() => setAllInd(true)} aria-expanded={allInd} className="mt-6 cursor-pointer text-[#14070a] transition-colors hover:text-[#b3203f]" style={hd}><span className="text-[22px]">+ 18</span> <span className="text-[13px]">more</span></button>
                 ) : (
                   <>
                     <div className={`mx-auto grid place-items-center transition-all duration-300 group-hover:-translate-y-1.5 ${split ? "h-[76px] w-[76px] rounded-full bg-[#fdf1f0]" : "h-[72px] w-[72px] rounded-2xl bg-[#fdeeef] text-[#b3203f] group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]"}`}>
@@ -277,9 +289,6 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
               );
             })}
           </div>
-          {split && allInd && (
-            <button type="button" onClick={() => setAllInd(false)} aria-expanded className="mt-10 cursor-pointer text-[14px] font-bold text-[#b3203f] hover:underline">Show less</button>
-          )}
         </div>
       </section>
 
