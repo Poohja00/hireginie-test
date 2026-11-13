@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion } from "framer-motion";
@@ -133,9 +134,8 @@ export function HomeTestimonials() {
         <div ref={row} className="hm-quotes mt-14 grid gap-10 md:grid-cols-3">
           {QUOTES.map((q, i) => (
             <motion.div key={q.n} {...rise(i)} className="hm-quote">
-              <span className="hm-av grid h-[84px] w-[84px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#f6a3ae] to-[#c0344f] text-[28px] font-semibold text-white" style={hd}>
-                {q.n.split(" ").map((w) => w[0]).join("").slice(0, 2)}
-              </span>
+              {/* TODO-CLEANUP: placeholder avatar from the design, swap for each person's photo */}
+              <Image src="/avatars/placeholder.png" alt={q.n} width={240} height={240} unoptimized className="hm-av h-[84px] w-[84px] shrink-0 rounded-full object-cover" />
               <div className="hm-q-name mt-4 flex items-center justify-between gap-2">
                 <div className="min-w-0">
                   <b className="block truncate text-[15px] font-bold text-[#14070a]">{q.n}</b>
