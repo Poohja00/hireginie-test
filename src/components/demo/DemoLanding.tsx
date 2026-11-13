@@ -109,9 +109,9 @@ const IND_ICON: Record<string, string> = {
   "Automotive": "M4 15l1.5-5A2 2 0 0 1 7.4 8.5h9.2a2 2 0 0 1 1.9 1.5L20 15M3 15h18v3H3zM7 18v1.5M17 18v1.5M7 12.5h.01M17 12.5h.01",
 };
 
-const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "Telecom", "+ 18 more"];
-// TODO: placeholder names for the other 11 industries shown after clicking "+ 18 more" (7 above + 11 = 18 in the design). Confirm the real list and adjust IND_ICON to match.
-const MORE_INDUSTRIES = ["Banking", "Insurance", "Fintech", "Healthcare", "Pharma", "Manufacturing", "Retail", "Real Estate", "Hospitality", "Media", "Automotive"];
+const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "+ 18 more"];
+// TODO: placeholder names for the other 12 industries shown when hovering "+ 18 more" (6 above + 12 = 18 in the design). Confirm the real list and adjust IND_ICON to match.
+const MORE_INDUSTRIES = ["Telecom", "Banking", "Insurance", "Fintech", "Healthcare", "Pharma", "Manufacturing", "Retail", "Real Estate", "Hospitality", "Media", "Automotive"];
 
 // Why-section icons (split design): AI in a magnifier, buildings, AI in a bulb. Paths are 24x24 strokes.
 const WHY_ICON = [
@@ -121,9 +121,9 @@ const WHY_ICON = [
 ];
 
 const WHY = [
-  { t: "Smarter Talent Access", d: "Technology and expertise working together to find the right talent." },
-  { t: "Specialized Hiring Expertise", d: "Recruiters with industry expertise for roles that demand deeper context." },
-  { t: "Beyond Traditional Talent Pools", d: "Wider access to talent beyond conventional hiring channels." },
+  { t: "Smarter Talent Access", d: "Technology and expertise|working together to|find the right talent." },
+  { t: "Specialized Hiring Expertise", d: "Recruiters with industry|expertise for roles that|demand deeper context." },
+  { t: "Beyond Traditional Talent Pools", d: "Wider access to talent|beyond conventional|hiring channels." },
 ];
 
 const hf = { fontFamily: serif.style.fontFamily };
@@ -176,30 +176,30 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
 
       {/* Hero */}
       {split ? (
-        <section className="relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
-          <div className="grid items-center gap-6 px-6 pb-4 pt-[84px] lg:grid-cols-[1fr_50vw] lg:gap-0 lg:pb-0 lg:pl-[3.5vw] lg:pr-[5.4vw] lg:pt-[70px]">
-            <div>
-              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="text-[14px] font-semibold text-[#14070a] lg:text-[1.4vw]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
-              <motion.h1 style={hd} variants={rise} custom={1} initial="hidden" animate="show" className="mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a] lg:text-[4.1vw] lg:leading-[1.53]">
+        <section className="hm-hero relative overflow-hidden bg-gradient-to-b from-[#fcd9df] via-[#fde8ec] to-white">
+          <div className="hm-hero-in grid items-center gap-6 px-6 pb-4 pt-[84px]">
+            <div className="hm-hero-text">
+              <motion.p variants={rise} custom={0} initial="hidden" animate="show" className="hm-tag text-[14px] font-semibold text-[#14070a]">Tech-Enabled Recruitment &amp; Staffing Partner</motion.p>
+              <motion.h1 style={hd} variants={rise} custom={1} initial="hidden" animate="show" className="hm-h1 mt-0 text-[40px] font-semibold leading-[1.3] text-[#14070a]">
                 Hire Better.<br />Scale Faster.
               </motion.h1>
-              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="mt-6 text-[15px] leading-relaxed text-[#14070a] lg:mt-[2vw] lg:text-[1.27vw] lg:leading-[1.63]">
-                Helping startups and enterprises hire top talent across<br />technology, non-tech, leadership, and volume hiring domains.
+              <motion.p variants={rise} custom={2} initial="hidden" animate="show" className="hm-p mt-6 text-[15px] leading-relaxed text-[#14070a]">
+                Helping startups and enterprises hire top talent across technology, non-tech, leadership, and volume hiring domains.
               </motion.p>
-              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="mt-6 lg:mt-[3vw]">
-                {el("/contact", "block w-full max-w-[420px] cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] py-3.5 text-center text-[14px] font-semibold text-white lg:w-[29vw] lg:max-w-none lg:rounded-[0.6vw] lg:py-0 lg:text-[0.97vw] lg:leading-[3.6vw] shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5", "Talk to our Experts")}
+              <motion.div variants={rise} custom={3} initial="hidden" animate="show" className="hm-btn-wrap mt-6">
+                {el("/contact", "hm-btn block w-full max-w-[420px] cursor-pointer rounded-lg bg-gradient-to-r from-[#c0344f] to-[#ee6a76] py-3.5 text-center text-[14px] font-semibold text-white shadow-[0_10px_30px_rgba(192,52,79,0.35)] transition-transform hover:-translate-y-0.5", "Talk to our Experts")}
               </motion.div>
             </div>
-            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
-              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 50vw, 100vw" className="ml-auto h-auto max-h-[calc(100svh-150px)] w-full object-contain object-right object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
+            <motion.div className="hm-img" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2 }}>
+              <Image src="/hero-illustration-red-v4.webp" alt="Hiring pipeline illustration" width={816} height={673} priority sizes="(min-width:1024px) 50vw, 100vw" className="ml-auto h-auto max-h-[calc(100svh-150px)] w-full object-contain object-right [mask-image:radial-gradient(ellipse_at_center,#000_62%,transparent_100%)]" />
             </motion.div>
-            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="flex flex-wrap items-start gap-x-12 gap-y-5 pb-5 lg:col-span-2 lg:gap-x-[3.3vw] lg:pt-[0.8vw]">
+            <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="hm-stats flex flex-wrap items-start gap-x-12 gap-y-5 pb-5">
               {SPLIT_STATS.map((x) => (
-                <div key={x.l} className="flex items-center gap-3 lg:gap-[1.1vw]">
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-[11px] text-white lg:h-[2.4vw] lg:w-[2.4vw] lg:text-[1vw]">★</span>
+                <div key={x.l} className="hm-stat flex items-center gap-3">
+                  <span className="hm-stat-ic grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-[11px] text-white">★</span>
                   <div className={domine.className}>
-                    <p className="text-[19px] font-medium leading-none text-[#1a1a1a] lg:text-[1.86vw]">{x.n}</p>
-                    <p className="mt-1 text-[12px] font-medium text-[#b3203f] lg:mt-[0.45vw] lg:text-[1.05vw]">{x.l}</p>
+                    <p className="hm-stat-n text-[19px] font-medium leading-none text-[#1a1a1a]">{x.n}</p>
+                    <p className="hm-stat-l mt-1 text-[12px] font-medium text-[#b3203f]">{x.l}</p>
                   </div>
                 </div>
               ))}
@@ -243,8 +243,8 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       )}
 
       {/* Trusted by */}
-      <section className={`bg-[#fffafa] ${split ? "pb-12 pt-20" : "py-14"}`}>
-        {split ? <h2 style={hd} className="text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
+      <section className={`bg-[#fffafa] ${split ? "hm-trusted pb-12 pt-20" : "py-14"}`}>
+        {split ? <h2 style={hd} className="hm-h2 text-center text-[clamp(26px,3vw,36px)] font-semibold">Trusted by Growing Business Across India</h2> : <p className="text-center text-[18px] font-semibold uppercase tracking-[0.3em] text-[#9d1230]">Trusted by growing businesses across India</p>}
         <div className="marquee marquee-mask mt-10 overflow-hidden">
           <div className="animate-marquee flex w-max" style={split ? { animationPlayState: "running" } : undefined}>
             {[...LOGOS, ...LOGOS].map((f, i) => (
@@ -261,28 +261,28 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       {split && <HomePrograms />}
       {split && (<svg width="0" height="0" className="absolute" aria-hidden><defs><linearGradient id="indGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f2707f" /><stop offset="1" stopColor="#c9243f" /></linearGradient></defs></svg>)}
       {/* Industries */}
-      <section className={`bg-white ${split ? "pb-12 pt-12" : "py-20"}`}>
-        <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
+      <section id="industries" className={`bg-white ${split ? "hm-sec hm-ind pb-12 pt-12" : "py-20"}`}>
+        <div className="hm-wrap mx-auto max-w-[88rem] px-6 text-center lg:px-0">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
-          <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
-          <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
-          <div onMouseLeave={() => setAllInd(false)} className={`mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8`}>
+          <h2 style={hd} className={`hm-h2 mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
+          <p className="hm-sub mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across {split ? "25+ " : ""}industries to build high-performing teams.</p>
+          <div onMouseLeave={() => setAllInd(false)} className={`hm-ind-row mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8`}>
             {(split && allInd ? [...INDUSTRIES.slice(0, -1), ...MORE_INDUSTRIES] : INDUSTRIES).map((n, i) => {
               const path = IND_ICON[n];
               return (
-              <motion.div key={n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 8) * 0.05, duration: 0.5 }} className="group">
+              <motion.div key={n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 7) * 0.05, duration: 0.5 }} className="hm-ind-cell group">
                 {split && !path ? (
-                  <button type="button" onMouseEnter={() => setAllInd(true)} aria-expanded={allInd} className="mt-6 cursor-pointer text-[#14070a] transition-colors hover:text-[#b3203f]" style={hd}><span className="text-[22px]">+ 18</span> <span className="text-[13px]">more</span></button>
+                  <button type="button" onMouseEnter={() => setAllInd(true)} aria-expanded={allInd} className="hm-ind-more mt-6 cursor-pointer text-[#14070a] transition-colors hover:text-[#b3203f]" style={hd}><span className="text-[22px]">+ 18</span> <span className="text-[13px]">more</span></button>
                 ) : (
                   <>
-                    <div className={`mx-auto grid place-items-center transition-all duration-300 group-hover:-translate-y-1.5 ${split ? "h-[76px] w-[76px] rounded-full bg-[#fdf1f0]" : "h-[72px] w-[72px] rounded-2xl bg-[#fdeeef] text-[#b3203f] group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]"}`}>
+                    <div className={`mx-auto grid place-items-center transition-all duration-300 group-hover:-translate-y-1.5 ${split ? "hm-ind-circle h-[76px] w-[76px] rounded-full bg-[#fdf1f0]" : "h-[72px] w-[72px] rounded-2xl bg-[#fdeeef] text-[#b3203f] group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]"}`}>
                       {split && path ? (
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#indGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg>
                       ) : (
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><path d="m10 10-2 2 2 2M14 10l2 2-2 2" /></svg>
                       )}
                     </div>
-                    <p className={`mt-4 font-semibold text-[#14070a] ${split ? "text-[16px]" : "text-[15px] font-medium text-[#3d3033]"}`}>{n}</p>
+                    <p className={`mt-4 font-semibold text-[#14070a] ${split ? "hm-ind-label text-[16px]" : "text-[15px] font-medium text-[#3d3033]"}`}>{n}</p>
                   </>
                 )}
               </motion.div>
@@ -293,16 +293,16 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
       </section>
 
       {/* Why */}
-      <section className={`bg-white ${split ? "pb-12 pt-12" : "pb-28"}`}>
-        <div className="mx-auto max-w-[88rem] px-6 text-center lg:px-10">
+      <section className={`bg-white ${split ? "hm-sec hm-why pb-12 pt-12" : "pb-28"}`}>
+        <div className="hm-wrap mx-auto max-w-[88rem] px-6 text-center lg:px-0">
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Why teams partner with us</p>}
-          <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
-          {split && <p className="mt-3 text-[17px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
-          <div className="mt-16 grid gap-10 text-left md:grid-cols-3">
+          <h2 style={hd} className={`hm-h2 mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Why Teams Partner With Us." : "Your Growth is Our Priority"}</h2>
+          {split && <p className="hm-sub mt-3 text-[17px] text-[#5a4a4d]">Your Growth is Our Priority</p>}
+          <div className="hm-why-row mt-16 grid gap-10 text-left md:grid-cols-3">
             {WHY.map((w, i) => (
-              <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
+              <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`hm-why-col flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
                 {split ? (
-                  <svg className="mt-0.5 shrink-0" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="url(#indGrad)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d={WHY_ICON[i]} /></svg>
+                  <svg className="mt-0.5 shrink-0" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#b93743" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d={WHY_ICON[i]} /></svg>
                 ) : (
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#fdeeef] text-[#b3203f]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" /></svg>
@@ -310,7 +310,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
                 )}
                 <div>
                   <h3 style={hd} className={`text-[23px] font-medium leading-snug`}>{w.t}</h3>
-                  <p className="mt-4 text-[16px] leading-relaxed text-[#5a4a4d]">{w.d}</p>
+                  <p className="mt-4 text-[16px] leading-relaxed text-[#5a4a4d]">{w.d.split("|").map((l, k) => (k ? <span key={l}><br className="hidden lg:inline" /> {l}</span> : l))}</p>
                 </div>
               </motion.div>
             ))}

@@ -40,15 +40,15 @@ export default function SiteNav() {
           className={`mx-auto flex items-center justify-between border border-transparent transition-all duration-500 ${
             scrolled
               ? "mt-3 h-[66px] max-w-[1180px] rounded-full border-white/60 bg-white/55 px-6 backdrop-blur-xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(40,10,20,0.14),inset_0_1px_0_rgba(255,255,255,0.8)] transform-gpu"
-              : "mt-0 h-[70px] max-w-[88rem] px-6 lg:px-10"
+              : "hm-nav-top mt-0 h-[70px] max-w-[88rem] px-6 lg:px-10"
           }`}
         >
           <Link href="/">
             <Image src="/logo/hireginiemasterlogos/logo-b.png" alt="Hireginie" width={240} height={58} priority className="h-[50px] w-auto" />
           </Link>
 
-          <div className="flex items-center gap-20">
-            <nav className="hidden gap-20 text-[16px] font-bold text-[#14070a] md:flex">
+          <div className="hm-nav-gap flex items-center gap-20">
+            <nav className="hm-nav-links hidden gap-20 text-[16px] font-bold text-[#14070a] md:flex">
               {LINKS.map((l) => (
                 <Link
                   key={l.href}
@@ -61,9 +61,9 @@ export default function SiteNav() {
             </nav>
             <Link
               href="/contact"
-              className="hidden rounded-md border-[1.5px] border-black bg-black px-5 py-3 text-[15px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-colors duration-200 hover:border-[#b93743] hover:bg-white hover:text-[#b93743] hover:shadow-none md:block"
+              className="hm-nav-cta hidden rounded-md border-[1.5px] border-black bg-black px-5 py-3 text-[15px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-colors duration-200 hover:border-[#b93743] hover:bg-white hover:text-[#b93743] hover:shadow-none md:block"
             >
-              Book a Consultation →
+              Book a Consultation
             </Link>
             <button className="text-2xl leading-none text-[#14070a] md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
               {open ? "✕" : "☰"}
@@ -76,12 +76,12 @@ export default function SiteNav() {
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href}>{l.label}</Link>
             ))}
-            <Link href="/contact" className="rounded-md bg-black px-5 py-3 text-center text-white">Book a Consultation →</Link>
+            <Link href="/contact" className="rounded-md bg-black px-5 py-3 text-center text-white">Book a Consultation</Link>
           </div>
         )}
       </header>
       {/* The fixed bar sits over page content: reserve its height everywhere except home (home hero already pads for it). */}
-      {!isHome && <div className="h-[70px]" aria-hidden />}
+      {!isHome && <div className="hm-nav-spacer h-[70px]" aria-hidden />}
     </>
   );
 }

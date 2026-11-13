@@ -227,7 +227,7 @@ export default function About() {
       </section>
 
       {/* Meet the leadership */}
-      <section className="pb-28 pt-14 lg:pb-[120px] lg:pt-[64px]">
+      <section id="team" className="pb-28 pt-14 lg:pb-[120px] lg:pt-[64px]">
         <div className={wrap}>
           <h2 style={hd} className={TITLE}>Meet the leadership</h2>
           <p className={SUB}>The one who shapes Hireginie</p>
