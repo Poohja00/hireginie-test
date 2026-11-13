@@ -266,7 +266,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
           {!split && <p className="text-[18px] uppercase tracking-[0.3em] text-[#9d1230]">Industries we serve</p>}
           <h2 style={hd} className={`mt-4 font-semibold ${split ? "text-[clamp(26px,3vw,36px)]" : "text-[clamp(28px,3.4vw,42px)]"}`}>{split ? "Industries We Serve" : "Building Teams Across 25+ Industries"}</h2>
           <p className="mt-3 text-[17px] text-[#5a4a4d]">We partner with organizations across industries to build high-performing teams.</p>
-          <div onMouseLeave={() => setAllInd(false)} className={`mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 ${split && allInd ? "lg:grid-cols-7 lg:gap-y-12" : "lg:grid-cols-8"}`}>
+          <div onMouseLeave={() => setAllInd(false)} className={`mt-14 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-8`}>
             {(split && allInd ? [...INDUSTRIES.slice(0, -1), ...MORE_INDUSTRIES] : INDUSTRIES).map((n, i) => {
               const path = IND_ICON[n];
               return (
