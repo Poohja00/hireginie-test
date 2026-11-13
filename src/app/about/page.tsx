@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { AiSearch02Icon, SourceCodeSquareIcon } from "@hugeicons/core-free-icons";
 import { Domine } from "next/font/google";
 import Reveal from "@/components/Reveal";
 
@@ -185,11 +187,7 @@ export default function About() {
             <ul className="mt-[52px] space-y-[49px] lg:pl-[13px]">
               {CULTURE.map((c) => (
                 <li key={c.t} className="flex items-start gap-[19px]">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="mt-[2px] shrink-0" aria-hidden>
-                    <circle cx="16" cy="16" r="12.5" stroke={RED} strokeWidth="2" />
-                    <path d="m25.5 25.5 7 7" stroke={RED} strokeWidth="3" strokeLinecap="round" />
-                    <text x="16" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill={RED} fontFamily="sans-serif">AI</text>
-                  </svg>
+                  <HugeiconsIcon icon={AiSearch02Icon} size={38} color={RED} className="mt-[2px] shrink-0" />
                   <div>
                     <b className="block text-[20px] font-medium leading-[32px] lg:text-[24px]">{c.t}</b>
                     <p className="mt-[15px] text-[15px] leading-[22px] text-[#333]">{c.d}</p>
@@ -211,11 +209,7 @@ export default function About() {
             {JOURNEY.map((j, i) => (
               <Reveal key={j.y} delay={i * 0.08}>
                 <span className="grid h-[82px] w-[82px] place-items-center rounded-full bg-[#fceced]">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={RED} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M8 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-2" />
-                    <rect x="7" y="3" width="14" height="14" rx="3" />
-                    <path d="m12 8-2 2 2 2M16 8l2 2-2 2M14.5 7.5l-1 5" />
-                  </svg>
+                  <HugeiconsIcon icon={SourceCodeSquareIcon} size={40} color={RED} />
                 </span>
                 <b style={hd} className="mt-[22px] block text-[19px] font-medium leading-[26px]">{j.y}</b>
                 <b style={hd} className="mt-[3px] block text-[20px] font-medium leading-[28px]">{j.t}</b>

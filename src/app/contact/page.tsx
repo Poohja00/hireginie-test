@@ -89,7 +89,12 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="group relative rounded-3xl overflow-hidden h-[260px] border border-black/8 mt-8">
+            <a
+              href="https://www.google.com/maps/place/WeWork/@12.8872455,77.5968355,19.56z/data=!3m1!5s0x3bae152f1be5855d:0x7ff72c10d66be50!4m6!3m5!1s0x3bae15480ec31b5b:0x2ee906dd2ca3768!8m2!3d12.8872251!4d77.5971658!16s%2Fg%2F11g4g131c7!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block rounded-3xl overflow-hidden h-[260px] border border-black/8 mt-8"
+            >
               <iframe
                 title="Hireginie location"
                 src="https://www.google.com/maps?q=12.8872251,77.5971658&z=19&output=embed"
@@ -104,20 +109,12 @@ export default function Contact() {
                       <circle cx="12" cy="10" r="2.5" fill="var(--color-accent)" />
                     </svg>
                   </span>
-                  <div className="pointer-events-auto mt-2 bg-white rounded-xl px-4 py-2.5 shadow-[0_10px_30px_rgba(20,19,26,0.14)] max-w-[220px] text-center">
+                  <div className="mt-2 bg-white rounded-xl px-4 py-2.5 shadow-[0_10px_30px_rgba(20,19,26,0.14)] max-w-[220px] text-center">
                     <b className="block text-dark text-[13px]">Hireginie Pvt. Ltd.</b>
                     <span className="text-warm-grey text-[11px] leading-snug">Wework, Opp: BPL Technologies, Arekere, Bangalore</span>
                   </div>
                 </div>
               </div>
-            </div>
-            <a
-              href="https://www.google.com/maps/place/WeWork/@12.8872455,77.5968355,19.56z/data=!3m1!5s0x3bae152f1be5855d:0x7ff72c10d66be50!4m6!3m5!1s0x3bae15480ec31b5b:0x2ee906dd2ca3768!8m2!3d12.8872251!4d77.5971658!16s%2Fg%2F11g4g131c7!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-4 bg-white border border-black/8 text-[13px] font-medium text-dark px-4 py-2 rounded-lg shadow-[0_4px_12px_rgba(20,19,26,0.08)] hover:text-accent hover:border-accent/30 transition-colors"
-            >
-              Open in Maps ↗
             </a>
           </Reveal>
 

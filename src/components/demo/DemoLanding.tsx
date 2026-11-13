@@ -5,11 +5,19 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Playfair_Display, DM_Sans, Domine } from "next/font/google";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  AiInnovation03Icon, AiSearch02Icon, BankIcon, Car01Icon, CogIcon, ComputerProgramming01Icon, CorporateIcon, Diamond02Icon,
+  Factory02Icon, HeadsetIcon, Home01Icon, Hospital01Icon, Hotel01Icon, Mortarboard01Icon, PillIcon, Shield01Icon, ShoppingCart02Icon,
+  StarIcon, Store01Icon, TruckDeliveryIcon, Video01Icon, Wallet01Icon,
+} from "@hugeicons/core-free-icons";
 import FlowCanvas from "@/components/demo/FlowCanvas";
 import { HomeServices, HomePrograms, HomeTestimonials } from "@/components/demo/HomeSections";
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["500", "600", "700"] });
 const domine = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+type IconSvgObject = React.ComponentProps<typeof HugeiconsIcon>["icon"];
+
 const sans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 type Theme = "dark" | "light";
@@ -88,37 +96,34 @@ const LOGOS = [
   "mikelegal.png",
 ];
 
-const IND_ICON: Record<string, string> = {
-  "IT & Software": "M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM10 10l-2 2 2 2M14 10l2 2-2 2M13 9l-2 6",
-  "Education": "M2 9l10-5 10 5-10 5-10-5ZM6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v6",
-  "Logistics": "M5 6h9v10H5zM1 9h3M2 12h2M0 15h4M14 9h4l3 3v4h-7M6 18.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0ZM16 18.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0Z",
-  "E-commerce": "M2 4h3l2.2 10.5h10.6L20 7H6M9 19a1.2 1.2 0 1 0 2.4 0A1.2 1.2 0 0 0 9 19ZM16 19a1.2 1.2 0 1 0 2.4 0A1.2 1.2 0 0 0 16 19Z",
-  "FMCG": "M3 21V10l5 3v-3l5 3V4h3v9l2 1v7H3ZM8 18h2M13 18h2",
-  "Jewelry": "M6 3h12l4 6-10 12L2 9l4-6ZM2 9h20M9 3l3 6 3-6M12 21V9",
-  "Telecom": "M4 14v-2a8 8 0 0 1 16 0v2M4 13h3v6H4zM17 13h3v6h-3zM20 19c0 2-2 3-5 3h-2",
-  "Banking": "M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18",
-  "Insurance": "M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6l8-3ZM8.5 12l2.5 2.5 4.5-5",
-  "Fintech": "M3 20h18M5 16l4-4 3 3 6-7M15 8h3v3",
-  "Healthcare": "M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7V3Z",
-  "Pharma": "M10.5 20.5a5 5 0 0 1-7-7l9-9a5 5 0 0 1 7 7l-9 9ZM8.5 8.5l7 7",
-  "Manufacturing": "M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1",
-  "Retail": "M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M10 20v-5h4v5",
-  "Real Estate": "M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6",
-  "Hospitality": "M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-8v5M7 11.5h.01",
-  "Media": "M3 6h18v12H3zM10 9.5v5l4.5-2.5-4.5-2.5Z",
-  "Automotive": "M4 15l1.5-5A2 2 0 0 1 7.4 8.5h9.2a2 2 0 0 1 1.9 1.5L20 15M3 15h18v3H3zM7 18v1.5M17 18v1.5M7 12.5h.01M17 12.5h.01",
+// Hugeicons (free, stroke rounded) for each industry
+const IND_ICON: Record<string, IconSvgObject> = {
+  "IT & Software": ComputerProgramming01Icon,
+  "Education": Mortarboard01Icon,
+  "Logistics": TruckDeliveryIcon,
+  "E-commerce": ShoppingCart02Icon,
+  "FMCG": Factory02Icon,
+  "Jewelry": Diamond02Icon,
+  "Telecom": HeadsetIcon,
+  "Banking": BankIcon,
+  "Insurance": Shield01Icon,
+  "Fintech": Wallet01Icon,
+  "Healthcare": Hospital01Icon,
+  "Pharma": PillIcon,
+  "Manufacturing": CogIcon,
+  "Retail": Store01Icon,
+  "Real Estate": Home01Icon,
+  "Hospitality": Hotel01Icon,
+  "Media": Video01Icon,
+  "Automotive": Car01Icon,
 };
 
 const INDUSTRIES = ["IT & Software", "Education", "Logistics", "E-commerce", "FMCG", "Jewelry", "+ 18 more"];
 // TODO: placeholder names for the other 12 industries shown when hovering "+ 18 more" (6 above + 12 = 18 in the design). Confirm the real list and adjust IND_ICON to match.
 const MORE_INDUSTRIES = ["Telecom", "Banking", "Insurance", "Fintech", "Healthcare", "Pharma", "Manufacturing", "Retail", "Real Estate", "Hospitality", "Media", "Automotive"];
 
-// Why-section icons (split design): AI in a magnifier, buildings, AI in a bulb. Paths are 24x24 strokes.
-const WHY_ICON = [
-  "M10.5 3.5a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM15.7 15.7 21 21M7.7 13l2-6 2 6M8.4 11.2h2.6M13.7 7.4v5.6",
-  "M4 21V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v17M14 10h5a1 1 0 0 1 1 1v10M2 21h20M7 7h2M10 7h1M7 11h2M10 11h1M7 15h2M10 15h1M16.5 14h1M16.5 17.5h1",
-  "M9 18h6M10 21h4M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.1 1 1.7h5.6c0-.6.4-1.2 1-1.7A6.5 6.5 0 0 0 12 2.5ZM10.2 11.6l1.5-4 1.5 4M10.6 10.4h2.2M14.6 7.6v4",
-];
+// Why-section icons (split design): AI search, corporate buildings, AI idea
+const WHY_ICON: IconSvgObject[] = [AiSearch02Icon, CorporateIcon, AiInnovation03Icon];
 
 const WHY = [
   { t: "Smarter Talent Access", d: "Technology and expertise|working together to|find the right talent." },
@@ -196,7 +201,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
             <motion.div variants={rise} custom={4} initial="hidden" animate="show" className="hm-stats flex flex-wrap items-start gap-x-12 gap-y-5 pb-5">
               {SPLIT_STATS.map((x) => (
                 <div key={x.l} className="hm-stat flex items-center gap-3">
-                  <span className="hm-stat-ic grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-[11px] text-white">★</span>
+                  <span className="hm-stat-ic grid h-7 w-7 place-items-center rounded-full bg-[#1a1a1a] text-white"><HugeiconsIcon icon={StarIcon} size="55%" /></span>
                   <div className={domine.className}>
                     <p className="hm-stat-n text-[19px] font-medium leading-none text-[#1a1a1a]">{x.n}</p>
                     <p className="hm-stat-l mt-1 text-[12px] font-medium text-[#b3203f]">{x.l}</p>
@@ -277,7 +282,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
                   <>
                     <div className={`mx-auto grid place-items-center transition-all duration-300 group-hover:-translate-y-1.5 ${split ? "hm-ind-circle h-[76px] w-[76px] rounded-full bg-[#fdf1f0]" : "h-[72px] w-[72px] rounded-2xl bg-[#fdeeef] text-[#b3203f] group-hover:bg-[#b3203f] group-hover:text-white group-hover:shadow-[0_12px_28px_rgba(179,32,63,0.35)]"}`}>
                       {split && path ? (
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#indGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={path} /></svg>
+                        <HugeiconsIcon icon={path} size={40} className="ind-grad" />
                       ) : (
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><path d="m10 10-2 2 2 2M14 10l2 2-2 2" /></svg>
                       )}
@@ -302,7 +307,7 @@ export default function DemoLanding({ theme, variant = "flow", live = false }: {
             {WHY.map((w, i) => (
               <motion.div key={w.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }} className={`hm-why-col flex gap-5 ${i > 0 ? "md:border-l md:border-black/10 md:pl-8" : ""}`}>
                 {split ? (
-                  <svg className="mt-0.5 shrink-0" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#b93743" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d={WHY_ICON[i]} /></svg>
+                  <HugeiconsIcon icon={WHY_ICON[i]} size={38} color="#b93743" className="mt-0.5 shrink-0" />
                 ) : (
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#fdeeef] text-[#b3203f]">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16" /></svg>

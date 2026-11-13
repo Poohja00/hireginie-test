@@ -62,6 +62,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* HOME-SCALE: sizes below are measured from the 1086px design (calc(1 * var(--u)) = 1px at 1086 wide, scales with the viewport, capped at 1.3x). lg and up only. */
 :root { --u: min(0.092081vw, 1.3px); }
+/* Hugeicons drawn with the pink to red gradient (defined once as #indGrad on the home page) */
+.ind-grad * { stroke: url(#indGrad); }
 @media (min-width: 1024px) {
   .hm-wrap { max-width: calc(1086 * var(--u)); margin-left: auto; margin-right: auto; position: relative; }
   .hm-h2 { font-size: calc(31.2 * var(--u)) !important; line-height: calc(40 * var(--u)) !important; margin-top: 0 !important; }
@@ -139,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
   .hm-why-col:nth-child(3) { padding-left: calc(27 * var(--u)) !important; }
   .hm-why-col:first-child { padding-left: calc(73 * var(--u)) !important; }
   .hm-why-col svg { width: calc(34 * var(--u)); height: calc(34 * var(--u)); margin-top: calc(2 * var(--u)); }
-  .hm-why-col h3 { font-size: calc(25.9 * var(--u)) !important; line-height: calc(38 * var(--u)) !important; font-weight: 500 !important; font-family: Satoshi, sans-serif !important; max-width: calc(210 * var(--u)); }
+  .hm-why-col h3 { font-size: calc(25.9 * var(--u)) !important; line-height: calc(38 * var(--u)) !important; font-weight: 500 !important; font-family: Satoshi, sans-serif !important; max-width: calc(222 * var(--u)); }
   .hm-why-col p { font-size: calc(16.7 * var(--u)) !important; line-height: calc(27 * var(--u)) !important; margin-top: calc(24 * var(--u)) !important; max-width: calc(210 * var(--u)); color: #444 !important; }
 
   /* testimonials */
@@ -170,3 +172,4 @@ h1, h2, h3, h4, h5, h6 {
   .hm-foot-bot { position: absolute; left: calc(107 * var(--u)); width: calc(890 * var(--u)); top: calc(393 * var(--u)); display: flex; justify-content: space-between; font-size: calc(10.4 * var(--u)) !important; line-height: calc(16 * var(--u)) !important; padding: 0 !important; }
   .hm-foot-bot nav { gap: calc(24 * var(--u)) !important; }
 }
+

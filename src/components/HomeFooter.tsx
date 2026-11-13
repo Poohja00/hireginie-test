@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Facebook01Icon, InstagramIcon, Linkedin01Icon } from "@hugeicons/core-free-icons";
 
 const SOCIAL = "grid h-[42px] w-[42px] place-items-center rounded-full bg-gradient-to-br from-[#cf4a5a] to-[#b93743] text-white shadow-[0_6px_16px_rgba(185,55,67,0.28)] transition-transform hover:-translate-y-0.5";
 const LINK = "transition-colors hover:text-[#b93743]";
@@ -35,13 +37,13 @@ export default function HomeFooter() {
           </p>
           <div className="hm-foot-soc mt-6 flex gap-4">
             <a href="#" aria-label="Facebook" className={SOCIAL}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" /><path d="M15.5 8.5h-1.4c-1 0-1.6.6-1.6 1.6V21M10.5 13h5" /></svg>
+              <HugeiconsIcon icon={Facebook01Icon} size="46%" />
             </a>
             <a href="#" aria-label="LinkedIn" className={SOCIAL}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" /><path d="M8 10.5V16M8 7.8v.2M12 16v-5.5M12 12.5c0-1.4 1-2 2-2s2 .7 2 2V16" /></svg>
+              <HugeiconsIcon icon={Linkedin01Icon} size="46%" />
             </a>
             <a href="#" aria-label="Instagram" className={SOCIAL}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.2 6.8h.01" /></svg>
+              <HugeiconsIcon icon={InstagramIcon} size="46%" />
             </a>
           </div>
         </div>

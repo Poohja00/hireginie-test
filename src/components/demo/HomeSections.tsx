@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Domine } from "next/font/google";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft02Icon, ArrowRight02Icon, Linkedin01Icon } from "@hugeicons/core-free-icons";
 
 const domine = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const hd = { fontFamily: domine.style.fontFamily };
@@ -62,7 +64,7 @@ export function HomeServices() {
               <Link href="/services" className={`hm-svc group flex h-full min-h-[190px] flex-col justify-between p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(179,32,63,0.18)] ${CARD}`}>
                 <div className="flex items-start justify-between gap-3">
                   <h3 style={hd} className="text-[18px] font-semibold leading-snug text-[#14070a]">{s.t.split("|").map((l, k) => (k ? <span key={l}><br />{l}</span> : l))}</h3>
-                  <span style={{ color: RED }} className="font-bold transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
+                  <span style={{ color: RED }} className="shrink-0 transition-transform duration-300 group-hover:translate-x-1" aria-hidden><HugeiconsIcon icon={ArrowRight02Icon} size={20} /></span>
                 </div>
                 <p className="mt-8 text-[14px] leading-relaxed text-[#5a4a4d]">{s.d}</p>
               </Link>
@@ -92,7 +94,7 @@ export function HomePrograms() {
                   <p className="hm-prog-t mt-5 text-[16px] font-bold text-[#14070a]">{p.t}</p>
                   <p className="hm-prog-d mt-3 text-[14px] leading-relaxed text-[#333]">{p.d}</p>
                   <Link href="/programs" style={{ color: RED }} className="hm-prog-a mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-3">
-                    Learn More <span aria-hidden>→</span>
+                    Learn More <HugeiconsIcon icon={ArrowRight02Icon} size={18} aria-hidden />
                   </Link>
                 </div>
               </div>
@@ -104,7 +106,7 @@ export function HomePrograms() {
   );
 }
 
-const ARROW = "hm-arrow grid h-10 w-10 place-items-center rounded-full border text-[18px] leading-none transition-colors hover:bg-[#b93743] hover:text-white";
+const ARROW = "hm-arrow grid h-10 w-10 place-items-center rounded-full border transition-colors hover:bg-[#b93743] hover:text-white";
 
 export function HomeTestimonials() {
   const row = useRef<HTMLDivElement>(null);
@@ -123,8 +125,8 @@ export function HomeTestimonials() {
         <div className="hm-test-head">
           <h2 style={hd} className={TITLE}>Trusted by Growing Teams</h2>
           <div className="hm-arrows mt-4 hidden justify-center lg:flex">
-            <button type="button" onClick={() => step(-1)} aria-label="Previous" style={{ color: RED, borderColor: "#e8a9b0" }} className={ARROW}>←</button>
-            <button type="button" onClick={() => step(1)} aria-label="Next" style={{ color: RED, borderColor: "#e8a9b0" }} className={ARROW}>→</button>
+            <button type="button" onClick={() => step(-1)} aria-label="Previous" style={{ color: RED, borderColor: "#e8a9b0" }} className={ARROW}><HugeiconsIcon icon={ArrowLeft02Icon} size="50%" /></button>
+            <button type="button" onClick={() => step(1)} aria-label="Next" style={{ color: RED, borderColor: "#e8a9b0" }} className={ARROW}><HugeiconsIcon icon={ArrowRight02Icon} size="50%" /></button>
           </div>
         </div>
         <p className={SUB}>The Quality We Serve</p>
@@ -139,7 +141,7 @@ export function HomeTestimonials() {
                   <b className="block truncate text-[15px] font-bold text-[#14070a]">{q.n}</b>
                   <p className="hm-q-role mt-0.5 text-[12px] text-[#222]">{q.r}</p>
                 </div>
-                <span className="grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[5px] border-2 border-[#14070a] text-[10px] font-bold text-[#14070a]" aria-hidden>in</span>
+                <span className="grid h-[24px] w-[24px] shrink-0 place-items-center text-[#14070a]" aria-hidden><HugeiconsIcon icon={Linkedin01Icon} size="100%" /></span>
               </div>
               <p className="hm-q-text mt-5 text-[15px] leading-relaxed text-[#3d2a2e]">{q.q}</p>
             </motion.div>
