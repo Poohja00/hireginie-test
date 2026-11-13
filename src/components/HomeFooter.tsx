@@ -65,7 +65,7 @@ export default function HomeFooter() {
               <li><a href="tel:+919415088702" className={LINK}>+91 9415088702</a></li>
               <li><a href="mailto:contactus@hireginie.com" className={LINK}>contactus@hireginie.com</a></li>
               {/* TODO-CLEANUP: placeholder address from the design, replace with the real office address */}
-              <li className="leading-snug">Office address line,<br />City, State, India</li>
+              <li className="hm-foot-addr leading-snug">Office address line,<br />City, State, India</li>
             </ul>
           </div>
         </div>
