@@ -71,6 +71,33 @@ drop policy if exists "admin write" on public.posts;
 create policy "admin write" on public.posts
   for all using (public.is_admin()) with check (public.is_admin());
 
+-- CONTACT FORM ----------------------------------------------
+create table if not exists public.contact_messages (
+  id          uuid primary key default gen_random_uuid(),
+  name        text not null check (char_length(name) between 1 and 200),
+  email       text not null check (char_length(email) between 3 and 200),
+  company     text check (char_length(company) <= 200),
+  phone       text check (char_length(phone) <= 40),
+  looking_for text check (char_length(looking_for) <= 200),
+  message     text not null check (char_length(message) between 1 and 4000),
+  created_at  timestamptz not null default now()
+);
+
+alter table public.contact_messages enable row level security;
+
+-- anyone can send a message, only admins can read or delete them
+drop policy if exists "anyone can send" on public.contact_messages;
+create policy "anyone can send" on public.contact_messages
+  for insert with check (true);
+
+drop policy if exists "admin read messages" on public.contact_messages;
+create policy "admin read messages" on public.contact_messages
+  for select using (public.is_admin());
+
+drop policy if exists "admin delete messages" on public.contact_messages;
+create policy "admin delete messages" on public.contact_messages
+  for delete using (public.is_admin());
+
 -- 4) MAKE YOURSELF ADMIN -------------------------------------
 -- After creating your user in Authentication → Users, run:
 --   update public.profiles set role = 'admin' where email = 'you@example.com';

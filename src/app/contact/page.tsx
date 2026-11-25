@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
+import { supabase } from "@/lib/supabase";
 
 const FEATURES = [
   {
@@ -42,15 +43,22 @@ const field =
 const wrap = "mx-auto w-full max-w-[88rem] px-6 lg:px-10";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [agreed, setAgreed] = useState(false);
 
-  function submit(e: React.FormEvent<HTMLFormElement>) {
+  // saved to the contact_messages table (see supabase-setup.sql)
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const { website, ...message } = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    setStatus("sending");
+    // "website" is a hidden trap field: only bots fill it, so their message is dropped
+    const error = website ? null : supabase ? (await supabase.from("contact_messages").insert(message)).error : true;
+    if (error) return setStatus("error"); // keep what they typed so nothing is lost
+    form.reset();
     setAgreed(false);
-    setTimeout(() => setSent(false), 2500);
+    setStatus("sent");
+    setTimeout(() => setStatus("idle"), 4000);
   }
 
   return (
@@ -126,13 +134,14 @@ export default function Contact() {
             >
               <h2 className="font-serif text-[28px] font-bold text-dark mb-4">Send Us a Message</h2>
               <div className="grid sm:grid-cols-2 gap-3">
-                <input required placeholder="full name" className={field} />
-                <input type="email" required placeholder="email address" className={field} />
-                <input placeholder="company name" className={field} />
-                <input placeholder="contact number" className={field} />
+                <input name="name" required maxLength={200} placeholder="full name" className={field} />
+                <input name="email" type="email" required maxLength={200} placeholder="email address" className={field} />
+                <input name="company" maxLength={200} placeholder="company name" className={field} />
+                <input name="phone" type="tel" maxLength={40} placeholder="contact number" className={field} />
               </div>
-              <input placeholder="looking for?" className={`${field} mt-3`} />
-              <textarea rows={3} required placeholder="tell us about your requirements" className={`${field} mt-3 resize-none`} />
+              <input name="looking_for" maxLength={200} placeholder="looking for?" className={`${field} mt-3`} />
+              <textarea name="message" rows={3} required maxLength={4000} placeholder="tell us about your requirements" className={`${field} mt-3 resize-none`} />
+              <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
 
               <label className="flex items-center gap-2.5 mt-4 text-[13px] text-warm-grey cursor-pointer">
                 <input
@@ -147,10 +156,16 @@ export default function Contact() {
 
               <button
                 type="submit"
+                disabled={status === "sending"}
                 className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent via-accent-mid to-accent-gold text-white font-semibold text-[14px] px-7 py-2.5 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
               >
-                {sent ? "Sent ✓" : "Talk to our Experts"}
+                {status === "sending" ? "Sending..." : status === "sent" ? "Sent ✓" : "Talk to our Experts"}
               </button>
+              {status === "error" && (
+                <p role="alert" className="mt-3 text-[13px] text-[#b3203f]">
+                  Your message could not be sent. Please email <a href="mailto:contactus@hireginie.com" className="underline">contactus@hireginie.com</a>.
+                </p>
+              )}
             </form>
 
             <div className="mt-8">
