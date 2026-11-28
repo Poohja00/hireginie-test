@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hireginie | What's your hiring wish?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#b93743;--rose:#ee6a76;--ink:#14070a;--soft:#7a6a6d;--line:#eee0e2;--blush:#fdf5f6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 Satoshi,system-ui,sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}
+h1,h2,.serif{font-family:Domine,Georgia,serif;font-weight:500;line-height:1.25;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+
+.bar{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 36px;background:linear-gradient(#fff 40%,rgba(255,255,255,0));transition:transform .35s}
+.bar img{height:38px;display:block}
+.pill{border:1px solid var(--ink);border-radius:99px;padding:9px 20px;font-weight:700;font-size:14px;background:#fff;transition:.25s}
+.pill:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* hero: one sentence */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 40px;position:relative}
+.hero small{font-weight:700;color:var(--red);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(32px,5.4vw,68px);line-height:1.55;margin-top:18px;max-width:1000px}
+h1 select{appearance:none;-webkit-appearance:none;field-sizing:content;font:inherit;color:var(--red);background:transparent;border:0;border-bottom:2px dashed var(--rose);padding:0 6px;cursor:pointer;text-align:center;max-width:100%;border-radius:0;transition:background .2s}
+h1 select:hover{background:var(--blush)}
+h1 option{font:500 16px Satoshi,sans-serif;color:var(--ink)}
+.stage{width:100%;max-width:900px;height:250px;margin-top:6px}
+canvas{width:100%;height:100%;display:block}
+.grant{font:700 16px Satoshi,sans-serif;background:var(--red);color:#fff;border:0;border-radius:99px;padding:16px 34px;cursor:pointer;box-shadow:0 14px 40px rgba(185,55,67,.32);transition:transform .25s,box-shadow .25s}
+.grant:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(185,55,67,.4)}
+.answer{min-height:56px;margin-top:16px;color:var(--soft);max-width:560px}
+.answer b{color:var(--ink)}
+
+section{padding:130px 0}
+h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:56px}
+h2 em{font-style:normal;color:var(--red)}
+
+/* services as a quiet list */
+.list{list-style:none;border-top:1px solid var(--line)}
+.list li{border-bottom:1px solid var(--line)}
+.list a{display:grid;grid-template-columns:1fr 1fr auto;gap:24px;align-items:center;padding:28px 0;transition:padding .35s,color .25s}
+.list a:hover,.list a:focus-visible{color:var(--red);padding-left:18px}
+.list span:first-child{font:500 clamp(21px,2.6vw,30px) Domine,serif}
+.list span:nth-child(2){color:var(--soft);font-size:16px}
+.list i{font-style:normal;font-size:24px;opacity:0;transform:translateX(-10px);transition:.35s}
+.list a:hover i,.list a:focus-visible i{opacity:1;transform:none}
+
+/* the thread */
+.thread{position:relative;padding-left:56px;max-width:620px}
+.thread::before,.thread::after{content:"";position:absolute;left:7px;top:10px;width:1.5px;background:var(--line);height:calc(100% - 20px)}
+.thread::after{background:var(--red);height:calc((100% - 20px) * var(--p,0))}
+.thread div{position:relative;padding-bottom:62px;opacity:.28;transition:opacity .5s}
+.thread div:last-child{padding-bottom:0}
+.thread div::before{content:"";position:absolute;left:-56px;top:8px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--line);z-index:1;transition:.4s}
+.thread div.on{opacity:1}
+.thread div.on::before{border-color:var(--red);background:var(--red);box-shadow:0 0 0 7px rgba(185,55,67,.12)}
+.thread h3{font:500 24px Domine,serif;margin-bottom:4px}
+.thread p{color:var(--soft)}
+
+.proof{display:flex;flex-wrap:wrap;justify-content:space-between;gap:36px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:52px 0}
+.proof b{display:block;font:400 clamp(40px,5vw,62px) Domine,serif;color:var(--red);line-height:1.1}
+.proof span{color:var(--soft);font-size:15px}
+.logos{overflow:hidden;margin-top:60px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;align-items:center;animation:slide 40s linear infinite}
+.track img{height:28px;margin:0 38px;filter:grayscale(1);opacity:.55}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+.voice{background:var(--blush);text-align:center}
+.voice blockquote{font:400 clamp(23px,3.1vw,36px)/1.55 Domine,serif;max-width:820px;margin:0 auto;min-height:5.2em;transition:opacity .35s}
+.voice p{margin-top:26px;color:var(--soft)}
+.voice p b{color:var(--ink)}
+.dots{display:flex;justify-content:center;gap:4px;margin-top:26px}
+.dots button{width:28px;height:28px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:99px;background:#dcc4c7;transition:.3s}
+.dots button[aria-current=true]::after{width:24px;background:var(--red)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.two a{border-top:2px solid var(--ink);padding-top:22px;transition:border-color .3s}
+.two a:hover{border-color:var(--red)}
+.two h3{font:500 28px Domine,serif}
+.two p{color:var(--soft);margin:8px 0 14px}
+.two span{color:var(--red);font-weight:700}
+
+.end{text-align:center;padding:160px 0 120px}
+.end h2{font-size:clamp(40px,7vw,86px);margin-bottom:36px}
+.end .links{margin-top:28px;color:var(--soft);display:flex;justify-content:center;flex-wrap:wrap;gap:28px}
+.end .links a:hover{color:var(--red)}
+footer{border-top:1px solid var(--line);padding:26px 36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px;color:var(--soft)}
+
+.js .rise{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.js .rise.in{opacity:1;transform:none}
+
+@media(max-width:700px){
+ .bar{padding:14px 18px}.bar img{height:30px}
+ section{padding:84px 0}
+ .list a{grid-template-columns:1fr;gap:4px;padding:22px 0}.list i{display:none}
+ .two{grid-template-columns:1fr;gap:36px}
+ .proof{display:grid;grid-template-columns:1fr 1fr}
+ .stage{height:200px}
+ footer{padding:22px 18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="#top"><img src="/demo/assets/logo.png" alt="Hireginie Talent Cloud"></a>
+  <a class="pill" href="#top" id="again">Make a wish</a>
+</div>
+
+<main id="top">
+  <div class="hero">
+    <small>Hireginie Talent Cloud</small>
+    <h1>I wish to hire
+      <select id="role" aria-label="Role">
+        <option value="tech">a software engineer</option>
+        <option value="biz">a sales manager</option>
+        <option value="lead">a business leader</option>
+        <option value="team">a whole team</option>
+        <option value="contract">a contract expert</option>
+      </select><br>
+      in <select id="city" aria-label="Location">
+        <option>Bengaluru</option><option>Mumbai</option><option>Delhi NCR</option><option>Hyderabad</option><option>Pune</option><option>any city in India</option>
+      </select>.
+    </h1>
+    <div class="stage"><canvas id="field" role="img" aria-label="Many candidates narrowing down to a shortlist"></canvas></div>
+    <button class="grant" id="grant" type="button">Grant my wish</button>
+    <p class="answer" id="answer" aria-live="polite">Tap the red words to change your wish.</p>
+  </div>
+
+  <section>
+    <div class="wrap rise">
+      <h2>Wishes we <em>grant.</em></h2>
+      <ul class="list">
+        <li><a href="#end"><span>Executive Hiring</span><span>Leaders for your most important seats</span><i aria-hidden="true">&rarr;</i></a></li>
+        <li><a href="#end"><span>Talent Acquisition</span><span>Permanent hires across every level</span><i aria-hidden="true">&rarr;</i></a></li>
+        <li><a href="#end"><span>Recruitment on Demand</span><span>Our recruiters, working as your team</span><i aria-hidden="true">&rarr;</i></a></li>
+        <li><a href="#end"><span>Employer of Record</span><span>Hire in India without a local entity</span><i aria-hidden="true">&rarr;</i></a></li>
+        <li><a href="#end"><span>POSH Compliance</span><span>Safe and inclusive workplaces</span><i aria-hidden="true">&rarr;</i></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="padding-top:40px">
+    <div class="wrap">
+      <h2 class="rise">How a wish <em>comes true.</em></h2>
+      <div class="thread" id="thread">
+        <div><h3>You tell us</h3><p>The role, the culture, and what great looks like.</p></div>
+        <div><h3>We search</h3><p>Smart sourcing across our network, with every stage visible.</p></div>
+        <div><h3>You meet the few</h3><p>A focused shortlist, in as little as 48 hours.</p></div>
+        <div><h3>They stay and grow</h3><p>We own the outcome, not just the shortlist.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:40px">
+    <div class="wrap rise">
+      <div class="proof">
+        <div><b>2021</b><span>Granting wishes since</span></div>
+        <div><b>50+</b><span>Specialized recruiters</span></div>
+        <div><b>80%</b><span>Clients who come back</span></div>
+        <div><b>48h</b><span>Fastest shortlist</span></div>
+      </div>
+      <div class="logos"><div class="track" id="track"></div></div>
+    </div>
+  </section>
+
+  <section class="voice">
+    <div class="wrap rise">
+      <blockquote id="quote"></blockquote>
+      <p id="who"></p>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap rise">
+      <h2>We grow <em>talent</em> too.</h2>
+      <div class="two">
+        <a href="#end"><h3>Business Beyond Bias</h3><p>Opening recruitment careers through training, mentorship and partner opportunities.</p><span>Get involved &rarr;</span></a>
+        <a href="#end"><h3>Accelerator</h3><p>Three months of intensive, real-world learning to build a career in recruitment.</p><span>Apply now &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="end" id="end">
+    <div class="wrap rise">
+      <h2>What&rsquo;s your <em>wish?</em></h2>
+      <a class="grant" href="mailto:contactus@hireginie.com?subject=My%20hiring%20wish" id="mail">Send it to us</a>
+      <div class="links"><a href="tel:+919415088702">+91 9415088702</a><a href="mailto:contactus@hireginie.com">contactus@hireginie.com</a></div>
+    </div>
+  </div>
+</main>
+
+<footer><span>&copy; 2026 Hireginie Talent Cloud</span><span>Candidates never pay a fee.</span></footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- talent field: many dots, then a shortlist of five (illustration only) ---------- */
+const cv = $("#field"), cx = cv.getContext("2d");
+let W, H, dots = [], granted = false, t0 = 0;
+function size() {
+  const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+  W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
+  const n = W < 600 ? 110 : 230;
+  dots = Array.from({ length: n }, () => {
+    // spread in a soft ellipse
+    const a = Math.random() * 6.283, m = Math.sqrt(Math.random());
+    const x = W / 2 + Math.cos(a) * m * W * .48, y = H / 2 + Math.sin(a) * m * H * .44;
+    return { x, y, hx: x, hy: y, r: 1.4 + Math.random() * 2.2, p: Math.random() * 6.283 };
+  });
+  pick();
+}
+function pick() {
+  [...dots].sort(() => Math.random() - .5).forEach((o, i) => o.k = i < 5 ? i : -1);
+}
+function draw(ms) {
+  const t = ms / 1000;
+  cx.clearRect(0, 0, W, H);
+  const g = granted ? Math.min(1, (ms - t0) / 1100) : 0, e = 1 - Math.pow(1 - g, 3);
+  const gap = Math.min(W / 5.6, 130), picks = [];
+  for (const o of dots) {
+    let tx = o.hx + Math.sin(t * .5 + o.p) * 7, ty = o.hy + Math.cos(t * .4 + o.p) * 7, r = o.r, a = .22 + (o.r - 1.4) * .14;
+    if (granted) {
+      if (o.k >= 0) {
+        tx = tx + (W / 2 + (o.k - 2) * gap - tx) * e;
+        ty = ty + (H / 2 - 8 - ty) * e;
+        r = o.r + (17 - o.r) * e; a = a + (1 - a) * e;
+        picks[o.k] = { x: tx, y: ty, r };
+      } else a *= 1 - e * .86;
+    }
+    o.x += (tx - o.x) * (calm ? 1 : .12); o.y += (ty - o.y) * (calm ? 1 : .12);
+    if (!(granted && o.k >= 0)) { cx.beginPath(); cx.arc(o.x, o.y, r, 0, 6.283); cx.fillStyle = `rgba(185,55,67,${a})`; cx.fill(); }
+  }
+  if (granted && picks.length) {
+    cx.strokeStyle = `rgba(185,55,67,${.45 * e})`; cx.lineWidth = 1.2; cx.beginPath();
+    picks.forEach((q, i) => i ? cx.lineTo(q.x, q.y) : cx.moveTo(q.x, q.y)); cx.stroke();
+    picks.forEach(q => {
+      cx.beginPath(); cx.arc(q.x, q.y, q.r, 0, 6.283); cx.fillStyle = "#b93743"; cx.fill();
+      // a simple person mark
+      cx.fillStyle = `rgba(255,255,255,${e})`;
+      cx.beginPath(); cx.arc(q.x, q.y - q.r * .22, q.r * .26, 0, 6.283); cx.fill();
+      cx.beginPath(); cx.arc(q.x, q.y + q.r * .52, q.r * .45, Math.PI, 6.283); cx.fill();
+    });
+    cx.fillStyle = `rgba(20,7,10,${e})`; cx.font = "700 13px Satoshi, sans-serif"; cx.textAlign = "center";
+    cx.fillText("Your shortlist", W / 2, H / 2 + 42);
+  }
+  if (!calm) requestAnimationFrame(draw);
+}
+const redraw = () => calm && draw(performance.now() + 2000);
+
+const PLAN = { tech: "Talent Acquisition", biz: "Talent Acquisition", lead: "Executive Hiring", team: "Recruitment on Demand", contract: "Contract Staffing" };
+function wish() {
+  const role = $("#role"), text = role.options[role.selectedIndex].text, city = $("#city").value;
+  return { text, city, plan: PLAN[role.value] };
+}
+$("#grant").addEventListener("click", () => {
+  const w = wish();
+  pick(); granted = true; t0 = performance.now(); redraw();
+  $("#answer").innerHTML = `Best route: <b>${w.plan}</b>. A shortlist in as little as <b>48 hours</b>.<br><a href="#end" style="color:#b93743;font-weight:700">Make it real &rarr;</a>`;
+  $("#mail").href = `mailto:contactus@hireginie.com?subject=${encodeURIComponent(`My hiring wish: ${w.text} in ${w.city}`)}`;
+  $("#grant").textContent = "Wish again";
+});
+["#role", "#city"].forEach(id => $(id).addEventListener("change", () => {
+  granted = false; redraw();
+  $("#answer").textContent = "Nice. Now grant it.";
+  $("#grant").textContent = "Grant my wish";
+}));
+size(); requestAnimationFrame(draw);
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { size(); redraw(); }, 150); });
+
+/* ---------- logos ---------- */
+const LOGOS = ["ACT-t.png","ihx_logo.svg","MyGate_new_logo_1-01-1-t.png","images-t.png","synapx-s.png","logo_Black-t.png","awign-t.png","nxtwave.svg","scripbox.svg","travclan.png","shopdeck.png","noventiq.png"];
+$("#track").innerHTML = [...LOGOS, ...LOGOS].map(f => `<img src="/demo/assets/${f}" alt="">`).join("");
+
+/* ---------- one voice at a time ---------- */
+const Q = [
+  ["They felt like part of our team and helped us with our best hires, who are now our backbone.", "Pawan Kumar", "HR Manager, Deconstruct"],
+  ["Hireginie feels more like true partners in the hiring journey than an external agency.", "Dipesh Jain", "Vice President TA, Elevation Capital"],
+  ["Hireginie respected our constraints, guided us with insights, and still delivered talent that exceeded expectations.", "Anurag Dixit", "Co Founder and CEO, CompUp"]
+];
+let qi = 0, auto;
+function say(i) {
+  qi = i;
+  $("#quote").textContent = `“${Q[i][0]}”`;
+  $("#who").innerHTML = `<b>${Q[i][1]}</b><br>${Q[i][2]}`;
+  [...$("#dots").children].forEach((b, n) => b.setAttribute("aria-current", n === i));
+}
+Q.forEach((q, i) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.setAttribute("aria-label", "Quote from " + q[1]);
+  b.onclick = () => { clearInterval(auto); say(i); };
+  $("#dots").append(b);
+});
+say(0);
+if (!calm) auto = setInterval(() => say((qi + 1) % Q.length), 6500);
+
+/* ---------- reveal and the thread ---------- */
+document.documentElement.classList.add("js");
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .1 });
+document.querySelectorAll(".rise").forEach(el => io.observe(el));
+const th = $("#thread");
+function pull() {
+  const r = th.getBoundingClientRect(), p = Math.max(0, Math.min(1, (innerHeight * .72 - r.top) / r.height));
+  th.style.setProperty("--p", p);
+  [...th.children].forEach(c => c.classList.toggle("on", c.getBoundingClientRect().top < innerHeight * .72));
+}
+addEventListener("scroll", pull, { passive: true }); pull();
+</script>
+</body>
+</html>
