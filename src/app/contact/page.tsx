@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
+import SitePage from "@/components/SitePage";
 import { supabase } from "@/lib/supabase";
 
 const FEATURES = [
@@ -39,7 +40,7 @@ const FEATURES = [
 ];
 
 const field =
-  "w-full px-4 py-3.5 bg-soft rounded-[10px] text-[14px] outline-none transition-all placeholder:text-warm-grey/70 focus:ring-2 focus:ring-accent/40";
+  "w-full px-4 py-3.5 bg-soft rounded-lg text-[14px] outline-none transition-all placeholder:text-warm-grey/70 focus:ring-2 focus:ring-accent/40";
 const wrap = "mx-auto w-full max-w-[88rem] px-6 lg:px-10";
 
 export default function Contact() {
@@ -62,28 +63,27 @@ export default function Contact() {
   }
 
   return (
-    <>
+    <SitePage crumb="Contact">
       {/* Hero + form */}
-      <section className="relative overflow-hidden bg-soft pt-8 pb-0">
-        <div className="absolute left-[50%] top-[45%] [transform:translate(-50%,-50%)_rotate(25deg)] w-[1600px] h-[1150px] rounded-[50%] bg-[#EAEAEE] pointer-events-none" />
-        <div className={`${wrap} relative grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start`}>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#fddadf] to-white pb-0 pt-10 lg:pt-14">
+        <div className={`${wrap} relative grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-10 items-start`}>
           {/* Left */}
           <Reveal>
-            <span className="font-serif text-[19px] font-semibold tracking-[0.16em] uppercase text-accent">
+            <span className="text-[13px] uppercase tracking-wide text-accent">
               Get in touch
             </span>
-            <h1 className="font-serif text-[44px] font-bold leading-[1.2] tracking-tight text-dark mt-4">
+            <h1 className="mt-4 text-[34px] font-semibold leading-[1.45] text-dark lg:text-[48px]">
               Let&apos;s Build
               <br />
-              What&apos;s Next, <span className="bg-gradient-to-r from-accent via-accent-mid to-accent-gold bg-clip-text text-transparent">Together.</span>
+              What&apos;s Next, <span className="text-accent">Together.</span>
             </h1>
-            <p className="font-sans text-warm-grey text-[20px] leading-relaxed mt-6 max-w-[460px]">
+            <p className="text-[#333] text-[18px] lg:text-[20px] leading-relaxed mt-6 max-w-[460px]">
               Have a hiring challenge or a question about our services? We&apos;d love to
               hear from you. Connect with our team and discover how Hireginie can
               support your talent goals.
             </p>
 
-            <div className="flex flex-nowrap gap-6 mt-14">
+            <div className="flex flex-wrap gap-6 mt-14">
               {FEATURES.map((f) => (
                 <div key={f.t} className="flex items-start gap-3 min-w-0">
                   <div className={`w-[52px] h-[52px] rounded-full grid place-items-center shrink-0 ${f.bg}`}>
@@ -111,7 +111,7 @@ export default function Contact() {
               />
               <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
                 <div className="flex flex-col items-center -translate-y-6">
-                  <span className="w-9 h-9 rounded-full bg-accent grid place-items-center shadow-[0_4px_14px_rgba(254,98,42,0.5)] ring-4 ring-white">
+                  <span className="w-9 h-9 rounded-full bg-accent grid place-items-center shadow-[0_4px_14px_rgba(185,55,67,0.5)] ring-4 ring-white">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                       <path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" fill="white" />
                       <circle cx="12" cy="10" r="2.5" fill="var(--color-accent)" />
@@ -130,9 +130,9 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <form
               onSubmit={submit}
-              className="bg-white rounded-3xl p-6 lg:p-7 shadow-[0_20px_60px_rgba(20,19,26,0.08)]"
+              className="bg-white rounded-lg p-6 lg:p-7 shadow-[0_20px_60px_rgba(20,19,26,0.08)]"
             >
-              <h2 className="font-serif text-[28px] font-bold text-dark mb-4">Send Us a Message</h2>
+              <h2 className="text-[26px] font-medium text-dark mb-4">Send Us a Message</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 <input name="name" required maxLength={200} placeholder="full name" className={field} />
                 <input name="email" type="email" required maxLength={200} placeholder="email address" className={field} />
@@ -157,7 +157,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent via-accent-mid to-accent-gold text-white font-semibold text-[14px] px-7 py-2.5 rounded-xl shadow-[0_10px_25px_rgba(254,98,42,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
+                className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent via-accent-mid to-accent-gold text-white font-semibold text-[14px] px-7 py-2.5 rounded-lg shadow-[0_10px_25px_rgba(185,55,67,0.3)] hover:-translate-y-0.5 hover:shadow-lg transition-all"
               >
                 {status === "sending" ? "Sending..." : status === "sent" ? "Sent ✓" : "Talk to our Experts"}
               </button>
@@ -169,7 +169,7 @@ export default function Contact() {
             </form>
 
             <div className="mt-8">
-              <h3 className="font-serif text-[28px] font-bold text-dark mb-6">Other Ways to Reach Us</h3>
+              <h3 className="text-[26px] font-medium text-dark mb-6">Other Ways to Reach Us</h3>
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
                 <span className="w-[46px] h-[46px] rounded-full bg-slate grid place-items-center shrink-0">
@@ -202,6 +202,6 @@ export default function Contact() {
           </Reveal>
         </div>
       </section>
-    </>
+    </SitePage>
   );
 }

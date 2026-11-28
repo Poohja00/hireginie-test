@@ -1,23 +1,18 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Footer from "@/components/Footer";
 import HomeFooter from "@/components/HomeFooter";
 import CtaBanner from "@/components/CtaBanner";
 
 export default function SiteChrome() {
   const pathname = usePathname();
-  const hideChrome = pathname?.startsWith("/admin") || pathname?.startsWith("/unauthorized");
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/unauthorized")) return null;
 
-  if (hideChrome) return null;
-
-  // Home and About have the new design: their own footer and no CTA banner. Other pages keep both.
-  if (pathname === "/" || pathname === "/about") return <HomeFooter />;
-
+  // Same footer everywhere. Home and About have no CTA box.
   return (
     <>
-      <CtaBanner />
-      <Footer />
+      {pathname !== "/" && pathname !== "/about" && <CtaBanner />}
+      <HomeFooter />
     </>
   );
 }

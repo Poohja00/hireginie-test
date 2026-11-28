@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import PageHero from "@/components/PageHero";
+import SitePage, { CARD, wrap } from "@/components/SitePage";
 import Reveal from "@/components/Reveal";
 import { supabase, type Post } from "@/lib/supabase";
 import { SAMPLE_POSTS } from "@/data/posts";
-
-const wrap = "mx-auto w-full max-w-[88rem] px-6 lg:px-10";
 
 export default function Blogs() {
   const [posts, setPosts] = useState<Post[]>(SAMPLE_POSTS);
@@ -26,16 +24,15 @@ export default function Blogs() {
   }, []);
 
   return (
-    <>
-      <PageHero title="Insights & Blogs" crumb="Blogs" />
-      <section className="py-24">
+    <SitePage crumb="Insights" title="Insights on hiring and growing teams." intro="Practical reading on recruitment, leadership and inclusive hiring.">
+      <section className="pb-24 pt-14 lg:pt-[72px]">
         <div className={wrap}>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             {posts.map((p, idx) => (
               <Reveal key={p.slug} delay={(idx % 3) * 0.08}>
                 <Link
                   href={`/blogs/${p.slug}`}
-                  className="group block h-full bg-white border border-black/10 rounded-2xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(74,50,204,0.18)]"
+                  className={`${CARD} group block h-full overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_44px_rgba(185,55,67,0.18)]`}
                 >
                   {p.image_url ? (
                     <div className="relative aspect-video">
@@ -46,7 +43,7 @@ export default function Blogs() {
                   )}
                   <div className="p-6">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wide">{p.tag ?? "Insights"}</span>
-                    <h3 className="text-lg font-semibold mt-2 mb-2">{p.title}</h3>
+                    <h3 className="text-[20px] font-medium leading-[30px] mt-2 mb-2">{p.title}</h3>
                     <p className="text-muted text-sm">{p.excerpt}</p>
                     <p className="text-muted text-[12.5px] mt-3.5">
                       {p.author ?? "Hireginie Team"}
@@ -59,6 +56,6 @@ export default function Blogs() {
           </div>
         </div>
       </section>
-    </>
+    </SitePage>
   );
 }

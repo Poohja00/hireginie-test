@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors — new design system */
-  --color-accent: #FE622A;
-  --color-accent-hover: #e5521f;
-  --color-accent-mid: #FD8A18;
-  --color-accent-gold: #E5A100;
-  --color-dark: #363636;
-  --color-warm-grey: #62605F;
-  --color-slate: #5D6585;
-  --color-soft: #F2F2F2;
+  /* Brand colours (matches the Home and About design) */
+  --color-accent: #b93743;
+  --color-accent-hover: #a32f3a;
+  --color-accent-mid: #c4424f;
+  --color-accent-gold: #d4545f;
+  --color-accent-soft: #fceced;
+  --color-accent-2: #fbdde1;
+  --color-accent-deep: #8f2430;
+  --color-dark: #14070a;
+  --color-warm-grey: #5a4a4d;
+  --color-muted: #5a4a4d;
+  --color-slate: #b93743;
+  --color-soft: #fdf4f5;
 
   /* Fonts */
   --font-serif: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
@@ -18,10 +22,10 @@
 
 /* Brand gradient — 3-stop accent gradient used on CTAs, highlighted text, icons */
 .bg-brand-gradient {
-  background-image: linear-gradient(to right, #FE622A, #FD8A18, #E5A100);
+  background-image: linear-gradient(to right, #b93743, #c4424f, #d4545f);
 }
 .text-brand-gradient {
-  background-image: linear-gradient(to right, #FE622A, #FD8A18, #E5A100);
+  background-image: linear-gradient(to right, #b93743, #c4424f, #d4545f);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -40,6 +44,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
 }
+
+/* Inner pages: same type as Home and About */
+.site-page { font-family: Satoshi, sans-serif; }
+.site-page :is(h1, h2, h3) { font-family: var(--font-domine, Georgia), serif; }
 
 /* Continuous logo marquee (left -> right) */
 @keyframes marquee {
